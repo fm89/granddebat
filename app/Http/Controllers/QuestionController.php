@@ -17,6 +17,9 @@ class QuestionController extends Controller
 
     public function show(Question $question)
     {
+        if (!$question->is_free) {
+            return redirect('/debates/' . $question->debate_id);
+        }
         $tags = $question->tags()->orderBy('name')->get();
         $current = $question->score();
         $max = $question->responses()->count();
