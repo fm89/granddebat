@@ -45,7 +45,9 @@ class TagController extends Controller
     public function delete(Tag $tag)
     {
         $question = $tag->question;
-        $tag->delete();
+        if ($tag->actions()->count() == 0) {
+            $tag->delete();
+        }
         return redirect('questions/' . $question->id);
     }
 

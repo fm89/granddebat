@@ -18,13 +18,15 @@
                 @foreach ($tags as $tag)
                     <tr>
                         <td>{{ $tag->name }}</td>
-                        <td>{{ $tag->actions->count() }}</td>
+                        <td>{{ $tag->actions()->count() }}</td>
                         <td>
                             {!! Form::open(['url' => '/tags/' . $tag->id, 'method' => 'delete']) !!}
                             <a href="/tags/{{ $tag->id }}/edit"><i class="fa fa-btn fa-pen"></i></a>
-                            <button class="btn btn-link" type="submit">
-                                <i class="fa fa-btn fa-trash text-danger"></i>
-                            </button>
+                            @if ($tag->actions()->count() == 0)
+                                <button class="btn btn-link" type="submit">
+                                    <i class="fa fa-btn fa-trash text-danger"></i>
+                                </button>
+                            @endif
                             {!! Form::close() !!}
                         </td>
                     </tr>
