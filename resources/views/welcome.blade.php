@@ -81,11 +81,14 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Grand Débat / Annotations
+                    Grand Débat &middot; Annotations
                 </div>
-
+                <p style="font-size: 30px">
+                    Plateforme d'annotation collaborative citoyenne des contributions au grand débat
+                </p>
+                <br/>
                 <div class="links">
-                    <a href="https://granddebat.fr/pages/donnees-ouvertes">Données sources</a>
+                    <a href="https://granddebat.fr/pages/donnees-ouvertes">Données brutes</a>
                     <a href="https://github.com/fm89/granddebat">Dépôt GitHub</a>
                     <a href="/legal">Mentions légales</a>
                 </div>

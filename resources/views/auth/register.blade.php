@@ -5,6 +5,13 @@
         <div class="card-header">Inscription</div>
 
         <div class="card-body">
+
+            <div class="alert alert-info">
+                Pour le moment, cette plateforme est en cours de construction et il est nécessaire de vous inscrire pour
+                y accéder. Vous pouvez consulter les <a href="/legal">mentions légales</a>. Si vous avez déjà un compte,
+                vous pouvez <a href="/login">vous connecter</a>.
+            </div>
+
             <form method="POST" action="{{ route('register') }}">
                 @csrf
 

@@ -3,8 +3,14 @@
 @section('content')
     <div class="card">
         <div class="card-header">Connexion</div>
-
         <div class="card-body">
+
+            <div class="alert alert-info">
+                Pour le moment, cette plateforme est en cours de construction et il est nécessaire de vous inscrire pour
+                y accéder. Vous pouvez consulter les <a href="/legal">mentions légales</a>. Si vous n'avez pas encore
+                de compte, vous pouvez <a href="/register">en créer un</a>.
+            </div>
+
             <form method="POST" action="{{ route('login') }}">
                 @csrf
 
