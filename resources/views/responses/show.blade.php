@@ -14,6 +14,9 @@
                            data-onstyle="secondary" data-toggle="toggle" data-on="{{ $tag->name }}"
                            data-off="{{ $tag->name }}"/>
                 @endforeach
+                <a class="btn btn-light mb-1" data-toggle="modal" data-target="#modalCreate">
+                    <i class="fa fa-btn fa-plus"></i> Créer
+                </a>
                 <br/><br/>
                 <button class="btn btn-primary" type="submit">
                     <i class="fa fa-btn fa-save"></i> Enregistrer
@@ -29,6 +32,35 @@
         <div class="card-body">
             Retour au débat <a href="/debates/{{ $question->debate->id }}">{{ $question->debate->name }}</a>
             / <a href="/questions/{{ $question->id }}">{{ $question->text }}</a>
+        </div>
+    </div>
+    <div class="modal fade" id="modalCreate" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Créer une nouvelle catégorie</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <b>{{ $question->text }}</b>
+                    <br/><br/>
+                    {!! Form::open(['url' => 'questions/' . $question->id . '/tags']) !!}
+                    <input type="hidden" name="response_id" value="{{ $response->id }}"/>
+                    <div class="form-group">
+                        <label for="name" class="control-label">Nom de la catégorie</label>
+                        <input type="text" name="name" id="name" class="form-control"/>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fa fa-btn fa-plus"></i> Créer la catégorie
+                    </button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                        Annuler
+                    </button>
+                    {!! Form::close() !!}
+                </div>
+            </div>
         </div>
     </div>
 @endsection

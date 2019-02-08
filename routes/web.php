@@ -28,6 +28,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/proposals/{proposal}', 'ProposalController@show');
     Route::get('/questions/{question}', 'QuestionController@show');
+    Route::get('/questions/{question}/read', 'QuestionController@read');
     Route::get('/questions/{question}/tags/create', 'TagController@create');
     Route::post('/questions/{question}/tags', 'TagController@store');
     Route::get('/responses/{response}', 'ResponseController@show');

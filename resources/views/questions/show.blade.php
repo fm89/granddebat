@@ -6,6 +6,14 @@
             Catégorisation pour la question <i>{{ $question->text }}</i>
         </div>
         <div class="card-body">
+            <div class="alert alert-info d-flex justify-content-center">
+                <a class="btn btn-primary" href="/responses/{{ $next_response->id }}">
+                    <i class="fa fa-btn fa-play"></i>
+                    Démarrer la lecture
+                </a>
+            </div>
+            <br/>
+            <br/>
             <table class="table table-hover">
                 <thead>
                 <tr>
@@ -39,12 +47,6 @@
                                 class="fa fa-btn fa-plus"></i></a></th>
                 </tfoot>
             </table>
-            <div>
-                <a class="btn btn-primary" href="/responses/{{ $next_response->id }}">
-                    <i class="fa fa-btn fa-play"></i>
-                    Lire
-                </a>
-            </div>
         </div>
     </div>
     <div class="card mb-3">

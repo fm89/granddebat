@@ -10,6 +10,7 @@
                     <th>Question</th>
                     <th>Score</th>
                     <th>Communauté</th>
+                    <th></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -17,7 +18,7 @@
                     <tr>
                         @if ($question->is_free)
                             <td>
-                                <a href="/questions/{{ $question->id }}">{{ $question->text }}</a>
+                                <a href="/questions/{{ $question->id }}/read">{{ $question->text }}</a>
                             </td>
                             <td>
                                 <span class="badge badge-pill badge-primary">{{ $question->myScore(\Illuminate\Support\Facades\Auth::user()) }}</span>
@@ -25,8 +26,14 @@
                             <td>
                                 <span class="badge badge-pill badge-light">{{ $question->score() }}</span>
                             </td>
+                            <td>
+                                <a href="/questions/{{ $question->id }}">
+                                    <i class="fa fa-btn fa-pen"></i>
+                                </a>
+                            </td>
                         @else
                             <td>QCM / {{ $question->text }}</td>
+                            <td></td>
                             <td></td>
                             <td></td>
                         @endif

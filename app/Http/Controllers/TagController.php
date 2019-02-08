@@ -23,6 +23,10 @@ class TagController extends Controller
         $tag->question_id = $question->id;
         $tag->name = $request->input('name');
         $tag->save();
+        if ($request->has('response_id')) {
+            # Tag was create from a modal form within a response page so we should redirect there
+            return redirect('/responses/' . $request->input('response_id'));
+        }
         return redirect('questions/' . $question->id);
     }
 
