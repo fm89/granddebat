@@ -14,11 +14,16 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/legal', function () {
+    return view('legal');
+});
 
 Auth::routes(['verify' => true]);
 
 Route::group(['middleware' => ['auth', 'verified']], function () {
 
+    Route::get('/quit', 'Auth\UserController@showQuit');
+    Route::post('/quit', 'Auth\UserController@doQuit');
     Route::get('/debates/{debate}', 'DebateController@show');
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/proposals/{proposal}', 'ProposalController@show');

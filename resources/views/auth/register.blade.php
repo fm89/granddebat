@@ -36,6 +36,14 @@
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
                         @endif
+                        <small id="emailHelp" class="form-text text-muted">
+                            Votre adresse est validée par un premier courriel puis n'est utilisée que pour vous permettre de ré-initialiser
+                            votre mot de passe en cas de perte. Vous ne recevrez aucun autre courriel de notre part. Vous pouvez
+                            à tout moment supprimer définitivement votre compte. Votre nom d'affichage et votre adresse électronique
+                            sont alors immédiatement effacés de la base de données.
+                            Vos annotations apparaîtront alors sous le pseudonyme "<i>Utilisateur supprimé</i>".
+                        </small>
+
                     </div>
                 </div>
 

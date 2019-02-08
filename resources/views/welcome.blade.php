@@ -45,7 +45,7 @@
             }
 
             .title {
-                font-size: 84px;
+                font-size: 64px;
             }
 
             .links > a {
@@ -87,6 +87,7 @@
                 <div class="links">
                     <a href="https://granddebat.fr/pages/donnees-ouvertes">Données sources</a>
                     <a href="https://github.com/fm89/granddebat">Dépôt GitHub</a>
+                    <a href="/legal">Mentions légales</a>
                 </div>
             </div>
         </div>
