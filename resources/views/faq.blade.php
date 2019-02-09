@@ -60,8 +60,8 @@
                     de données pour être annotées sur cette plateforme.
                 </li>
                 <li>
-                    Les annotations saisies ici seront elles-aussi progressivement ouvertes
-                    (sans dévoiler l'identité des personnes ayant procédé à l'annotation).
+                    Les annotations saisies ici sont elles-aussi progressivement ouvertes
+                    et téléchargeables dans la page <a href="/data">données ouvertes</a>.
                 </li>
             </ul>
         </div>
