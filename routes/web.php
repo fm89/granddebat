@@ -15,9 +15,9 @@ Route::get('/', 'HomeController@welcome');
 Route::get('/faq', 'HomeController@faq');
 Route::get('/legal', 'HomeController@legal');
 
-Auth::routes(['verify' => true]);
+Auth::routes();
 
-Route::group(['middleware' => ['auth', 'verified']], function () {
+Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/quit', 'Auth\UserController@showQuit');
     Route::post('/quit', 'Auth\UserController@doQuit');
