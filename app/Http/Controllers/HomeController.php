@@ -38,7 +38,6 @@ class HomeController extends Controller
     {
         $debates = Debate::orderBy('id')->get();
         $my_scores = [];
-        $scores = [];
         $user_id = $request->user()->id;
         foreach ($debates as $debate) {
             $my_scores[$debate->id] = Response::whereHas('actions', function ($query) use ($user_id) {
@@ -46,13 +45,9 @@ class HomeController extends Controller
             })->join('questions', 'questions.id', 'responses.question_id')
                 ->where('questions.debate_id', $debate->id)
                 ->count();
-            $scores[$debate->id] = Response::whereHas('actions')
-                ->join('questions', 'questions.id', 'responses.question_id')
-                ->where('questions.debate_id', $debate->id)
-                ->count();
         }
         $question = $this->questionRepository->randomQuestion();
         $next_response = $this->responseRepository->randomResponse($question);
-        return view('home', compact('debates', 'scores', 'my_scores', 'next_response'));
+        return view('home', compact('debates', 'my_scores', 'next_response'));
     }
 }

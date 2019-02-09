@@ -2,14 +2,33 @@
 
 @section('content')
     <div class="card">
-        <div class="card-header">Les thèmes du grand débat</div>
         <div class="card-body">
+            <div class="alert alert-info">
+                <p>
+                    Nous catégorisons les textes écrits dans le cadre du grand débat pour faire émerger
+                    les idées les plus répandues et regrouper les réponses similaires.
+                </p>
+                <p>
+                    Il n'est pas cas question ici de juger de l'utilité, de la faisabilité ou de la valeur
+                    des idées ou des opinions exprimées.
+                </p>
+                <p>
+                    <b>Aidez-nous en lisant des textes et en leur attribuant des catégories.</b>
+                </p>
+                <br/>
+                <div class="d-flex justify-content-center">
+                    <a class="btn btn-primary" href="/responses/{{ $next_response->id }}">
+                        <i class="fa fa-btn fa-play"></i>
+                        Démarrer la lecture
+                    </a>
+                </div>
+                <br/>
+            </div>
             <table class="table table-hover">
                 <thead>
                 <tr>
                     <th>Intitulé du débat</th>
-                    <th>Mon score</th>
-                    <th>Communauté</th>
+                    <th>Score</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -21,45 +40,10 @@
                         <td>
                             <span class="badge badge-pill badge-primary">{{ $my_scores[$debate->id] }}</span>
                         </td>
-                        <td>
-                            <span class="badge badge-pill badge-light">{{ $scores[$debate->id] }}</span>
-                        </td>
                     </tr>
                 @endforeach
                 </tbody>
             </table>
-            <div class="alert alert-info">
-                <b>Quelques principes</b>
-                <br/><br/>
-                <ul>
-                    <li>
-                        Notre objectif est d'annoter les textes écrits dans le cadre du grand débat en y associant
-                        des libellés afin de faire émerger les idées les plus répandues et de regrouper les réponses
-                        dont le contenu est similaire.
-                    </li>
-                    <li>
-                        L'annotation manuelle permet de bénéficier de la finesse de la lecture par un humain
-                        et d'éviter de tomber dans des pièges d'interprétation par une machine : négation ou ironie par exemple.
-                    </li>
-                    <li>
-                        Il n'est en aucun cas question ici de juger de l'utilité, de la faisabilité ou de la valeur
-                        des idées ou des opinions exprimées par les contributeurs, mais uniquement d'amorcer un travail
-                        de consolidation.
-                    </li>
-                    <li>
-                        Le site est encore en construction. Vous pouvez soumettre vos remarques sur la page
-                        <a href="https://github.com/fm89/granddebat/issues">GitHub</a>.
-                    </li>
-                </ul>
-                <br/>
-                <div class="d-flex justify-content-center">
-                    <a class="btn btn-primary" href="/responses/{{ $next_response->id }}">
-                        <i class="fa fa-btn fa-play"></i>
-                        Démarrer la lecture
-                    </a>
-                </div>
-                <br/>
-            </div>
         </div>
     </div>
 @endsection

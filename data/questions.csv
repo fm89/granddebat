@@ -1,0 +1,98 @@
+id;title;debate_id;is_free;order;previous_id
+107;En qui faites-vous le plus confiance pour vous faire représenter dans la société et pourquoi ?;1;TRUE;1;
+108;En dehors des élus politiques, faut-il donner un rôle plus important aux associations et aux organisations syndicales et professionnelles ?;1;FALSE;2;
+109;Si oui, à quel type d'associations ou d'organisations ? Et avec quel rôle ?;1;TRUE;3;108
+110;Que faudrait-il faire pour renouer le lien entre les citoyens et les élus qui les représentent ?;1;TRUE;4;
+111;Le non-cumul des mandats instauré en 2017 pour les parlementaires (députés et sénateurs) est :;1;FALSE;5;
+112;Pourquoi ?;1;TRUE;6;111
+113;Que faudrait-il faire pour mieux représenter les différentes sensibilités politiques ?;1;TRUE;7;
+114;Pensez-vous qu'il serait souhaitable de réduire le nombre d'élus (hors députés et sénateurs) ?;1;FALSE;8;
+115;Si oui, lesquels ?;1;TRUE;9;114
+116;Que pensez-vous de la participation des citoyens aux élections et comment les inciter à y participer davantage ?;1;TRUE;10;
+117;Faut-il prendre en compte le vote blanc ?;1;FALSE;11;
+118;Si oui, de quelle manière ?;1;TRUE;12;117
+119;Que faudrait-il faire aujourd'hui pour mieux associer les citoyens aux grandes orientations et à la décision publique ? Comment mettre en place une démocratie plus participative ?;1;TRUE;13;
+120;Faut-il faciliter le déclenchement du référendum d'initiative partagée (le RIP est organisé à l'initiative de membres du Parlement soutenu par une partie du corps électoral) qui est applicable depuis 2015 ?;1;FALSE;14;
+121;Si oui, comment ?;1;TRUE;15;120
+122;Que faudrait-il faire pour consulter plus directement les citoyens sur l'utilisation de l'argent public, par l'Etat et les collectivités ?;1;TRUE;16;
+123;Quel rôle nos assemblées, dont le Sénat et le Conseil économique, social et environnemental, doivent-elles jouer pour représenter nos territoires et la société civile ?;1;TRUE;17;
+124;Faut-il transformer [nos assemblées, dont le Sénat et le CESE] ?;1;FALSE;18;
+125;Si oui, comment ?;1;TRUE;19;124
+127;Que proposez-vous pour renforcer les principes de la laïcité dans le rapport entre l'Etat et les religions de notre pays ?;1;TRUE;20;
+128;Comment garantir le respect par tous de la compréhension réciproque et des valeurs intangibles de la République ?;1;TRUE;21;
+129;Que faudrait-il faire aujourd'hui pour renforcer l'engagement citoyen dans la société ?;1;TRUE;22;
+130;Quels sont les comportements civiques qu'il faut promouvoir dans notre vie quotidienne ou collective ?;1;TRUE;23;
+131;Que faudrait-il faire pour favoriser le développement de ces comportements civiques et par quels engagements concrets chacun peut-il y participer ?;1;TRUE;24;
+132;Que faudrait-il faire pour valoriser l'engagement citoyen dans les parcours de vie, dans les relations avec l'administration et les pouvoirs publics ?;1;TRUE;25;
+133;Quelles sont les incivilités les plus pénibles dans la vie quotidienne et que faudrait-il faire pour lutter contre ces incivilités ?;1;TRUE;26;
+134;Que peuvent et doivent faire les pouvoirs publics pour répondre aux incivilités ?;1;TRUE;27;
+135;Quel pourrait être le rôle de chacun pour faire reculer les incivilités dans la société ?;1;TRUE;28;
+136;Quelles sont les discriminations les plus répandues dont vous êtes témoin ou victime ?;1;TRUE;29;
+137;Que faudrait-il faire pour lutter contre ces discriminations et construire une société plus solidaire et plus tolérante ?;1;TRUE;30;
+138;Pensez-vous qu'il faille instaurer des contreparties aux différentes allocations de solidarité ?;1;FALSE;31;
+139;Si oui, lesquelles ?;1;TRUE;32;138
+141;Que pensez-vous de la situation de l'immigration en France aujourd'hui et de la politique migratoire ? Quelles sont, selon vous, les critères à mettre en place pour définir la politique migratoire ?;1;TRUE;33;
+142;En matière d'immigration, une fois nos obligations d'asile remplies, souhaitez-vous que nous puissions nous fixer des objectifs annuels définis par le Parlement ?;1;TRUE;34;
+143;Que proposez-vous afin de répondre à ce défi qui va durer ?;1;TRUE;35;
+144;Quelles sont, selon vous, les modalités d'intégration les plus efficaces et les plus justes à mettre en place aujourd'hui dans la société ?;1;TRUE;36;
+145;Y a-t-il d'autres points sur la démocratie et la citoyenneté sur lesquels vous souhaiteriez vous exprimer ?;1;TRUE;37;
+1160;Quel est aujourd'hui pour vous le problème concret le plus important dans le domaine de l'environnement ?;2;FALSE;38;
+160;Quel est aujourd'hui pour vous le problème concret le plus important dans le domaine de l'environnement ? [Autres];2;TRUE;39;
+161;Que faudrait-il faire selon vous pour apporter des réponses à ce problème ?;2;TRUE;40;1160
+146;Diriez-vous que votre vie quotidienne est aujourd'hui touchée par le changement climatique ?;2;FALSE;41;
+147;Si oui, de quelle manière votre vie quotidienne est-elle touchée par le changement climatique ?;2;TRUE;42;146
+148;À titre personnel, pensez-vous pouvoir contribuer à protéger l'environnement ?;2;FALSE;43;
+149;Si oui, que faites-vous aujourd'hui pour protéger l'environnement et/ou que pourriez-vous faire ?;2;TRUE;44;148
+150;Qu'est-ce qui pourrait vous inciter à changer vos comportements comme par exemple mieux entretenir et régler votre chauffage, modifier votre manière de conduire ou renoncer à prendre votre véhicule pour de très petites distances ?;2;TRUE;45;
+151;Quelles seraient pour vous les solutions les plus simples et les plus supportables sur un plan financier pour vous inciter à changer vos comportements ?;2;TRUE;46;
+152;Par rapport à votre mode de chauffage actuel, pensez-vous qu'il existe des solutions alternatives plus écologiques ?;2;FALSE;47;
+153;Si oui, que faudrait-il faire pour vous convaincre ou vous aider à changer de mode de chauffage ?;2;TRUE;48;152
+154;Avez-vous pour vos déplacements quotidiens la possibilité de recourir à des solutions de mobilité alternatives à la voiture individuelle comme les transports en commun, le covoiturage, l'auto-partage, le transport à la demande, le vélo, etc. ?;2;FALSE;49;
+155;Si oui, que faudrait-il faire pour vous convaincre ou vous aider à utiliser ces solutions alternatives ?;2;TRUE;50;154
+1207;Si non, quelles sont les solutions de mobilité alternatives que vous souhaiteriez pouvoir utiliser ?;2;FALSE;51;
+207;Si non, quelles sont les solutions de mobilité alternatives que vous souhaiteriez pouvoir utiliser ? [Autres];2;TRUE;52;154
+157;Et qui doit selon vous se charger de vous proposer ce type de solutions alternatives ?;2;TRUE;53;1207
+158;Que pourrait faire la France pour faire partager ses choix en matière d'environnement au niveau européen et international ?;2;TRUE;54;
+159;Y a-t-il d'autres points sur la transition écologique sur lesquels vous souhaiteriez vous exprimer ?;2;TRUE;55;
+162;Quelles sont toutes les choses qui pourraient être faites pour améliorer l'information des citoyens sur l'utilisation des impôts ?;3;TRUE;56;
+163;Que faudrait-il faire pour rendre la fiscalité plus juste et plus efficace ?;3;TRUE;57;
+164;Quels sont selon vous les impôts qu'il faut baisser en priorité ?;3;TRUE;58;
+1206;Afin de financer les dépenses sociales, faut-il selon vous...;3;FALSE;59;
+206;Afin de financer les dépenses sociales, faut-il selon vous… [Autres];3;TRUE;60;
+205;S'il faut selon vous revoir les conditions d'attribution de certaines aides sociales, lesquelles doivent être concernées ?;3;TRUE;61;
+165;Quels sont les domaines prioritaires où notre protection sociale doit être renforcée ?;3;TRUE;62;
+166;Pour quelle(s) politique(s) publique(s) ou pour quels domaines d'action publique, seriez-vous prêts à payer plus d'impôts ?;3;TRUE;63;
+167;Y a-t-il d'autres points sur les impôts et les dépenses sur lesquels vous souhaiteriez vous exprimer ?;3;TRUE;64;
+169;Que pensez-vous de l'organisation de l'Etat et des administrations en France ? De quelle manière cette organisation devrait-elle évoluer ?;4;TRUE;65;
+170;Selon vous, l'Etat doit-il aujourd'hui transférer de nouvelles missions aux collectivités territoriales ?;4;FALSE;66;
+171;Si oui, lesquelles ?;4;TRUE;67;170
+204;Estimez-vous avoir accès aux services publics dont vous avez besoin ?;4;FALSE;68;
+172;Si non, quels types de services publics vous manquent dans votre territoire et qu'il est nécessaire de renforcer ?;4;TRUE;69;204
+174;Quels nouveaux services ou quelles démarches souhaitez-vous voir développées sur Internet en priorité ?;4;TRUE;70;
+175;Avez-vous déjà utilisé certaines de ces nouvelles formes de services publics ?;4;FALSE;71;
+176;Si oui, en avez-vous été satisfait ?;4;FALSE;72;
+177;Quelles améliorations préconiseriez-vous [des nouvelles formes de services publics] ?;4;TRUE;73;
+178;Quand vous pensez à l'évolution des services publics au cours des dernières années, quels sont ceux qui ont évolué de manière positive ?;4;TRUE;74;
+179;Quels sont les services publics qui doivent le plus évoluer selon vous ?;4;TRUE;75;
+180;"Connaissez-vous le ""droit à l'erreur"", c'est-à-dire le droit d'affirmer votre bonne foi lorsque vous faites un erreur dans vos déclarations ?";4;FALSE;76;
+181;Si oui, avez-vous déjà utilisé ce droit à l'erreur ?;4;FALSE;77;
+182;Si oui, à quelle occasion en avez-vous fait usage ?;4;TRUE;78;180
+183;Pouvez-vous identifier des règles que l'administration vous a déjà demandé d'appliquer et que vous avez jugées inutiles ou trop complexes ?;4;TRUE;79;
+184;Faut-il donner plus d'autonomie aux fonctionnaires de terrain ?;4;FALSE;80;
+185;Si oui, comment ?;4;TRUE;81;184
+186;Faut-il revoir le fonctionnement et la formation de l'administration ?;4;FALSE;82;
+187;Si oui, comment ?;4;TRUE;83;186
+188;Comment l'Etat et les collectivités territoriales peuvent-ils s'améliorer pour mieux répondre aux défis de nos territoires les plus en difficulté ?;4;TRUE;84;
+191;Si vous avez été amené à chercher une formation, pouvez-vous indiquer les éléments de satisfaction et/ou les difficultés rencontrés en précisant, pour chaque point, l'administration concernée :;4;TRUE;85;
+192;Si vous avez été amené à scolariser votre enfant, pouvez-vous indiquer les éléments de satisfaction et/ou les difficultés rencontrés en précisant, pour chaque point, l'administration concernée :;4;TRUE;86;
+193;Si vous avez été amené à chercher un emploi, pouvez-vous indiquer les éléments de satisfaction et/ou les difficultés rencontrés en précisant, pour chaque point, l'administration concernée :;4;TRUE;87;
+194;Si vous avez été amené à préparer votre retraite, pouvez-vous indiquer les éléments de satisfaction et/ou les difficultés rencontrés en précisant, pour chaque point, l'administration concernée :;4;TRUE;88;
+195;Si vous avez été amené à demander un remboursement de soins de santé, pouvez-vous indiquer les éléments de satisfaction et/ou les difficultés rencontrés en précisant, pour chaque point, l'administration concernée :;4;TRUE;89;
+196;Si vous avez été amené à faire une demande d'aide pour une situation de handicap, pouvez-vous indiquer les éléments de satisfaction et/ou les difficultés rencontrés en précisant, pour chaque point, l'administration concernée :;4;TRUE;90;
+198;Si vous avez été amené à créer une entreprise, pouvez-vous indiquer les éléments de satisfaction et/ou les difficultés rencontrés en précisant, pour chaque point, l'administration concernée :;4;TRUE;91;
+199;Si vous avez été amené à recruter du personnel, pouvez-vous indiquer les éléments de satisfaction et/ou les difficultés rencontrés en précisant, pour chaque point, l'administration concernée :;4;TRUE;92;
+200;Si vous avez été amené à former du personnel, pouvez-vous indiquer les éléments de satisfaction et/ou les difficultés rencontrés en précisant, pour chaque point, l'administration concernée :;4;TRUE;93;
+201;Si vous avez été amené à rémunérer du personnel, pouvez-vous indiquer les éléments de satisfaction et/ou les difficultés rencontrés en précisant, pour chaque point, l'administration concernée :;4;TRUE;94;
+202;Si vous avez été amené à mettre fin à votre activité, pouvez-vous indiquer les éléments de satisfaction et/ou les difficultés rencontrés en précisant, pour chaque point, l'administration concernée :;4;TRUE;95;
+203;Si vous avez été amené à recruter une personne portant un handicap, pouvez-vous indiquer les éléments de satisfaction et/ou les difficultés rencontrés en précisant, pour chaque point, l'administration concernée :;4;TRUE;96;
+189;Y a-t-il d'autres points sur l'organisation de l'Etat et des services publics sur lesquels vous souhaiteriez vous exprimer ?;4;TRUE;97;

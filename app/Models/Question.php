@@ -24,6 +24,11 @@ class Question extends Model
         return $this->hasMany(Tag::class);
     }
 
+    public function previous()
+    {
+        return $this->belongsTo(Question::class, 'previous_id');
+    }
+
     public function score()
     {
         return $this->responses()->whereHas('actions')->count();

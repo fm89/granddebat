@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Action;
+use App\Models\Question;
 use App\Models\Response;
 use App\Models\Tag;
 use App\Repositories\ResponseRepository;
@@ -23,7 +24,13 @@ class ResponseController extends Controller
         $question = $response->question;
         $tags = $question->tags()->orderBy('name')->get();
         $next_response = $this->responseRepository->randomResponse($question);
-        return view('responses.show', compact('question', 'response', 'tags', 'next_response'));
+        $previous_response = null;
+        $previous_question = $question->previous;
+        if ($previous_question != null) {
+            $previous_response = Response::where('question_id', $previous_question->id)
+                ->where('proposal_id', $response->proposal_id)->first();
+        }
+        return view('responses.show', compact('question', 'response', 'tags', 'next_response', 'previous_question', 'previous_response'));
     }
 
     public function update(Response $response, Request $request)
