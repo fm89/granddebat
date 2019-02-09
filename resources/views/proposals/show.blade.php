@@ -8,7 +8,7 @@
                 <p>
                     <b>{{ $response->question->text }}</b>
                     <br/>
-                    {{ $response->value }}
+                    @include('responses.value', ['value' => $response->value])
                     <br/>
                 </p>
             @endforeach

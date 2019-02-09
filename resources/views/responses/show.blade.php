@@ -6,7 +6,8 @@
             <b>{{ $question->text }}</b>
             <br/><br/>
             @if ($response != null)
-                {{ $response->value }} (<a href="/proposals/{{ $response->proposal_id }}">contribution</a>)
+                @include('responses.value', ['value' => $response->value])
+                (<a href="/proposals/{{ $response->proposal_id }}">contribution</a>)
                 <br/><br/>
                 {!! Form::open(['url' => '/responses/' . $response->id]) !!}
                 @foreach ($tags as $tag)
