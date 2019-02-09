@@ -86,9 +86,11 @@
 
                         <div class="{{ isset($compact) ? 'd-none d-sm-block' : ''}}">
                             <div class="d-flex justify-content-center mt-3">
-                                <a href="https://github.com/fm89/granddebat">Dépôt GitHub</a>
-                                <span class="ml-3 mr-3"> &middot; </span>
                                 <a href="/faq">FAQ</a>
+                                <span class="ml-3 mr-3"> &middot; </span>
+                                <a href="/data">Données ouvertes</a>
+                                <span class="ml-3 mr-3"> &middot; </span>
+                                <a href="https://github.com/fm89/granddebat">Dépôt GitHub</a>
                                 <span class="ml-3 mr-3"> &middot; </span>
                                 <a href="/legal">Mentions légales</a>
                             </div>

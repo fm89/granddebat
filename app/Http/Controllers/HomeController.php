@@ -24,6 +24,16 @@ class HomeController extends Controller
         return view('welcome');
     }
 
+    public function data()
+    {
+        return view('data');
+    }
+
+    public function download()
+    {
+        return response()->download(storage_path("app/public/actions" . date("Ymd") . ".csv"));
+    }
+
     public function faq()
     {
         return view('faq');

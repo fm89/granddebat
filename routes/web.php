@@ -12,6 +12,8 @@
 */
 
 Route::get('/', 'HomeController@welcome');
+Route::get('/data', 'HomeController@data');
+Route::get('/download', 'HomeController@download');
 Route::get('/faq', 'HomeController@faq');
 Route::get('/legal', 'HomeController@legal');
 
