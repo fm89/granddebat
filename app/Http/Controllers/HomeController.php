@@ -4,10 +4,36 @@ namespace App\Http\Controllers;
 
 use App\Models\Debate;
 use App\Models\Response;
+use App\Repositories\QuestionRepository;
+use App\Repositories\ResponseRepository;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+    private $questionRepository;
+    private $responseRepository;
+
+    public function __construct(QuestionRepository $questionRepository, ResponseRepository $responseRepository)
+    {
+        $this->questionRepository = $questionRepository;
+        $this->responseRepository = $responseRepository;
+    }
+
+    public function welcome()
+    {
+        return view('welcome');
+    }
+
+    public function faq()
+    {
+        return view('faq');
+    }
+
+    public function legal()
+    {
+        return view('legal');
+    }
+
     public function index(Request $request)
     {
         $debates = Debate::orderBy('id')->get();
@@ -25,6 +51,8 @@ class HomeController extends Controller
                 ->where('questions.debate_id', $debate->id)
                 ->count();
         }
-        return view('home', compact('debates', 'scores', 'my_scores'));
+        $question = $this->questionRepository->randomQuestion();
+        $next_response = $this->responseRepository->randomResponse($question);
+        return view('home', compact('debates', 'scores', 'my_scores', 'next_response'));
     }
 }

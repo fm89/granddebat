@@ -11,12 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/legal', function () {
-    return view('legal');
-});
+Route::get('/', 'HomeController@welcome');
+Route::get('/faq', 'HomeController@faq');
+Route::get('/legal', 'HomeController@legal');
 
 Auth::routes(['verify' => true]);
 

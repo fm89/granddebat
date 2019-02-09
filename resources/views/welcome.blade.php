@@ -45,7 +45,7 @@
             }
 
             .title {
-                font-size: 64px;
+                font-size: 48px;
             }
 
             .links > a {
@@ -81,15 +81,15 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Grand Débat &middot; Annotations
+                    Grand Débat Annotations
                 </div>
-                <p style="font-size: 30px">
+                <p style="font-size: 24px">
                     Plateforme d'annotation collaborative citoyenne des contributions au grand débat
                 </p>
                 <br/>
                 <div class="links">
-                    <a href="https://granddebat.fr/pages/donnees-ouvertes">Données brutes</a>
                     <a href="https://github.com/fm89/granddebat">Dépôt GitHub</a>
+                    <a href="/faq">FAQ</a>
                     <a href="/legal">Mentions légales</a>
                 </div>
             </div>

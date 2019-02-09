@@ -47,16 +47,18 @@
                         de consolidation.
                     </li>
                     <li>
-                        Le contenu des contributions est déjà accessible sur le
-                        <a href="https://granddebat.fr/pages/donnees-ouvertes">site officiel</a>.
-                        Les annotations saisies ici seront elles-aussi progressivement ouvertes
-                        (sans dévoiler l'identité des personnes ayant procédé à l'annotation).
-                    </li>
-                    <li>
                         Le site est encore en construction. Vous pouvez soumettre vos remarques sur la page
                         <a href="https://github.com/fm89/granddebat/issues">GitHub</a>.
                     </li>
                 </ul>
+                <br/>
+                <div class="d-flex justify-content-center">
+                    <a class="btn btn-primary" href="/responses/{{ $next_response->id }}">
+                        <i class="fa fa-btn fa-play"></i>
+                        Démarrer la lecture
+                    </a>
+                </div>
+                <br/>
             </div>
         </div>
     </div>

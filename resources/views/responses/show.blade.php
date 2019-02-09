@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app', ['compact' => true])
 
 @section('content')
     <div class="card mb-3">
@@ -30,8 +30,9 @@
     </div>
     <div class="card mb-3">
         <div class="card-body">
-            Retour au débat <a href="/debates/{{ $question->debate->id }}">{{ $question->debate->name }}</a>
-            / <a href="/questions/{{ $question->id }}">{{ $question->text }}</a>
+            Retour aux <a href="/home">Thèmes</a> /
+            <a href="/debates/{{ $question->debate->id }}">Questions</a>
+            / <a href="/questions/{{ $question->id }}">Question</a>
         </div>
     </div>
     <div class="modal fade" id="modalCreate" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

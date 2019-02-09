@@ -2,16 +2,15 @@
 
 @section('content')
     <div class="card">
-        <div class="card-header">Contribution <b>{{ $proposal->reference() }}</b></div>
+        <div class="card-header">Contribution : &ldquo;{{ $proposal->title }}&rdquo;</div>
         <div class="card-body">
-            <b>{{ $proposal->title }}</b>
-            <br/><br/>
             @foreach ($responses as $response)
-                <div class="alert alert-secondary">
-                    <i>{{ $response->question->text }}</i>
+                <p>
+                    <b>{{ $response->question->text }}</b>
                     <br/>
                     {{ $response->value }}
-                </div>
+                    <br/>
+                </p>
             @endforeach
         </div>
     </div>

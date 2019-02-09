@@ -25,7 +25,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+        <nav class="navbar navbar-expand-md navbar-light navbar-laravel{{ isset($compact) ? ' d-none d-sm-block' : ''}}">
             <div class="container-fluid">
                 <a class="navbar-brand" href="{{ url('/home') }}">
                     Grand Débat &middot; Annotations
@@ -83,10 +83,21 @@
                 <div class="row justify-content-center">
                     <div class="col-xl-8">
                         @yield('content')
+
+                        <div class="{{ isset($compact) ? 'd-none d-sm-block' : ''}}">
+                            <div class="d-flex justify-content-center mt-3">
+                                <a href="https://github.com/fm89/granddebat">Dépôt GitHub</a>
+                                <span class="ml-3 mr-3"> &middot; </span>
+                                <a href="/faq">FAQ</a>
+                                <span class="ml-3 mr-3"> &middot; </span>
+                                <a href="/legal">Mentions légales</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </main>
+
     </div>
 </body>
 </html>
