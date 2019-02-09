@@ -25,7 +25,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel{{ isset($compact) ? ' d-none d-sm-block' : ''}}">
+        <nav class="navbar navbar-expand-md navbar-light navbar-laravel{{ isset($compact) ? ' d-none d-lg-block' : ''}}">
             <div class="container-fluid">
                 <a class="navbar-brand" href="{{ url('/home') }}">
                     Grand Débat &middot; Annotations

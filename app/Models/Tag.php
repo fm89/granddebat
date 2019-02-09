@@ -9,6 +9,9 @@ class Tag extends Model implements Auditable
 {
     use \OwenIt\Auditing\Auditable;
 
+    const ID_NO_ANSWER = 1;
+    const ID_LIGHT_BULB = 2;
+
     public function question()
     {
         return $this->belongsTo(Question::class);

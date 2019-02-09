@@ -19,11 +19,21 @@
                     <i class="fa fa-btn fa-plus"></i> Créer
                 </a>
                 <br/><br/>
-                <button class="btn btn-primary" type="submit">
-                    <i class="fa fa-btn fa-save"></i> Enregistrer
+                <button class="btn btn-primary" type="submit" name="action" value="save">
+                    <i class="fa fa-btn fa-check"></i>
+                    <div class="d-none d-sm-inline">Valider</div>
+                </button>
+                <button class="btn btn-secondary" type="submit" name="action" value="noanswer">
+                    <i class="fa fa-btn fa-times-circle"></i>
+                    <div class="d-none d-sm-inline">Sans réponse</div>
+                </button>
+                <button class="btn btn-warning" type="submit" name="action" value="lightbulb">
+                    <i class="fa fa-btn fa-lightbulb"></i>
+                    <div class="d-none d-sm-inline">Marquer l'idée</div>
                 </button>
                 <a class="btn btn-light" href="/responses/{{ $next_response->id }}" style="float: right;">
-                    <i class="fa fa-btn fa-step-forward"></i> Passer
+                    <i class="fa fa-btn fa-step-forward"></i>
+                    <div class="d-none d-sm-inline">Passer</div>
                 </a>
                 {!! Form::close() !!}
             @endif
