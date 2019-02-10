@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Action;
 use App\Models\Debate;
 use App\Models\Response;
 use App\Repositories\QuestionRepository;
 use App\Repositories\ResponseRepository;
+use App\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -21,7 +23,11 @@ class HomeController extends Controller
 
     public function welcome()
     {
-        return view('welcome');
+        $actions_count = Action::count();
+        $users_count = User::count();
+        $question = $this->questionRepository->randomQuestion();
+        $next_response = $this->responseRepository->randomResponse($question);
+        return view('welcome', compact('actions_count', 'users_count', 'next_response'));
     }
 
     public function data()
@@ -48,13 +54,15 @@ class HomeController extends Controller
     {
         $debates = Debate::orderBy('id')->get();
         $my_scores = [];
-        $user_id = $request->user()->id;
-        foreach ($debates as $debate) {
-            $my_scores[$debate->id] = Response::whereHas('actions', function ($query) use ($user_id) {
-                $query->where('user_id', $user_id);
-            })->join('questions', 'questions.id', 'responses.question_id')
-                ->where('questions.debate_id', $debate->id)
-                ->count();
+        if ($request->user() != null) {
+            $user_id = $request->user()->id;
+            foreach ($debates as $debate) {
+                $my_scores[$debate->id] = Response::whereHas('actions', function ($query) use ($user_id) {
+                    $query->where('user_id', $user_id);
+                })->join('questions', 'questions.id', 'responses.question_id')
+                    ->where('questions.debate_id', $debate->id)
+                    ->count();
+            }
         }
         $question = $this->questionRepository->randomQuestion();
         $next_response = $this->responseRepository->randomResponse($question);

@@ -19,18 +19,19 @@ Route::get('/legal', 'HomeController@legal');
 
 Auth::routes();
 
+Route::get('/debates/{debate}', 'DebateController@show');
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/proposals/{proposal}', 'ProposalController@show');
+Route::get('/questions/{question}/read', 'QuestionController@read');
+Route::get('/responses/{response}', 'ResponseController@show');
+
 Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/quit', 'Auth\UserController@showQuit');
     Route::post('/quit', 'Auth\UserController@doQuit');
-    Route::get('/debates/{debate}', 'DebateController@show');
-    Route::get('/home', 'HomeController@index')->name('home');
-    Route::get('/proposals/{proposal}', 'ProposalController@show');
     Route::get('/questions/{question}', 'QuestionController@show');
-    Route::get('/questions/{question}/read', 'QuestionController@read');
     Route::get('/questions/{question}/tags/create', 'TagController@create');
     Route::post('/questions/{question}/tags', 'TagController@store');
-    Route::get('/responses/{response}', 'ResponseController@show');
     Route::post('/responses/{response}', 'ResponseController@update');
     Route::get('/tags/{tag}/edit', 'TagController@edit');
     Route::post('/tags/{tag}', 'TagController@update');

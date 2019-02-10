@@ -9,7 +9,7 @@
                     les idées les plus répandues et regrouper les réponses similaires.
                 </p>
                 <p>
-                    Il n'est pas cas question ici de juger de l'utilité, de la faisabilité ou de la valeur
+                    Il n'est pas question ici de juger de l'utilité, de la faisabilité ou de la valeur
                     des idées ou des opinions exprimées.
                 </p>
                 <p>
@@ -28,7 +28,9 @@
                 <thead>
                 <tr>
                     <th>Intitulé du débat</th>
-                    <th>Score</th>
+                    @auth
+                        <th>Score</th>
+                    @endauth
                 </tr>
                 </thead>
                 <tbody>
@@ -37,9 +39,11 @@
                         <td>
                             <a href="/debates/{{ $debate->id }}">{{ $debate->name }}</a>
                         </td>
-                        <td>
-                            <span class="badge badge-pill badge-primary">{{ $my_scores[$debate->id] }}</span>
-                        </td>
+                        @auth
+                            <td>
+                                <span class="badge badge-pill badge-primary">{{ $my_scores[$debate->id] }}</span>
+                            </td>
+                        @endauth
                     </tr>
                 @endforeach
                 </tbody>

@@ -24,11 +24,10 @@
             <h4>Données personnelles</h4>
             <p>
                 Lors de votre inscription, vous saisissez un nom d'affichage librement et une adresse électronique.
-                Celle-ci est validée par un premier courriel puis n'est utilisée que pour vous permettre de ré-initialiser
-                votre mot de passe en cas de perte. Vous ne recevrez aucun autre courriel de notre part. Vous pouvez
-                à tout moment supprimer définitivement votre compte. Votre nom d'affichage et votre adresse électronique
-                sont alors immédiatement effacés de la base de données.
-                Vos annotations apparaîtront alors sous le pseudonyme "<i>Utilisateur supprimé</i>".
+                Celle-ci n'est utilisée que pour vous permettre de ré-initialiser votre mot de passe en cas de perte.
+                Vous ne recevrez aucun autre courriel de notre part. Vous pouvez à tout moment supprimer définitivement
+                votre compte. Votre nom d'affichage et votre adresse électronique sont alors immédiatement effacés de
+                la base de données. Vos annotations seront alors liées au pseudonyme <i>Utilisateur supprimé</i>.
             </p>
         </div>
     </div>
