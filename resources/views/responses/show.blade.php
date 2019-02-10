@@ -51,34 +51,5 @@
             / <a href="/questions/{{ $question->id }}">Question</a>
         </div>
     </div>
-    <div class="modal fade" id="modalCreate" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Créer une nouvelle catégorie</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <b>{{ $question->text }}</b>
-                    <br/><br/>
-                    {!! Form::open(['url' => 'questions/' . $question->id . '/tags']) !!}
-                    <input type="hidden" name="response_id" value="{{ $response->id }}"/>
-                    <div class="form-group">
-                        <label for="name" class="control-label">Nom de la catégorie</label>
-                        <input type="text" name="name" id="name" class="form-control"/>
-                    </div>
-                    <button type="submit" class="btn btn-primary">
-                        <i class="fa fa-btn fa-plus"></i> Créer la catégorie
-                    </button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                        Annuler
-                    </button>
-                    {!! Form::close() !!}
-                </div>
-            </div>
-        </div>
-    </div>
+    <modal-create-tag :question="{{ $question }}"></modal-create-tag>
 @endsection

@@ -35,4 +35,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/tags/{tag}/edit', 'TagController@edit');
     Route::post('/tags/{tag}', 'TagController@update');
     Route::delete('/tags/{tag}', 'TagController@delete');
+
+    Route::post('/api/tags', 'Api\TagController@store');
 });
