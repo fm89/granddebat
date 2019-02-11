@@ -27,7 +27,7 @@
             },
         },
         mounted: function () {
-            let width = $('#toggleBlind' + this.tag.id).outerWidth() + 15;
+            let width = $('#toggleBlind' + this.tag.id).outerWidth() + 35;
             this.style = 'width: ' + width + 'px; height: 2.3rem;';
         },
         methods: {
