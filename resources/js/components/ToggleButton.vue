@@ -1,7 +1,7 @@
 <template>
     <div style="display: inline;">
         <input type="checkbox" name="tags[]" :value="tag.id" style="display: none;" :checked="checked"/>
-        <label class="btn btn-secondary" style="min-width: 3.7rem; min-height: 2.15rem; margin: 0; border: 0; border-radius: 0; display:none" :id="'toggleBlind' + tag.id">{{ tag.name }}</label>
+        <label style="display:none" :id="'toggleBlind' + tag.id">{{ tag.name }}</label>
         <div :class="getClass()" @click="onClick()" :style="style">
             <div class="toggle-group">
                 <label class="btn btn-secondary toggle-on">{{ tag.name }}</label>
@@ -27,7 +27,7 @@
             },
         },
         mounted: function () {
-            let width = $('#toggleBlind' + this.tag.id).outerWidth() + 35;
+            let width = $('#toggleBlind' + this.tag.id).outerWidth() + 40;
             this.style = 'width: ' + width + 'px; height: 2.3rem;';
         },
         methods: {
