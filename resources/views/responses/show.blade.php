@@ -17,9 +17,7 @@
             <br/><br/>
             {!! Form::open(['url' => '/responses/' . $response->id]) !!}
             @foreach ($tags as $tag)
-                <input data-style="mb-1" type="checkbox" name="tags[]" value="{{ $tag->id }}"
-                       data-onstyle="secondary" data-toggle="toggle" data-on="{{ $tag->name }}"
-                       data-off="{{ $tag->name }}"/>
+                <toggle-button :tag="{{ $tag }}"></toggle-button>
             @endforeach
             @guest
                 <button class="btn btn-light mb-1" disabled>

@@ -7,8 +7,6 @@
 
 require('./bootstrap');
 
-require('bootstrap4-toggle');
-
 // This import adds "Promise" support in IE11 which lacks it otherwise
 require('es6-promise').polyfill();
 
