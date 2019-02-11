@@ -6,9 +6,6 @@
 
     <title>GDA</title>
 
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
-
     <!-- Styles -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
           integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
@@ -19,8 +16,6 @@
         html, body {
             background-color: #fff;
             color: #636b6f;
-            font-family: 'Nunito', sans-serif;
-            font-weight: 200;
             height: 100vh;
             margin: 0;
         }
@@ -30,7 +25,7 @@
         }
 
         .title {
-            font-size: 48px;
+            font-size: 40px;
         }
 
         .links > a {
@@ -55,10 +50,10 @@
             <div class="title m-b-md">
                 Grand Débat Annotations
             </div>
-            <p style="font-size: 24px">
+            <p style="font-size: 22px">
                 Plateforme d'annotation collaborative citoyenne des contributions au grand débat
             </p>
-            <p style="font-size: 24px">
+            <p style="font-size: 22px">
                 Déjà <b>{{ $actions_count }} annotations</b> déposées par <b>{{ $users_count }} bénévoles</b>
             </p>
             <br/>
