@@ -24,6 +24,7 @@
         "vue-template-compiler": "^2.6.4"
     },
     "dependencies": {
-        "bootstrap4-toggle": "^3.4.0"
+        "bootstrap4-toggle": "^3.4.0",
+        "es6-promise": "^4.2.5"
     }
 }
