@@ -31,9 +31,7 @@
                         <span class="badge badge-pill badge-{{ \Illuminate\Support\Facades\Auth::user()->badgeColor() }}" style="font-size: 14px;">
                             {{ \Illuminate\Support\Facades\Auth::user()->scores['total'] }}
                         </span>&nbsp;
-                        <span class="badge badge-pill badge-{{ \Illuminate\Support\Facades\Auth::user()->badgeColor() }}" style="font-size: 14px;">
-                            {{ \Illuminate\Support\Facades\Auth::user()->badgeText() }}
-                        </span>
+                        @include('users.badge', ['user' => \Illuminate\Support\Facades\Auth::user()])
                     @endauth
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -53,8 +51,8 @@
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="/quit">
-                                        Supprimer mon compte
+                                    <a class="dropdown-item" href="/account">
+                                        Mon compte
                                     </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

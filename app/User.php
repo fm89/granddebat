@@ -50,9 +50,9 @@ class User extends Authenticatable
         return $this->level()[1];
     }
 
-    private function level()
+    private function levels()
     {
-        $levels = [
+        return [
             0000 => ['info', 'Piou Piou'],
             0010 => ['info', 'Ourson'],
             0025 => ['info', 'Flocon'],
@@ -77,6 +77,11 @@ class User extends Authenticatable
             20000 => ['dark', 'Fusée d\'or'],
             25000 => ['dark', 'Record'],
         ];
+    }
+
+    private function level()
+    {
+        $levels = $this->levels();
         $levelMeta = $levels[0];
         $score = $this->scores['total'];
         foreach ($levels as $threshold => $meta) {
@@ -85,6 +90,18 @@ class User extends Authenticatable
             }
         }
         return $levelMeta;
+    }
+
+    public function todoForNextLevel()
+    {
+        $levels = $this->levels();
+        $score = $this->scores['total'];
+        foreach ($levels as $threshold => $meta) {
+            if ($threshold > $score) {
+                return $threshold - $score;
+            }
+        }
+        return 0;
     }
 
     public function addResponseToScore(Question $question)

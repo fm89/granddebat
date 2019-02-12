@@ -4,11 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Action;
 use App\Models\Debate;
-use App\Models\Response;
 use App\Repositories\QuestionRepository;
 use App\Repositories\ResponseRepository;
 use App\User;
-use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {

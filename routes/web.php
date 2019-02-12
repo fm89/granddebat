@@ -27,6 +27,7 @@ Route::get('/responses/{response}', 'ResponseController@show');
 
 Route::group(['middleware' => ['auth']], function () {
 
+    Route::get('/account', 'Auth\UserController@show');
     Route::get('/quit', 'Auth\UserController@showQuit');
     Route::post('/quit', 'Auth\UserController@doQuit');
     Route::get('/questions/{question}', 'QuestionController@show');
