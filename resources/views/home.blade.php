@@ -28,9 +28,7 @@
                 <thead>
                 <tr>
                     <th>Intitulé du débat</th>
-                    @auth
-                        <th>Score</th>
-                    @endauth
+                    <th>&Eacute;tape</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -39,11 +37,21 @@
                         <td>
                             <a href="/debates/{{ $debate->id }}">{{ $debate->name }}</a>
                         </td>
-                        @auth
-                            <td>
-                                <span class="badge badge-pill badge-primary">{{ $my_scores[$debate->id] }}</span>
-                            </td>
-                        @endauth
+                        <td>
+                            @if ($debate->status == 'open')
+                                <span class="badge badge-pill badge-primary">Ouvert aux annotations</span>
+                                @auth
+                                    <span class="badge badge-pill badge-primary">{{ \Illuminate\Support\Facades\Auth::user()->scores['debates'][$debate->id] }}</span>
+                                @endauth
+                            @else
+                                <span class="badge badge-pill badge-secondary">En préparation</span>
+                                @auth
+                                    @if (\Illuminate\Support\Facades\Auth::user()->role == 'admin')
+                                        <span class="badge badge-pill badge-primary">{{ \Illuminate\Support\Facades\Auth::user()->scores['debates'][$debate->id] }}</span>
+                                    @endif
+                                @endauth
+                            @endif
+                        </td>
                     </tr>
                 @endforeach
                 </tbody>

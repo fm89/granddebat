@@ -50,22 +50,11 @@ class HomeController extends Controller
         return view('legal');
     }
 
-    public function index(Request $request)
+    public function index()
     {
         $debates = Debate::orderBy('id')->get();
-        $my_scores = [];
-        if ($request->user() != null) {
-            $user_id = $request->user()->id;
-            foreach ($debates as $debate) {
-                $my_scores[$debate->id] = Response::whereHas('actions', function ($query) use ($user_id) {
-                    $query->where('user_id', $user_id);
-                })->join('questions', 'questions.id', 'responses.question_id')
-                    ->where('questions.debate_id', $debate->id)
-                    ->count();
-            }
-        }
         $question = $this->questionRepository->randomQuestion();
         $next_response = $this->responseRepository->randomResponse($question);
-        return view('home', compact('debates', 'my_scores', 'next_response'));
+        return view('home', compact('debates', 'next_response'));
     }
 }

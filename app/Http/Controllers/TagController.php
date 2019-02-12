@@ -9,6 +9,13 @@ use Illuminate\Http\Request;
 
 class TagController extends Controller
 {
+    private $apiTagController;
+
+    public function __construct(\App\Http\Controllers\Api\TagController $apiTagController)
+    {
+        $this->apiTagController = $apiTagController;
+    }
+
     public function create(Question $question)
     {
         return view('tags.create', compact('question'));
@@ -16,28 +23,20 @@ class TagController extends Controller
 
     public function store(Question $question, Request $request)
     {
-        $this->validate($request, [
-           'name' => 'required',
-        ]);
-        $tag = new Tag();
-        $tag->question_id = $question->id;
-        $tag->name = $request->input('name');
-        $tag->save();
-        if ($request->has('response_id')) {
-            # Tag was create from a modal form within a response page so we should redirect there
-            return redirect('/responses/' . $request->input('response_id'));
-        }
+        $this->apiTagController->doCreate($request->user(), $question, $request->input('name'));
         return redirect('questions/' . $question->id);
     }
 
     public function edit(Tag $tag)
     {
+        $this->authorize('update', $tag);
         $question = $tag->question;
         return view('tags.edit', compact('question', 'tag'));
     }
 
     public function update(Tag $tag, Request $request)
     {
+        $this->authorize('update', $tag);
         $this->validate($request, [
             'name' => 'required',
         ]);
@@ -48,10 +47,9 @@ class TagController extends Controller
 
     public function delete(Tag $tag)
     {
+        $this->authorize('delete', $tag);
         $question = $tag->question;
-        if ($tag->actions()->count() == 0) {
-            $tag->delete();
-        }
+        $tag->delete();
         return redirect('questions/' . $question->id);
     }
 

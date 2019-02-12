@@ -29,12 +29,16 @@
                         <td>{{ $tag->actions()->count() }}</td>
                         <td>
                             {!! Form::open(['url' => '/tags/' . $tag->id, 'method' => 'delete']) !!}
-                            <a href="/tags/{{ $tag->id }}/edit"><i class="fa fa-btn fa-pen"></i></a>
-                            @if ($tag->actions()->count() == 0)
-                                <button class="btn btn-link" type="submit">
-                                    <i class="fa fa-btn fa-trash text-danger"></i>
-                                </button>
-                            @endif
+                            @can('update', $tag)
+                                <a href="/tags/{{ $tag->id }}/edit"><i class="fa fa-btn fa-pen"></i></a>
+                                @can('delete', $tag)
+                                    <button class="btn btn-link" type="submit">
+                                        <i class="fa fa-btn fa-trash text-danger"></i>
+                                    </button>
+                                @endcan
+                            @else
+                                <span class="badge badge-pill badge-light">Catégorie commune</span>
+                            @endcan
                             {!! Form::close() !!}
                         </td>
                     </tr>

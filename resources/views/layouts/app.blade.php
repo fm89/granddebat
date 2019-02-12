@@ -27,6 +27,14 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                     </ul>
+                    @auth
+                        <span class="badge badge-pill badge-{{ \Illuminate\Support\Facades\Auth::user()->badgeColor() }}" style="font-size: 14px;">
+                            {{ \Illuminate\Support\Facades\Auth::user()->scores['total'] }}
+                        </span>&nbsp;
+                        <span class="badge badge-pill badge-{{ \Illuminate\Support\Facades\Auth::user()->badgeColor() }}" style="font-size: 14px;">
+                            {{ \Illuminate\Support\Facades\Auth::user()->badgeText() }}
+                        </span>
+                    @endauth
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
