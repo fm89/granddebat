@@ -11,3 +11,20 @@
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
+blockquote{
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 8px 0 0 0;
+  quotes: "\201C""\201D""\2018""\2019";
+  padding: 5px 10px;
+  line-height: 1.4;
+}
+.quotation {
+  margin: 0;
+}
+footer {
+  margin: 0;
+  text-align: right;
+  font-size: 1em;
+  font-style: italic;
+}

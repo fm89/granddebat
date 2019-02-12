@@ -28,10 +28,15 @@
                 <br/>
             @endif
             <b>{{ $question->text }}</b>
-            <br/><br/>
-            @include('responses.value', ['value' => $response->value])
-            (<a href="/proposals/{{ $response->proposal_id }}">contribution</a>)
-            <br/><br/>
+            <blockquote>
+                <p class="quotation">
+                    @include('responses.value', ['value' => $response->value])
+                </p>
+                <footer>
+                    <a href="/proposals/{{ $response->proposal_id }}">contribution</a>
+                </footer>
+            </blockquote>
+            <br/>
             {!! Form::open(['url' => '/responses/' . $response->id]) !!}
             @guest
                 @if ($question->status == 'open')
