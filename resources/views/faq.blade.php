@@ -46,7 +46,7 @@
                 <li>
                     Par ailleurs, notre objectif à moyen terme est que chaque contribution au grand débat soit analysée
                     par plusieurs personnes différentes. Ainsi, le risque de mauvaise catégorisation d'une contribution
-                    sera diminuté d'autant. Cette approche a par exemple fait ses preuves pour la
+                    sera diminué d'autant. Cette approche a par exemple fait ses preuves pour la
                     <a href="http://regardscitoyens.org/interets-des-elus/">numérisation des déclarations d'intérêts des élus</a>.
                 </li>
             </ul>
