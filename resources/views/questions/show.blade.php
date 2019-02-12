@@ -26,7 +26,7 @@
                 @foreach ($tags as $tag)
                     <tr>
                         <td>{{ $tag->name }}</td>
-                        <td>{{ $tag->actions()->count() }}</td>
+                        <td><a href="/tags/{{ $tag->id }}">{{ $tag->actions()->count() }}</a></td>
                         <td>
                             {!! Form::open(['url' => '/tags/' . $tag->id, 'method' => 'delete']) !!}
                             @can('update', $tag)

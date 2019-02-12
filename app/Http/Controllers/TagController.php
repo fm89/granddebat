@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Question;
+use App\Models\Response;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 
@@ -25,6 +26,14 @@ class TagController extends Controller
     {
         $this->apiTagController->doCreate($request->user(), $question, $request->input('name'));
         return redirect('questions/' . $question->id);
+    }
+
+    public function show(Tag $tag)
+    {
+        $responses = Response::whereHas('actions', function ($query) use ($tag) {
+            $query->where('tag_id', $tag->id);
+        })->inRandomOrder()->limit(20)->get();
+        return view('tags.show', compact('tag', 'responses'));
     }
 
     public function edit(Tag $tag)
