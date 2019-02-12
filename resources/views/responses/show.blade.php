@@ -54,7 +54,7 @@
                     <div class="alert alert-info">
                         <a href="/register">Créez votre compte</a> ou <a href="/login">connectez-vous</a> pour
                         créer vos propres catégories, enregistrer votre catégorisation de cette contribution et
-                        aider la communauté à extraire du sens du débat !
+                        aider la communauté à donner du sens au débat !
                     </div>
                 @else
                     <a class="btn btn-light" href="/responses/{{ $next_response->id }}" style="float: right;">

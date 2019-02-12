@@ -48,13 +48,16 @@
     <div class="d-flex justify-content-center align-items-center align-self-middle">
         <div class="content">
             <div class="title m-b-md">
-                Grand Débat Annotations
+                Grand Débat &middot; Annotations
             </div>
             <p style="font-size: 22px">
                 Plateforme d'annotation collaborative citoyenne des contributions au grand débat
             </p>
             <p style="font-size: 22px">
                 Déjà <b>{{ $actions_count }} annotations</b> déposées par <b>{{ $users_count }} bénévoles</b>
+            </p>
+            <p style="font-size: 22px">
+                Donnons du sens au débat !
             </p>
             <br/>
             <div class="d-flex justify-content-center">
