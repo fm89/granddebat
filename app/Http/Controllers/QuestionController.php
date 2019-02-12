@@ -26,10 +26,8 @@ class QuestionController extends Controller
         }
         $user = $request->user();
         $tags = $this->tagRepository->getTagsForQuestionUser($question, $user);
-        $current = $question->score();
-        $max = $question->responses()->count();
         $next_response = $this->responseRepository->randomResponse($question);
-        return view('questions.show', compact('question', 'tags', 'current', 'max', 'next_response'));
+        return view('questions.show', compact('question', 'tags', 'next_response'));
     }
 
     public function read(Question $question)

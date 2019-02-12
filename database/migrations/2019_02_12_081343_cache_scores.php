@@ -14,7 +14,7 @@ class CacheScores extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->jsonb('scores')->default('[]');
+            $table->jsonb('scores')->default('{"total": 0, "debates": {"1": 0, "2": 0, "3": 0, "4": 0}}');
         });
     }
 
