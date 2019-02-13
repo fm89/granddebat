@@ -1,11 +1,11 @@
 <template>
     <div style="display: inline;">
         <input type="checkbox" name="tags[]" :value="tag.id" style="display: none;" :checked="checked"/>
-        <label style="display:none" :id="'toggleBlind' + tag.id">{{ tag.name }}</label>
+        <label style="display:none" :id="'toggleBlind' + tag.id">{{ this.getLabel() }}</label>
         <div :class="getClass()" @click="onClick()" :style="style">
             <div class="toggle-group">
-                <label class="btn btn-secondary toggle-on">{{ tag.name }}</label>
-                <label class="btn btn-light toggle-off">{{ tag.name }}</label>
+                <label class="btn btn-secondary toggle-on">{{ this.getLabel() }}</label>
+                <label class="btn btn-light toggle-off">{{ this.getLabel() }}</label>
                 <span class="toggle-handle btn btn-light"></span>
             </div>
         </div>
@@ -36,6 +36,15 @@
             },
             onClick() {
                 this.checked = !this.checked;
+            },
+            getLabel() {
+                let regexp =  /^[A-Z] (.*)$/g;
+                let matches = regexp.exec(this.tag.name);
+                if (matches != null) {
+                    return matches[1];
+                } else {
+                    return this.tag.name;
+                }
             }
         },
     }
