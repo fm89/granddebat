@@ -20,6 +20,15 @@
     @endif
     <div class="card mb-3">
         <div class="card-body">
+            @guest
+                <div class="alert alert-danger">
+                    <a href="/register">Créez votre compte</a> ou <a href="/login">connectez-vous</a> pour
+                    créer vos propres catégories, enregistrer votre catégorisation de cette contribution et
+                    aider la communauté à donner du sens au débat !
+                    <b>Vos annotations se sont pas enregistrées si vous n'êtes pas connecté.</b>
+                </div>
+                <br/>
+            @endguest
             @if (isset($previous_question))
                 <b>{{ $previous_question->text }}</b>
                 @if (isset($previous_response))
@@ -50,12 +59,6 @@
                         <i class="fa fa-btn fa-step-forward"></i>
                         <div class="d-none d-sm-inline">Suivante</div>
                     </a>
-                    <br/><br/><br/>
-                    <div class="alert alert-info">
-                        <a href="/register">Créez votre compte</a> ou <a href="/login">connectez-vous</a> pour
-                        créer vos propres catégories, enregistrer votre catégorisation de cette contribution et
-                        aider la communauté à donner du sens au débat !
-                    </div>
                 @else
                     <a class="btn btn-light" href="/responses/{{ $next_response->id }}" style="float: right;">
                         <i class="fa fa-btn fa-step-forward"></i>
