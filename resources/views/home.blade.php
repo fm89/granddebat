@@ -9,7 +9,7 @@
                     les idées les plus répandues et regrouper les réponses similaires.
                 </p>
                 <p>
-                    Il n'est pas question ici de juger de l'utilité, de la faisabilité ou de la valeur
+                    Il ne s'agit pas de juger de l'utilité, de la faisabilité ou de la valeur
                     des idées ou des opinions exprimées.
                 </p>
                 <p>

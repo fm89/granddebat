@@ -53,13 +53,13 @@ class User extends Authenticatable
     private function levels()
     {
         return [
-            0000 => ['info', 'Piou Piou'],
-            0010 => ['info', 'Ourson'],
-            0025 => ['info', 'Flocon'],
-            0050 => ['primary', 'Première étoile'],
-            0100 => ['primary', 'Deuxième étoile'],
-            0250 => ['primary', 'Troisième étoile'],
-            0500 => ['warning', 'Etoile de bronze'],
+            0 => ['info', 'Piou Piou'],
+            10 => ['info', 'Ourson'],
+            25 => ['info', 'Flocon'],
+            50 => ['primary', 'Première étoile'],
+            100 => ['primary', 'Deuxième étoile'],
+            250 => ['primary', 'Troisième étoile'],
+            500 => ['warning', 'Etoile de bronze'],
             1000 => ['warning', 'Etoile d\'or'],
             1500 => ['warning', 'Fléchette'],
             2000 => ['success', 'Flèche de bronze'],
