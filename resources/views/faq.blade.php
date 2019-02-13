@@ -55,7 +55,7 @@
                 <li>
                     Le contenu complet des contributions brutes est déjà accessible sur le
                     <a href="https://granddebat.fr/pages/donnees-ouvertes">site officiel</a>,
-                    dans la rubrique <i>Données ouvertes</i>. Ce sont ces données (en date du 6 février 2016)
+                    dans la rubrique <i>Données ouvertes</i>. Ce sont ces données (en date du 6 février 2019)
                     qui ont été injectées dans une base
                     de données pour être annotées sur cette plateforme.
                 </li>
