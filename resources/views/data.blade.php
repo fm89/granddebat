@@ -7,8 +7,7 @@
             <h4>Licence</h4>
             <p>
                 Les données d'annotation collective établies dans cette plateforme sont disponibles au téléchargement
-                sous la licence <a href="https://spdx.org/licenses/ODbL-1.0.html#licenseText">ODC Open Database License
-                    (ODbL) version 1.0</a>.
+                sous la licence <a href="https://spdx.org/licenses/CC-BY-SA-4.0.html#licenseText">Creative Commons Attribution Share Alike 4.0 International (CC-BY-SA-4.0)</a>.
             </p>
             <h4>Format</h4>
             <p>
