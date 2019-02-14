@@ -8,6 +8,7 @@ use App\Models\Question;
 use App\Models\Tag;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TagController extends Controller
 {
@@ -29,12 +30,14 @@ class TagController extends Controller
 
     public function doCreate(User $user, Question $question, $name)
     {
+        $escaped = DB::connection()->getPdo()->quote($name);
         $exists = Tag::where('question_id', $question->id)
-            ->where('name', 'ILIKE', $name)
+            ->whereRaw("lower(unaccent(name)) = lower(unaccent($escaped))")
             ->where(function ($query) use ($user) {
                 $query->whereNull('user_id')
                     ->orWhere('user_id', $user->id);
-            })->exists();
+            })
+            ->exists();
         if (!$exists && strlen($name) >= 2) {
             $tag = new Tag();
             $tag->question_id = $question->id;
