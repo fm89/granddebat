@@ -9,6 +9,19 @@
                     </button>
                 </div>
                 <div class="modal-body">
+                    <div class="alert alert-warning">
+                        Vous allez créer une nouvelle catégorie. Pour l'efficacité du travail collectif et la qualité
+                        des analyses à venir, ces catégories doivent :
+                        <ul>
+                            <li>être <b>fréquentes</b> (n'en créez pas avant d'avoir vu plusieurs fois une même idée,
+                                quitte à passer les premières fois que vous la voyez ou utiliser la catégorie "Autres"),</li>
+                            <li>constituer <b>une réponse à la question posée</b> et pas à une autre question
+                                (dans ce cas, utilisez le bouton "Sans réponse"<span v-if="canBulb">, ou "Marquer l'idée"</span>),</li>
+                            <li>ne <b>pas être trop proches</b> de catégories déjà existantes (le but étant de regrouper
+                                des contributions mentionnant des idées analogues sous une même catégorie),</li>
+                            <li>être désignées par des <b>libellés synthétiques</b> (pour la lisibilité de l'interface et ne pas vous noyer).</li>
+                        </ul>
+                    </div>
                     <b>{{ question.text }}</b>
                     <br/><br/>
                     <div class="form-group">
@@ -41,6 +54,10 @@
         props: {
             question: {
                 type: Object,
+                required: true,
+            },
+            canBulb : {
+                type: Boolean,
                 required: true,
             },
         },

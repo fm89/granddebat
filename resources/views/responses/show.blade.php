@@ -117,5 +117,5 @@
             @auth / <a href="/questions/{{ $question->id }}">Tags</a> @endauth
         </div>
     </div>
-    <modal-create-tag :question="{{ $question }}"></modal-create-tag>
+    <modal-create-tag :question="{{ $question }}" :can_bulb="{{ $show_bulb }}"></modal-create-tag>
 @endsection
