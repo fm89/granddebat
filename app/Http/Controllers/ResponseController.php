@@ -66,9 +66,10 @@ class ResponseController extends Controller
                 $tag_ids[] = Tag::ID_NO_ANSWER;
             }
         }
-        // Find all responses having exactly the same text to tag them all at once
+        // Find all responses having exactly the same text (up to case and accents) to tag them all at once
         $responses = Response::where('question_id', $question->id)
-            ->where('value', $response->value)->get();
+            ->where('clean_value_group_id', $response->clean_value_group_id)
+            ->get();
         foreach ($responses as $sibling) {
             // Remove old tags by the same user to avoid duplicate tagging
             $sibling->actions()->where('user_id', $user->id)->delete();
