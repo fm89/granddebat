@@ -41,7 +41,11 @@
                                 </td>
                             @endauth
                         @else
-                            <td>QCM / {{ $question->text }}</td>
+                            <td>
+                                <a href="/questions/{{ $question->id }}/read">
+                                    <i class="fa fa-icon fa-signal"></i> {{ $question->text }}
+                                </a>
+                            </td>
                             @auth
                                 <td></td>
                             @endauth

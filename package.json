@@ -26,6 +26,7 @@
     },
     "dependencies": {
         "bootstrap4-toggle": "^3.4.0",
+        "chart.js": "^2.7.3",
         "es6-promise": "^4.2.5"
     }
 }

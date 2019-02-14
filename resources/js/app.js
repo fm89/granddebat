@@ -12,6 +12,9 @@ require('es6-promise').polyfill();
 
 window.Vue = require('vue');
 
+var Chart = require('chart.js');
+export { Chart };
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
