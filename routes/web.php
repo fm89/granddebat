@@ -16,6 +16,7 @@ Route::get('/data', 'HomeController@data');
 Route::get('/download', 'HomeController@download');
 Route::get('/faq', 'HomeController@faq');
 Route::get('/legal', 'HomeController@legal');
+Route::get('/levels', 'HomeController@levels');
 
 Auth::routes();
 

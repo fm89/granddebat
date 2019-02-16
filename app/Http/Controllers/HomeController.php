@@ -7,6 +7,8 @@ use App\Models\Debate;
 use App\Repositories\QuestionRepository;
 use App\Repositories\ResponseRepository;
 use App\User;
+use Illuminate\Http\Request;
+use App\Logic\Levels;
 
 class HomeController extends Controller
 {
@@ -46,6 +48,16 @@ class HomeController extends Controller
     public function legal()
     {
         return view('legal');
+    }
+
+    public function levels(Request $request)
+    {
+        $user = $request->user();
+        $level = $user == null ? null : $user->level();
+        $levels = Levels::levels();
+        $question = $this->questionRepository->randomQuestion();
+        $next_response = $this->responseRepository->randomResponse($question);
+        return view('levels', compact('user', 'level', 'levels', 'next_response'));
     }
 
     public function index()

@@ -21,13 +21,18 @@
                     <td>{{ $user->scores['total'] }} textes annotés</td>
                 </tr>
                 <tr>
-                    <th>Mon niveau</th>
-                    <td>@include('users.badge', ['user' => $user])</td>
+                    <th>Mon badge</th>
+                    <td>
+                        <span class="badge badge-pill badge-{{ $user->badgeColor() }}" style="font-size: 14px;">
+                            {{ $user->badgeText() }}
+                        </span>
+                        <a href="/levels">&Agrave; propos des badges</a>
+                    </td>
                 </tr>
                 <tr>
                     <th>Prochain objectif</th>
                     <td>
-                        Plus que {{ $user->todoForNextLevel() }} avant le prochain niveau. Courage !
+                        Plus que {{ $user->todoForNextLevel() }} avant le prochain badge. Courage !
                         <a href="/responses/{{ $next_response->id }}">C'est parti !</a>
                     </td>
                 </tr>

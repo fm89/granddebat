@@ -28,10 +28,13 @@
                     <ul class="navbar-nav mr-auto">
                     </ul>
                     @auth
-                        <span class="badge badge-pill badge-{{ \Illuminate\Support\Facades\Auth::user()->badgeColor() }}" style="font-size: 14px;">
-                            {{ \Illuminate\Support\Facades\Auth::user()->scores['total'] }}
-                        </span>&nbsp;
-                        @include('users.badge', ['user' => \Illuminate\Support\Facades\Auth::user()])
+                        <a href="/levels">
+                            <span class="badge badge-pill badge-{{ \Illuminate\Support\Facades\Auth::user()->badgeColor() }}" style="font-size: 14px;">
+                                {{ \Illuminate\Support\Facades\Auth::user()->scores['total'] }}
+                                -
+                                {{ \Illuminate\Support\Facades\Auth::user()->badgeText() }}
+                            </span>
+                        </a>
                     @endauth
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
