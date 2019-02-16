@@ -46,7 +46,7 @@ class CacheScores extends Command
             $per_question = Action::join('responses', 'responses.id', 'actions.response_id')
                 ->groupBy('question_id')
                 ->where('user_id', $user->id)
-                ->select('question_id', DB::raw('COUNT(DISTINCT value) AS values'))
+                ->select('question_id', DB::raw('COUNT(DISTINCT clean_value_group_id) AS values'))
                 ->pluck('values', 'question_id')
                 ->all();
             $per_debate = [1 => 0, 2 => 0, 3 => 0, 4 => 0];
