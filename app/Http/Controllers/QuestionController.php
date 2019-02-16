@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\Action;
 use App\Models\Question;
 use App\Models\Response;
 use App\Repositories\ResponseRepository;
@@ -26,8 +27,14 @@ class QuestionController extends Controller
         if ($question->is_free) {
             $user = $request->user();
             $tags = $this->tagRepository->getTagsForQuestionUser($question, $user);
+            $tag_ids = $tags->map(function ($item, $key) {
+                return $item->id;
+            })->all();
+            $counts = Action::join('responses', 'responses.id', 'actions.response_id')
+                ->select('tag_id', DB::raw('COUNT(DISTINCT clean_value_group_id) AS count'))
+                ->whereIn('tag_id', $tag_ids)->groupBy('tag_id')->pluck('count', 'tag_id')->all();
             $next_response = $this->responseRepository->randomResponse($question);
-            return view('questions.show', compact('question', 'tags', 'next_response'));
+            return view('questions.show', compact('question', 'counts', 'tags', 'next_response'));
         } else {
             $raw_data = $question->responses()
                 ->select('value', DB::raw('COUNT(*) AS count'))

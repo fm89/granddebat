@@ -26,16 +26,16 @@
                 @foreach ($tags as $tag)
                     <tr>
                         <td>{{ $tag->name }}</td>
-                        <td><a href="/tags/{{ $tag->id }}">{{ $tag->actions()->count() }}</a></td>
+                        <td><a href="/tags/{{ $tag->id }}">{{ $counts[$tag->id] ?? 0 }}</a></td>
                         <td>
                             {!! Form::open(['url' => '/tags/' . $tag->id, 'method' => 'delete']) !!}
                             @can('update', $tag)
                                 <a href="/tags/{{ $tag->id }}/edit"><i class="fa fa-btn fa-pen"></i></a>
-                                @can('delete', $tag)
+                                @if (($counts[$tag->id] ?? 0) == 0)
                                     <button class="btn btn-link" type="submit">
                                         <i class="fa fa-btn fa-trash text-danger"></i>
                                     </button>
-                                @endcan
+                                @endif
                             @else
                                 <span class="badge badge-pill badge-light">Catégorie commune</span>
                             @endcan
