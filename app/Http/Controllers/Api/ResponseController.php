@@ -1,14 +1,17 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 
+use App\Http\Controllers\Controller;
 use App\Models\Action;
+use App\Models\Question;
 use App\Models\Response;
 use App\Models\Tag;
 use App\Repositories\ResponseRepository;
 use App\Repositories\TagRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 
 class ResponseController extends Controller
 {
@@ -21,30 +24,20 @@ class ResponseController extends Controller
         $this->tagRepository = $tagRepository;
     }
 
-    public function show(Request $request, Response $response)
+    public function update(Request $request)
     {
-        $question = $response->question;
+        $key = Crypt::decrypt($request->input('key'));
+        $user_id = $key['user_id'];
+        $response_id = $key['response_id'];
         $user = $request->user();
-        $next_response = $this->responseRepository->randomResponse($question);
-        $previous_response = null;
-        $previous_question = $question->previous;
-        if ($previous_question != null) {
-            $previous_response = Response::where('question_id', $previous_question->id)
-                ->where('proposal_id', $response->proposal_id)->first();
+        if ($user->id != $user_id) {
+            abort(403);
         }
-        $tags = $this->tagRepository->getTagsForQuestionUser($question, $user);
-        $show_easy_help = ($request->user() != null) && ($request->user()->scores['total'] < 10);
-        $show_bulb = ($request->user() != null) && ($request->user()->scores['total'] >= 50);
-        $show_bulb_help = ($request->user() != null) && ($request->user()->scores['total'] >= 50 && $request->user()->scores['total'] < 60);
-        return view('responses.show',
-            compact('question', 'response', 'tags', 'next_response', 'previous_question', 'previous_response',
-                'show_easy_help', 'show_bulb', 'show_bulb_help'));
-    }
-
-    public function update(Response $response, Request $request)
-    {
+        $response = Response::find($response_id);
+        if ($response == null) {
+            abort(404);
+        }
         $question = $response->question;
-        $user = $request->user();
         if ($question->status != 'open' && $user->role != 'admin') {
             abort(403);
         }
@@ -82,7 +75,24 @@ class ResponseController extends Controller
             }
         }
         $user->addResponseToScore($question);
-        $nextResponse = $this->responseRepository->randomResponse($question);
-        return redirect('/responses/' . $nextResponse->id);
+        return response()->json(['score' => $user->scores['total'], 'level' => $user->level()]);
+    }
+
+    public function next(Request $request, Question $question)
+    {
+        if ($question->is_free) {
+            $user = $request->user();
+            $response = $this->responseRepository->randomResponse($question);
+            $previousResponse = null;
+            if ($question->previous_id != null) {
+                $previousResponse = Response::where('question_id', $question->previous_id)
+                    ->where('proposal_id', $response->proposal_id)->first();
+            }
+            $key = ['user_id' => $user->id ?? null, 'response_id' => $response->id];
+            $key = Crypt::encrypt($key);
+            return response()->json(compact('key', 'previousResponse', 'response'));
+        } else {
+            return response()->json(null);
+        }
     }
 }

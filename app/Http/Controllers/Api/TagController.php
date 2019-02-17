@@ -22,7 +22,7 @@ class TagController extends Controller
         if ($question != null) {
             $createdTag = $this->doCreate($user, $question, $name);
             if ($createdTag != null) {
-                $tag = $createdTag;
+                $tag = ['id' => $createdTag->id, 'name' => $createdTag->name, 'checked' => false];
             }
         }
         return response()->json($tag);

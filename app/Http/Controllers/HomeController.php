@@ -13,12 +13,10 @@ use App\Logic\Levels;
 class HomeController extends Controller
 {
     private $questionRepository;
-    private $responseRepository;
 
-    public function __construct(QuestionRepository $questionRepository, ResponseRepository $responseRepository)
+    public function __construct(QuestionRepository $questionRepository)
     {
         $this->questionRepository = $questionRepository;
-        $this->responseRepository = $responseRepository;
     }
 
     public function welcome()
@@ -26,8 +24,7 @@ class HomeController extends Controller
         $actions_count = Action::count();
         $users_count = User::count();
         $question = $this->questionRepository->randomQuestion();
-        $next_response = $this->responseRepository->randomResponse($question);
-        return view('welcome', compact('actions_count', 'users_count', 'next_response'));
+        return view('welcome', compact('actions_count', 'users_count', 'question'));
     }
 
     public function data()
@@ -56,15 +53,13 @@ class HomeController extends Controller
         $level = $user == null ? null : $user->level();
         $levels = Levels::levels();
         $question = $this->questionRepository->randomQuestion();
-        $next_response = $this->responseRepository->randomResponse($question);
-        return view('levels', compact('user', 'level', 'levels', 'next_response'));
+        return view('levels', compact('user', 'level', 'levels', 'question'));
     }
 
     public function index()
     {
         $debates = Debate::orderBy('id')->get();
         $question = $this->questionRepository->randomQuestion();
-        $next_response = $this->responseRepository->randomResponse($question);
-        return view('home', compact('debates', 'next_response'));
+        return view('home', compact('debates', 'question'));
     }
 }

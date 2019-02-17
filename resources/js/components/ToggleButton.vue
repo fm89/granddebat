@@ -1,11 +1,11 @@
 <template>
     <div style="display: inline;">
-        <input type="checkbox" name="tags[]" :value="tag.id" style="display: none;" :checked="checked"/>
-        <label style="display:none" :id="'toggleBlind' + tag.id">{{ this.getLabel() }}</label>
+        <input type="checkbox" name="tags[]" :value="tag.id" style="display: none;" :checked="tag.checked"/>
+        <label style="display:none" :id="'toggleBlind' + tag.id">{{ getLabel() }}</label>
         <div :class="getClass()" @click="onClick()" :style="style">
             <div class="toggle-group">
-                <label class="btn btn-secondary toggle-on">{{ this.getLabel() }}</label>
-                <label class="btn btn-light toggle-off">{{ this.getLabel() }}</label>
+                <label class="btn btn-secondary toggle-on">{{ getLabel() }}</label>
+                <label class="btn btn-light toggle-off">{{ getLabel() }}</label>
                 <span class="toggle-handle btn btn-light"></span>
             </div>
         </div>
@@ -16,7 +16,6 @@
     export default {
         data() {
             return {
-                checked: false,
                 style: 'width: 100px; height: 2.3rem;',
             }
         },
@@ -32,13 +31,13 @@
         },
         methods: {
             getClass() {
-                return 'toggle btn mb-1 ' + (this.checked ? 'btn-secondary' : 'btn-light off');
+                return 'toggle btn mb-1 ' + (this.tag.checked ? 'btn-secondary' : 'btn-light off');
             },
             onClick() {
-                this.checked = !this.checked;
+                this.$emit('tagToggled');
             },
             getLabel() {
-                let regexp =  /^[A-Z] (.*)$/g;
+                let regexp = /^[A-Z] (.*)$/g;
                 let matches = regexp.exec(this.tag.name);
                 if (matches != null) {
                     return matches[1];

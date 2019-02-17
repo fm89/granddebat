@@ -31,7 +31,7 @@
                             <strong>Ce nom de catégorie existe déjà. Vous pouvez donc déjà le cocher pour l'utiliser.</strong>
                         </span>
                     </div>
-                    <button @click="createTag" class="btn btn-primary" :disabled="name.length < 2">
+                    <button @click="createTag()" class="btn btn-primary" :disabled="name.length < 2">
                         <i class="fa fa-btn fa-plus"></i> Créer la catégorie
                     </button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">
@@ -78,7 +78,8 @@
                     this.error = true;
                 } else {
                     this.error = false;
-                    location.reload();
+                    this.name = '';
+                    this.$emit('tagCreated', tag);
                 }
             },
         }

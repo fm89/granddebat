@@ -29,7 +29,7 @@
                     </ul>
                     @auth
                         <a href="/levels">
-                            <span class="badge badge-pill badge-{{ \Illuminate\Support\Facades\Auth::user()->badgeColor() }}" style="font-size: 14px;">
+                            <span id="myScore" class="badge badge-pill badge-{{ \Illuminate\Support\Facades\Auth::user()->badgeColor() }}" style="font-size: 14px;">
                                 {{ \Illuminate\Support\Facades\Auth::user()->scores['total'] }}
                                 -
                                 {{ \Illuminate\Support\Facades\Auth::user()->badgeText() }}

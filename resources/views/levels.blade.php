@@ -11,7 +11,7 @@
             @auth
                 Actuellement, vous êtes <b>{{ $level[2] }}</b>
                 car vous avez annoté <b>{{ $user->scores['total'] }} textes</b>.
-                Pour continuer à progresser, <a href="/responses/{{ $next_response->id }}">c'est par ici</a>.
+                Pour continuer à progresser, <a href="/questions/{{ $question->id }}/read">c'est par ici</a>.
             @else
                 <a href="/register">Créez un compte</a> ou <a href="/login">connectez-vous</a> pour commencer à gravir
                 les échelons.

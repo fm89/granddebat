@@ -9,6 +9,7 @@ use App\Models\Response;
 use App\Repositories\ResponseRepository;
 use App\Repositories\TagRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\DB;
 
 class QuestionController extends Controller
@@ -33,8 +34,7 @@ class QuestionController extends Controller
             $counts = Action::join('responses', 'responses.id', 'actions.response_id')
                 ->select('tag_id', DB::raw('COUNT(DISTINCT clean_value_group_id) AS count'))
                 ->whereIn('tag_id', $tag_ids)->groupBy('tag_id')->pluck('count', 'tag_id')->all();
-            $next_response = $this->responseRepository->randomResponse($question);
-            return view('questions.show', compact('question', 'counts', 'tags', 'next_response'));
+            return view('questions.show', compact('question', 'counts', 'tags'));
         } else {
             $raw_data = $question->responses()
                 ->select('value', DB::raw('COUNT(*) AS count'))
@@ -64,11 +64,24 @@ class QuestionController extends Controller
         }
     }
 
-    public function read(Question $question)
+    public function read(Request $request, Question $question)
     {
         if ($question->is_free) {
+            $user = $request->user();
             $response = $this->responseRepository->randomResponse($question);
-            return redirect('/responses/' . $response->id);
+            $previous_response = null;
+            $previous_question = $question->previous;
+            if ($previous_question != null) {
+                $previous_response = Response::where('question_id', $previous_question->id)
+                    ->where('proposal_id', $response->proposal_id)->first();
+            }
+            $tags = $this->tagRepository->getTagsForQuestionUser($question, $user)->map(function ($tag) {
+                return ['id' => $tag->id, 'name' => $tag->name, 'checked' => false];
+            });
+            $key = ['user_id' => $user->id ?? null, 'response_id' => $response->id];
+            $key = Crypt::encrypt($key);
+            $user = $user == null ? null : ['role' => $user->role, 'score' => $user->scores['total']];
+            return view('responses.show', compact('question', 'response', 'key', 'tags', 'previous_question', 'previous_response', 'user'));
         } else {
             return redirect('/questions/' . $question->id);
         }
