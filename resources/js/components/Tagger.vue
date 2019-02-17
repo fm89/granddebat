@@ -50,25 +50,25 @@
                     <toggle-button v-for="(tag, index) in tags" :tag="tag" :key="index" @tagToggled="onTagToggled(tag.id)"></toggle-button>
                     <button class="btn btn-light create-btn" data-toggle="modal" data-target="#modalCreate"
                        :disabled="user == null">
-                        <i class="fa fa-btn fa-plus"></i> Créer
+                        <i class="fa fa-plus"></i> Créer
                     </button>
                     <br/><br/>
                     <button v-if="user != null" class="btn btn-primary mybtn" @click="send('save')" :disabled="tagIds().length == 0">
-                        <i class="fa fa-btn fa-check"></i>
+                        <i class="fa fa-check"></i>
                         <span class="d-none d-sm-inline">Valider</span>
                     </button>
                     <button v-if="user != null" class="btn btn-secondary mybtn" @click="send('noanswer')" :disabled="tagIds().length > 0">
-                        <i class="fa fa-btn fa-times-circle"></i>
+                        <i class="fa fa-times-circle"></i>
                         <span class="d-none d-sm-inline">Sans réponse</span>
                     </button>
                     <button v-if="showBulb()" class="btn btn-warning mybtn" @click="send('lightbulb')">
-                        <i class="fa fa-btn fa-lightbulb"></i>
+                        <i class="fa fa-lightbulb"></i>
                         <span class="d-none d-sm-inline">Marquer l'idée</span>
                     </button>
-                    <a class="btn btn-light mybtn" @click="loadNext()" style="float: right;">
-                        <i class="fa fa-btn fa-step-forward"></i>
+                    <button class="btn btn-light mybtn" @click="loadNext()" style="float: right;">
+                        <i class="fa fa-step-forward"></i>
                         <span class="d-none d-sm-inline">Suivante</span>
-                    </a>
+                    </button>
                 </div>
                 <div v-else>
                     <div class="alert alert-warning">
@@ -204,7 +204,7 @@
                     tag.checked = false;
                 });
                 // Send user back to top of screen so he can see the next response
-                window.scrollTo(0,0);
+                document.documentElement.scrollTo(0, 1);
             }
         }
     }
@@ -227,10 +227,13 @@
         animation-name: example2;
         animation-duration: 1s;
     }
+    .mybtn {
+        padding: 8px 14px;
+    }
     @media only screen
     and (max-width : 576px) {
         .mybtn {
-            padding: 14px 20px;
+            padding: 12px 18px;
         }
     }
     .quotation {
@@ -240,5 +243,9 @@
         border-radius: 20px;
         margin-right: 10px;
         margin-bottom: 10px;
+    }
+    .mybtn > .fa {
+        font-size: 1.33em;
+        vertical-align: -10%;
     }
 </style>
