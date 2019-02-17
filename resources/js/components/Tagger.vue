@@ -41,10 +41,10 @@
                 <br/>
                 <div v-if="(question.status === 'open') || (user !== null && user.role === 'admin')">
                     <toggle-button v-for="(tag, index) in tags" :tag="tag" :key="index" @tagToggled="onTagToggled(tag.id)"></toggle-button>
-                    <a class="btn btn-light mb-1" data-toggle="modal" data-target="#modalCreate"
+                    <button class="btn btn-light mb-1" data-toggle="modal" data-target="#modalCreate"
                        :disabled="user == null">
                         <i class="fa fa-btn fa-plus"></i> Créer
-                    </a>
+                    </button>
                     <br/><br/>
                     <button v-if="user != null" class="btn btn-primary mybtn" @click="send('save')">
                         <i class="fa fa-btn fa-check"></i>

@@ -10,7 +10,7 @@
             au fur et à mesure que vous annotez des réponses.
             @auth
                 Actuellement, vous êtes <b>{{ $level[2] }}</b>
-                car vous avez annoté <b>{{ $user->scores['total'] }} textes</b>.
+                car vous avez annoté <b>{{ $user->scores['total'] . ($user->scores['total'] > 1 ? ' textes' : ' texte') }}</b>.
                 Pour continuer à progresser, <a href="/questions/{{ $question->id }}/read">c'est par ici</a>.
             @else
                 <a href="/register">Créez un compte</a> ou <a href="/login">connectez-vous</a> pour commencer à gravir
