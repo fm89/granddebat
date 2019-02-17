@@ -48,16 +48,16 @@
                 <br/>
                 <div v-if="(question.status === 'open') || (user !== null && user.role === 'admin')">
                     <toggle-button v-for="(tag, index) in tags" :tag="tag" :key="index" @tagToggled="onTagToggled(tag.id)"></toggle-button>
-                    <button class="btn btn-light mb-1" data-toggle="modal" data-target="#modalCreate"
+                    <button class="btn btn-light create-btn" data-toggle="modal" data-target="#modalCreate"
                        :disabled="user == null">
                         <i class="fa fa-btn fa-plus"></i> Créer
                     </button>
                     <br/><br/>
-                    <button v-if="user != null" class="btn btn-primary mybtn" @click="send('save')">
+                    <button v-if="user != null" class="btn btn-primary mybtn" @click="send('save')" :disabled="tagIds().length == 0">
                         <i class="fa fa-btn fa-check"></i>
                         <span class="d-none d-sm-inline">Valider</span>
                     </button>
-                    <button v-if="user != null" class="btn btn-secondary mybtn" @click="send('noanswer')">
+                    <button v-if="user != null" class="btn btn-secondary mybtn" @click="send('noanswer')" :disabled="tagIds().length > 0">
                         <i class="fa fa-btn fa-times-circle"></i>
                         <span class="d-none d-sm-inline">Sans réponse</span>
                     </button>
@@ -152,13 +152,16 @@
                 this.tags.push(tag);
                 $('#modalCreate').modal('hide');
             },
-            async send(message) {
-                let tagIds = [];
+            tagIds() {
+                let result = [];
                 this.tags.forEach(function (tag) {
                     if (tag.checked) {
-                        tagIds.push(tag.id);
+                        result.push(tag.id);
                     }
                 });
+                return result;
+            },
+            async send(message) {
                 let result = await $.ajax({
                     url: '/api/responses',
                     type: 'POST',
@@ -168,7 +171,7 @@
                     data: {
                         action: message,
                         key: this.key,
-                        tags: tagIds,
+                        tags: this.tagIds(),
                     }
                 });
                 this.user.score = result.score;
@@ -229,5 +232,13 @@
         .mybtn {
             padding: 14px 20px;
         }
+    }
+    .quotation {
+        margin: 5px;
+    }
+    .create-btn {
+        border-radius: 20px;
+        margin-right: 10px;
+        margin-bottom: 10px;
     }
 </style>
