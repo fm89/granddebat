@@ -1,5 +1,12 @@
 <template>
     <div>
+        <div v-if="user != null && user.score == level[0] && user.score > 0" class="alert alert-success mb-3">
+            <p>
+                <b>Félicitations !</b> Grâce à vos {{ level[0] }} annotations, vous venez de passer au niveau
+                <b>{{ level[2] }}</b>. Continuez sur cette lancée pour aider la communauté à donner du sens au débat ;
+                et aussi pour gravir les échelons !
+            </p>
+        </div>
         <div v-if="showEasyHelp()" class="alert alert-info mb-3">
             <p>Lisez l'intitulé de la question et la réponse apportée par un contributeur ci-dessous.</p>
             <p>Déterminez la ou les catégories qui correspondent le mieux au texte. Cochez-les puis validez.</p>
@@ -90,6 +97,7 @@
                 user: this.initialUser,
                 response: this.initialResponse,
                 previousResponse: this.initialPreviousResponse,
+                level: [0, 'info', 'Piou Piou'],
             }
         },
         props: {
@@ -167,6 +175,7 @@
                 this.key = result.key;
                 this.previousResponse = result.previousResponse;
                 this.response = result.response;
+                this.level = result.level;
                 $('#myScore')[0].className = 'badge badge-pill badge-' + result.level[1];
                 $('#myScore')[0].innerHTML = '' + result.score + ' - ' + result.level[2];
                 this.resetScreen();
