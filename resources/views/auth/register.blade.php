@@ -7,9 +7,10 @@
         <div class="card-body">
 
             <div class="alert alert-info">
-                Pour le moment, cette plateforme est en cours de construction et il est nécessaire de vous inscrire pour
-                y accéder. Vous pouvez consulter les <a href="/legal">mentions légales</a>. Si vous avez déjà un compte,
-                vous pouvez <a href="/login">vous connecter</a>.
+                Il est nécessaire de vous inscrire pour pouvoir enregistrer vos annotations et contribuer à l'effort
+                collectif. Ceci permet de garantir l'honnêteté des annotations saisies.
+                Vous pouvez consulter les <a href="/legal">mentions légales</a>.
+                Si vous avez déjà un compte, vous pouvez <a href="/login">vous connecter</a>.
             </div>
 
             <form method="POST" action="{{ route('register') }}">
