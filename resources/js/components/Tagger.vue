@@ -164,26 +164,30 @@
                     }
                 });
                 this.user.score = result.score;
+                this.key = result.key;
+                this.previousResponse = result.previousResponse;
+                this.response = result.response;
                 $('#myScore')[0].className = 'badge badge-pill badge-' + result.level[1];
                 $('#myScore')[0].innerHTML = '' + result.score + ' - ' + result.level[2];
-                this.loadNext();
+                this.resetScreen();
             },
             async loadNext() {
                 // Retrieve next response data
-                let nextData = await $.ajax({
+                let result = await $.ajax({
                     url: '/api/questions/' + this.question.id + '/next',
                     type: 'GET',
                     data: {},
                 });
-                this.key = nextData.key;
-                this.previousResponse = nextData.previousResponse;
-                this.response = nextData.response;
-                // Trick to replay the CSS animation
-                $('blockquote').toggleClass('quote1');
-                $('blockquote').toggleClass('quote2');
+                this.key = result.key;
+                this.previousResponse = result.previousResponse;
+                this.response = result.response;
                 this.resetScreen();
             },
             resetScreen() {
+                // Trick to replay the CSS animation
+                $('blockquote').toggleClass('quote1');
+                $('blockquote').toggleClass('quote2');
+                // Uncheck all tags
                 this.tags.forEach(function (tag) {
                     tag.checked = false;
                 });

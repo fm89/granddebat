@@ -17,7 +17,7 @@
                 les échelons.
             @endauth
             <br/><br/>
-            <table class="table table-bordered no-vertical-border">
+            <table class="table table-hover">
                 <tbody>
                 @for ($i = 0; $i < count($levels); $i++)
                     <tr>

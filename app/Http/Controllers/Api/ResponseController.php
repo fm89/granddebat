@@ -75,7 +75,10 @@ class ResponseController extends Controller
             }
         }
         $user->addResponseToScore($question);
-        return response()->json(['score' => $user->scores['total'], 'level' => $user->level()]);
+        $result = $this->next($request, $question);
+        $result['score'] = $user->scores['total'];
+        $result['level'] = $user->level();
+        return $result;
     }
 
     public function next(Request $request, Question $question)
@@ -90,9 +93,9 @@ class ResponseController extends Controller
             }
             $key = ['user_id' => $user->id ?? null, 'response_id' => $response->id];
             $key = Crypt::encrypt($key);
-            return response()->json(compact('key', 'previousResponse', 'response'));
+            return compact('key', 'previousResponse', 'response');
         } else {
-            return response()->json(null);
+            return null;
         }
     }
 }
