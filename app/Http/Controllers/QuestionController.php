@@ -27,6 +27,9 @@ class QuestionController extends Controller
     {
         if ($question->is_free) {
             $user = $request->user();
+            if ($question->status !== 'open' && ($user == null || $user->role != 'admin')) {
+                abort(403);
+            }
             $tags = $this->tagRepository->getTagsForQuestionUser($question, $user);
             $tag_ids = $tags->map(function ($item, $key) {
                 return $item->id;
@@ -80,7 +83,6 @@ class QuestionController extends Controller
             });
             $key = ['user_id' => $user->id ?? null, 'response_id' => $response->id];
             $key = Crypt::encrypt($key);
-            $user = $user == null ? null : ['role' => $user->role, 'score' => $user->scores['total']];
             return view('responses.show', compact('question', 'response', 'key', 'tags', 'previous_question', 'previous_response', 'user'));
         } else {
             return redirect('/questions/' . $question->id);

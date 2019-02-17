@@ -33,7 +33,8 @@ class TagController extends Controller
         $responses = Response::whereHas('actions', function ($query) use ($tag) {
             $query->where('tag_id', $tag->id);
         })->inRandomOrder()->limit(20)->get();
-        return view('tags.show', compact('tag', 'responses'));
+        $question = $tag->question;
+        return view('tags.show', compact('tag', 'responses', 'question'));
     }
 
     public function edit(Tag $tag)

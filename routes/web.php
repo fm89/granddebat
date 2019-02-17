@@ -24,6 +24,8 @@ Route::get('/debates/{debate}', 'DebateController@show');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/proposals/{proposal}', 'ProposalController@show');
 Route::get('/questions/{question}/read', 'QuestionController@read');
+Route::get('/questions/{question}', 'QuestionController@show');
+Route::get('/tags/{tag}', 'TagController@show');
 
 Route::get('/api/questions/{question}/next', 'Api\ResponseController@next');
 
@@ -32,10 +34,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/account', 'Auth\UserController@show');
     Route::get('/quit', 'Auth\UserController@showQuit');
     Route::post('/quit', 'Auth\UserController@doQuit');
-    Route::get('/questions/{question}', 'QuestionController@show');
     Route::get('/questions/{question}/tags/create', 'TagController@create');
     Route::post('/questions/{question}/tags', 'TagController@store');
-    Route::get('/tags/{tag}', 'TagController@show');
     Route::get('/tags/{tag}/edit', 'TagController@edit');
     Route::post('/tags/{tag}', 'TagController@update');
     Route::delete('/tags/{tag}', 'TagController@delete');

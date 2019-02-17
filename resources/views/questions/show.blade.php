@@ -47,15 +47,14 @@
                 <tfoot>
                 <th></th>
                 <th></th>
-                <th><a href="/questions/{{ $question->id }}/tags/create"><i
-                                class="fa fa-btn fa-plus"></i></a></th>
+                <th>
+                    @auth
+                        <a href="/questions/{{ $question->id }}/tags/create"><i class="fa fa-btn fa-plus"></i></a>
+                    @endauth
+                </th>
                 </tfoot>
             </table>
         </div>
     </div>
-    <div class="card mb-3">
-        <div class="card-body">
-            Retour au débat <a href="/debates/{{ $question->debate->id }}">{{ $question->debate->name }}</a>
-        </div>
-    </div>
+    @include('layouts.back_questions')
 @endsection

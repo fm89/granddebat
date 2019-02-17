@@ -1,16 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="card">
+    <div class="card mb-3">
         <div class="card-header">Débat <i>{{ $debate->name }}</i></div>
         <div class="card-body">
             <table class="table table-hover">
                 <thead>
                 <tr>
                     <th>Question</th>
-                    @auth
-                        <th></th>
-                    @endauth
+                    <th></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -33,22 +31,22 @@
                                     @endauth
                                 @endif
                             </td>
-                            @auth
-                                <td>
+                            <td>
+                                @auth
                                     <a href="/questions/{{ $question->id }}">
                                         <i class="fa fa-btn fa-pen"></i>
                                     </a>
-                                </td>
-                            @endauth
+                                @endauth
+                            </td>
                         @else
                             <td>
                                 <a href="/questions/{{ $question->id }}/read">
-                                    <i class="fa fa-icon fa-signal"></i> {{ $question->text }}
+                                    {{ $question->text }}
                                 </a>
                             </td>
-                            @auth
-                                <td></td>
-                            @endauth
+                            <td>
+                                <i class="fa fa-icon fa-chart-pie"></i>
+                            </td>
                         @endif
                     </tr>
                 @endforeach
@@ -56,4 +54,5 @@
             </table>
         </div>
     </div>
+    @include('layouts.back_debates')
 @endsection

@@ -3,17 +3,13 @@
 @section('content')
     <div class="card mb-3">
         <div class="card-header">
-            Résultats pour la question fermée <b>{{ $question->text }}</b>
+            Résultats pour la question fermée <i>{{ $question->text }}</i>
         </div>
         <div class="card-body">
             <canvas id="canvas"></canvas>
         </div>
     </div>
-    <div class="card mb-3">
-        <div class="card-body">
-            Retour au débat <a href="/debates/{{ $question->debate->id }}">{{ $question->debate->name }}</a>
-        </div>
-    </div>
+    @include('layouts.back_questions')
 @endsection
 
 @section('scripts')

@@ -1,10 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="card">
+    <div class="card mb-3">
         <div class="card-header">
-            <a href="/debates/{{ $debate->id }}">{{ $debate->name }}</a> /
-            Contribution &ldquo;{{ $proposal->title }}&rdquo;
+            Contribution <i>{{ $proposal->title }}</i>;
         </div>
         <div class="card-body">
             @foreach ($responses as $response)
@@ -22,4 +21,5 @@
             </a>
         </div>
     </div>
+    @include('layouts.back_debates')
 @endsection
