@@ -32,7 +32,6 @@
 
 <style>
     .tag {
-        border-radius: 20px;
         margin-right: 10px;
         margin-bottom: 10px;
         padding-left: 20px;

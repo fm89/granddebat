@@ -67,7 +67,7 @@
                     </button>
                     <button class="btn btn-light mybtn" @click="loadNext()" style="float: right;">
                         <i class="fa fa-step-forward"></i>
-                        <span class="d-none d-sm-inline">Suivante</span>
+                        <span class="d-none d-sm-inline">{{ user == null ? 'Suivante' : 'Passer' }}</span>
                     </button>
                 </div>
                 <div v-else>
@@ -240,7 +240,6 @@
         margin: 5px;
     }
     .create-btn {
-        border-radius: 20px;
         margin-right: 10px;
         margin-bottom: 10px;
     }
