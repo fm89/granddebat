@@ -42,7 +42,7 @@ class TagController extends Controller
             $tag = new Tag();
             $tag->question_id = $question->id;
             $tag->name = $name;
-            if ($user->role != 'admin') {
+            if ($user->role != 'admin' || $question->status == 'open') {
                 $tag->user_id = $user->id;
             }
             $tag->save();
