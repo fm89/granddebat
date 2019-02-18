@@ -31,13 +31,14 @@ class HomeController extends Controller
         $actions_count = Action::count();
         $users_count = User::count();
         $question = Question::find(166);
+        $random_question = $this->questionRepository->randomQuestion();
         $user = $request->user();
         $response = $this->responseRepository->randomResponse($question);
         $tags = $this->tagRepository->getTagsForQuestionUser($question, $user)->map(function ($tag) {
             return ['id' => $tag->id, 'name' => $tag->name, 'checked' => false];
         });
         $key = Crypt::encrypt(['user_id' => $user->id ?? null, 'response_id' => $response->id]);
-        return view('welcome', compact('actions_count', 'users_count', 'question', 'response', 'key', 'tags', 'user'));
+        return view('welcome', compact('actions_count', 'users_count', 'question', 'random_question', 'response', 'key', 'tags', 'user'));
     }
 
     public function data()

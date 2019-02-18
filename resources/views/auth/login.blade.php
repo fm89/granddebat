@@ -6,8 +6,8 @@
         <div class="card-body">
 
             <div class="alert alert-info">
-                Il est nécessaire de vous connecter pour pouvoir enregistrer vos annotations et contribuer à l'effort
-                collectif. Ceci permet de garantir l'honnêteté et la qualité des annotations saisies.
+                Il est nécessaire de vous connecter pour pouvoir enregistrer vos annotations et contribuer au projet.
+                Ceci permet de garantir l'honnêteté et la qualité des annotations saisies.
                 Vous pouvez consulter les <a href="/legal">mentions légales</a>.
                 Si vous n'avez pas encore de compte, vous pouvez <a href="/register">en créer un</a>.
             </div>

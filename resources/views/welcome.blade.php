@@ -76,11 +76,18 @@
                         Plateforme d'annotation collaborative citoyenne des contributions au grand débat
                     </p>
                     <p>
-                        Déjà <b>{{ $actions_count }} annotations</b> déposées par <b>{{ $users_count }} bénévoles</b>
+                        Déjà <b>{{ $actions_count }} annotations</b> réalisées par <b>{{ $users_count }} bénévoles</b>
                     </p>
                     <p>
                         Donnons du sens au débat !
                     </p>
+                    <br/>
+                    @auth
+                        <a class="btn btn-primary" href="/questions/{{ $random_question->id }}/read">
+                            <i class="fa fa-btn fa-play"></i>
+                            Reprendre la lecture
+                        </a>
+                    @endauth
                 </div>
             </div>
         </div>
@@ -124,8 +131,8 @@
     <div class="container py-5">
         <div id="app">
             <p style="font-size: 1.25em; color: #fff;">Voici un exemple de question posée sur le site officiel, et
-                    d'une réponse saisie par un contributeur. Cliquez sur la ou les catégories correspondant le plus à
-                    cette contribution, puis validez. Ou cliquez sur la croix grise en l'absence de réponse.</p>
+                d'une réponse saisie par un contributeur. Cliquez sur la ou les catégories correspondant le plus à
+                cette contribution, puis validez. Ou cliquez sur la croix grise en l'absence de réponse.</p>
             <br/>
             <tagger :demo="true" :question="{{ $question }}"
                     :initial-tags="{{ json_encode($tags) }}" :initial-key="'{{ $key }}'"

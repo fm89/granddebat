@@ -4,12 +4,12 @@
     @if ($demo)
         <div class="alert alert-info">
             <span style="font-size: 1.25em; font-weight: 800;">
-                Bien joué ! Vous avez vu, c'était facile et rapide !
+                Vous avez vu, c'était facile et rapide !
             </span>
             <br/>
             <span style="font-size: 1.15em;">
-                Il est nécessaire de vous inscrire pour pouvoir enregistrer vos annotations et contribuer à
-                l'effort collectif. Ceci permet de garantir l'honnêteté et la qualité des annotations saisies.
+                Il est nécessaire de vous inscrire pour pouvoir enregistrer vos annotations et contribuer au projet.
+                Ceci permet de garantir l'honnêteté et la qualité des annotations saisies.
                 Nous ne ferons rien de votre email, promis (<a href="/legal">en savoir plus</a>).
             </span>
         </div>
@@ -20,8 +20,8 @@
         <div class="card-body">
             @if (!$demo)
                 <div class="alert alert-info">
-                    Il est nécessaire de vous inscrire pour pouvoir enregistrer vos annotations et contribuer à l'effort
-                    collectif. Ceci permet de garantir l'honnêteté et la qualité des annotations saisies.
+                    Il est nécessaire de vous inscrire pour pouvoir enregistrer vos annotations et contribuer au projet.
+                    Ceci permet de garantir l'honnêteté et la qualité des annotations saisies.
                     Nous ne ferons rien de votre email, promis (<a href="/legal">en savoir plus</a>).
                     Si vous avez déjà un compte, vous pouvez <a href="/login">vous connecter</a>.
                 </div>
