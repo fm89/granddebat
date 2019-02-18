@@ -29,6 +29,7 @@
 			<ul>
 				<li>
 					Nous sommes un petit groupe de citoyens bénévoles, chercheurs, datascientists, développeurs, militants du libre. Nous ne sommes associés à aucun parti politique, syndicat ou lobby dans le cadre de ce projet. Certains d’entre nous ont contribué au débat, d’autres non. Nous sommes convaincus de l’importance d’un traitement transparent des contributions par la société civile.
+                    Nous sommes soutenus par l'association <a href="https://codefor.fr/">Code for France</a>.
 				</li>
 			</ul>
 			<h4>Pourquoi n'avez-vous pas recours à une analyse automatisée ?</h4>
