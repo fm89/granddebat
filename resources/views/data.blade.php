@@ -11,8 +11,10 @@
             </p>
             <h4>Format</h4>
             <p>
-                Le format n'est pas encore définitivement figé. L'export est un fichier CSV de l'ensemble des
-                annotations effectuées sur ce site. L'export ne contient pas les données brutes du grand débat (qui sont
+                Le format n'est pas encore définitivement figé. L'export est un fichier CSV
+                (séparateur virgule, avec ligne d'entête, encodage UTF-8)
+                de l'ensemble des annotations effectuées sur ce site.
+                L'export ne contient pas les données brutes du grand débat (qui sont
                 accessibles sur le <a href="https://granddebat.fr/pages/donnees-ouvertes">site officiel</a>,
                 dans la rubrique <i>Données ouvertes</i>). Le fichier d'export contient les colonnes suivantes
             </p>
@@ -20,15 +22,15 @@
                 <tbody>
                 <tr>
                     <th>Debat</th>
-                    <td>Entier identifiant le numéro du débat (1 : Démocratie, 2 : Ecologie, 3 : Fiscalité, 4 : Organisation)</td>
+                    <td>Identifiant du débat (1 : Démocratie, 2 : Ecologie, 3 : Fiscalité, 4 : Organisation)</td>
                 </tr>
                 <tr>
                     <th>Contribution</th>
-                    <td>Entier identifiant la référence de la contribution (au sens du champ "reference" des fichiers JSON bruts)</td>
+                    <td>Référence de la contribution (au sens du champ "reference" des fichiers JSON bruts, par exemple 3-56722)</td>
                 </tr>
                 <tr>
                     <th>Question</th>
-                    <td>Entier identifiant le numéro de la question (au sens du champ "id" des fichiers JSON bruts)</td>
+                    <td>Identifiant de la question (au sens du champ "id" des fichiers JSON bruts, par exemple 166)</td>
                 </tr>
                 <tr>
                     <th>Categorie</th>
@@ -36,7 +38,7 @@
                 </tr>
                 <tr>
                     <th>Annoteur</th>
-                    <td>Entier identifiant l'intervenant ayant apposé la catégorie sur la réponse</td>
+                    <td>Identifiant de l'intervenant ayant apposé la catégorie sur la réponse</td>
                 </tr>
                 </tbody>
             </table>

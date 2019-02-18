@@ -39,24 +39,24 @@ class DumpActions extends Command
     public function handle()
     {
         $handle = fopen('storage/app/public/actions' . date("Ymd") . '.csv', 'w');
-        fputcsv($handle, ["Debat", "Contribution", "Question", "Categorie", "Annoteur"], $delimiter = ";");
+        fputcsv($handle, ["Debat", "Contribution", "Question", "Categorie", "Annoteur"]);
         DB::table('actions')
             ->join('tags', 'tags.id', 'actions.tag_id')
             ->join('responses', 'responses.id', 'actions.response_id')
             ->join('questions', 'questions.id', 'responses.question_id')
             ->select('questions.debate_id',
-                DB::raw('actions.response_id % 1000000 AS "proposal_id"'),
+                DB::raw('CONCAT(questions.debate_id, \'-\', actions.response_id % 1000000) AS "proposal_id"'),
                 DB::raw('actions.response_id / 1000000 AS "question_id"'),
                 'tags.name',
                 'actions.user_id')
+            ->where('questions.status', 'open')
             ->orderBy('questions.debate_id')
             ->orderBy('actions.response_id')
             ->orderBy('tags.name')
             ->chunk(1000, function ($actions) use ($handle) {
                 foreach ($actions as $fields) {
                     fputcsv($handle,
-                        [$fields->debate_id, $fields->proposal_id, $fields->question_id, $fields->name, $fields->user_id],
-                        $delimiter = ";");
+                        [$fields->debate_id, $fields->proposal_id, $fields->question_id, $fields->name, $fields->user_id]);
                 }
             });
         fclose($handle);
