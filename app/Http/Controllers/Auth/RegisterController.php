@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -28,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/questions/166/read';
 
     /**
      * Create a new controller instance.
@@ -63,9 +64,6 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        // FM ->
-        // abort(404);
-        // -> FM
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
@@ -73,14 +71,9 @@ class RegisterController extends Controller
         ]);
     }
 
-    /* FM ->
-    public function showRegistrationForm()
+    public function showRegistrationForm(Request $request)
     {
-        return redirect('login');
+        $demo = $request->has('demo');
+        return view('auth.register', compact('demo'));
     }
-    public function register()
-    {
-        abort(404);
-    }
-    */
 }

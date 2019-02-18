@@ -23,11 +23,18 @@
             </p>
             <h4>Données personnelles</h4>
             <p>
-                Lors de votre inscription, vous saisissez un nom d'affichage librement et une adresse électronique.
+                Lors de votre inscription, vous saisissez un pseudonyme librement et une adresse électronique.
                 Celle-ci n'est utilisée que pour vous permettre de ré-initialiser votre mot de passe en cas de perte.
-                Vous ne recevrez aucun autre courriel de notre part. Vous pouvez à tout moment supprimer définitivement
-                votre compte. Votre nom d'affichage et votre adresse électronique sont alors immédiatement effacés de
-                la base de données. Vos annotations seront alors liées au pseudonyme <i>Utilisateur supprimé</i>.
+                Vous ne recevrez <b>aucun autre courriel de notre part</b>.
+            </p>
+            <p>
+                Vous pouvez à tout moment supprimer définitivement votre compte (depuis le menu "Mon compte" de la barre
+                de navigation en haut à droite de l'écran, puis avec le lien "Supprimer mon compte"). Votre pseudonyme
+                et votre adresse électronique sont alors immédiatement effacés de la base de données. Vos annotations
+                seront alors liées au pseudonyme <i>Utilisateur supprimé</i>.
+            </p>
+            <p>
+                Le code source de cette plateforme est ouvert et libre. Vous pourrez y constater notre bonne foi !
             </p>
         </div>
     </div>

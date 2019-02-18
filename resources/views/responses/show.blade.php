@@ -1,7 +1,7 @@
 @extends('layouts.app', ['compact' => true])
 
 @section('content')
-    <tagger :question="{{ $question }}"
+    <tagger :demo="false" :question="{{ $question }}"
             @if (isset($previous_question)) :previous-question="{{ $previous_question->toJSON() }}" @endif
             @if (isset($previous_response)) :initial-previous-response="{{ $previous_response->toJSON() }}" @endif
             :initial-tags="{{ json_encode($tags) }}" :initial-key="'{{ $key }}'"

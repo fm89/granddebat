@@ -1,23 +1,36 @@
 @extends('layouts.app')
 
 @section('content')
+    @if ($demo)
+        <div class="alert alert-info">
+            <span style="font-size: 1.25em; font-weight: 800;">
+                Bien joué ! Vous avez vu, c'était facile et rapide !
+            </span>
+            <br/>
+            <span style="font-size: 1.15em;">
+                Il est nécessaire de vous inscrire pour pouvoir enregistrer vos annotations et contribuer à
+                l'effort collectif. Ceci permet de garantir l'honnêteté et la qualité des annotations saisies.
+                Nous ne ferons rien de votre email, promis (<a href="/legal">en savoir plus</a>).
+            </span>
+        </div>
+    @endif
     <div class="card">
         <div class="card-header">Inscription</div>
 
         <div class="card-body">
-
-            <div class="alert alert-info">
-                Il est nécessaire de vous inscrire pour pouvoir enregistrer vos annotations et contribuer à l'effort
-                collectif. Ceci permet de garantir l'honnêteté des annotations saisies.
-                Vous pouvez consulter les <a href="/legal">mentions légales</a>.
-                Si vous avez déjà un compte, vous pouvez <a href="/login">vous connecter</a>.
-            </div>
-
+            @if (!$demo)
+                <div class="alert alert-info">
+                    Il est nécessaire de vous inscrire pour pouvoir enregistrer vos annotations et contribuer à l'effort
+                    collectif. Ceci permet de garantir l'honnêteté et la qualité des annotations saisies.
+                    Nous ne ferons rien de votre email, promis (<a href="/legal">en savoir plus</a>).
+                    Si vous avez déjà un compte, vous pouvez <a href="/login">vous connecter</a>.
+                </div>
+            @endif
             <form method="POST" action="{{ route('register') }}">
                 @csrf
 
                 <div class="form-group row">
-                    <label for="name" class="col-md-4 col-form-label text-md-right">Nom d'affichage</label>
+                    <label for="name" class="col-md-4 col-form-label text-md-right">Pseudonyme</label>
 
                     <div class="col-md-6">
                         <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
@@ -47,9 +60,7 @@
                         <small id="emailHelp" class="form-text text-muted">
                             Votre adresse n'est utilisée que pour vous permettre de ré-initialiser votre mot de passe
                             en cas de perte. Vous ne recevrez aucun autre courriel de notre part. Vous pouvez à tout
-                            moment supprimer définitivement votre compte. Votre nom d'affichage et votre adresse
-                            électronique sont alors immédiatement effacés de la base de données.
-                            Vos annotations seront alors liées au pseudonyme <i>Utilisateur supprimé</i>.
+                            moment supprimer définitivement votre compte (<a href="/legal">en savoir plus</a>).
                         </small>
 
                     </div>
@@ -65,8 +76,8 @@
 
                         @if ($errors->has('password'))
                             <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
+                                <strong>{{ $errors->first('password') }}</strong>
+                            </span>
                         @endif
                     </div>
                 </div>

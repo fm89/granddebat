@@ -4,27 +4,40 @@ namespace App\Http\Controllers;
 
 use App\Models\Action;
 use App\Models\Debate;
+use App\Models\Question;
 use App\Repositories\QuestionRepository;
 use App\Repositories\ResponseRepository;
+use App\Repositories\TagRepository;
 use App\User;
 use Illuminate\Http\Request;
 use App\Logic\Levels;
+use Illuminate\Support\Facades\Crypt;
 
 class HomeController extends Controller
 {
     private $questionRepository;
+    private $responseRepository;
+    private $tagRepository;
 
-    public function __construct(QuestionRepository $questionRepository)
+    public function __construct(QuestionRepository $questionRepository, ResponseRepository $responseRepository, TagRepository $tagRepository)
     {
         $this->questionRepository = $questionRepository;
+        $this->responseRepository = $responseRepository;
+        $this->tagRepository = $tagRepository;
     }
 
-    public function welcome()
+    public function welcome(Request $request)
     {
         $actions_count = Action::count();
         $users_count = User::count();
-        $question = $this->questionRepository->randomQuestion();
-        return view('welcome', compact('actions_count', 'users_count', 'question'));
+        $question = Question::find(166);
+        $user = $request->user();
+        $response = $this->responseRepository->randomResponse($question);
+        $tags = $this->tagRepository->getTagsForQuestionUser($question, $user)->map(function ($tag) {
+            return ['id' => $tag->id, 'name' => $tag->name, 'checked' => false];
+        });
+        $key = Crypt::encrypt(['user_id' => $user->id ?? null, 'response_id' => $response->id]);
+        return view('welcome', compact('actions_count', 'users_count', 'question', 'response', 'key', 'tags', 'user'));
     }
 
     public function data()

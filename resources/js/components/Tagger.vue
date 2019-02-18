@@ -1,9 +1,16 @@
 <template>
     <div>
-        <div v-if="user != null && user.score == level[0] && user.score > 0" class="alert alert-success mb-3">
+        <div v-if="showLevel()" class="alert alert-success mb-3">
             <p>
                 <b>Félicitations !</b> Grâce à vos {{ level[0] }} annotations, vous venez de passer au niveau
                 <b>{{ level[2] }}</b>. Continuez sur cette lancée pour aider la communauté à donner du sens au débat ;
+                et aussi pour gravir les échelons !
+            </p>
+        </div>
+        <div v-if="showProgress()" class="alert alert-success mb-3">
+            <p>
+                <b>Félicitations !</b> Vous avez franchi la barre des {{ user.score }} annotations.
+                Continuez sur cette lancée pour aider la communauté à donner du sens au débat ;
                 et aussi pour gravir les échelons !
             </p>
         </div>
@@ -22,7 +29,7 @@
         </div>
         <div class="card mb-3">
             <div class="card-body">
-                <div v-if="user == null && question.status === 'open'">
+                <div v-if="showWarningAccount()">
                     <div class="alert alert-danger">
                         <a href="/register">Créez votre compte</a> ou <a href="/login">connectez-vous</a> pour
                         créer vos propres catégories, enregistrer votre catégorisation de cette contribution et
@@ -53,11 +60,11 @@
                         <i class="fa fa-plus"></i> Créer
                     </button>
                     <br/><br/>
-                    <button v-if="user != null" class="btn btn-primary mybtn" @click="send('save')" :disabled="tagIds().length == 0">
+                    <button v-if="user != null || demo" class="btn btn-primary mybtn" @click="send('save')" :disabled="tagIds().length == 0">
                         <i class="fa fa-check"></i>
                         <span class="d-none d-sm-inline">Valider</span>
                     </button>
-                    <button v-if="user != null" class="btn btn-secondary mybtn" @click="send('noanswer')" :disabled="tagIds().length > 0">
+                    <button v-if="user != null || demo" class="btn btn-secondary mybtn" @click="send('noanswer')" :disabled="tagIds().length > 0">
                         <i class="fa fa-times-circle"></i>
                         <span class="d-none d-sm-inline">Sans réponse</span>
                     </button>
@@ -65,9 +72,9 @@
                         <i class="fa fa-lightbulb"></i>
                         <span class="d-none d-sm-inline">Marquer l'idée</span>
                     </button>
-                    <button class="btn btn-light mybtn" @click="loadNext()" style="float: right;">
+                    <button v-if="!demo" class="btn btn-light mybtn" @click="loadNext()" style="float: right;">
                         <i class="fa fa-step-forward"></i>
-                        <span class="d-none d-sm-inline">{{ user == null ? 'Suivante' : 'Passer' }}</span>
+                        <span class="d-none d-sm-inline">{{ user == null ? 'Lire une autre' : 'Passer' }}</span>
                     </button>
                 </div>
                 <div v-else>
@@ -101,6 +108,10 @@
             }
         },
         props: {
+            demo: {
+                type: Boolean,
+                required: true,
+            },
             question: {
                 type: Object,
                 required: true,
@@ -131,14 +142,23 @@
             formattedText() {
                 return this.response.value.split("\n");
             },
+            showLevel() {
+                return (!this.demo) && (this.user != null) && (this.user.score == this.level[0]) && (this.user.score > 0);
+            },
+            showProgress() {
+                return (!this.demo) && (this.user != null) && (this.user.score != this.level[0]) && (this.user.score > 0) && ((this.user.score % 25) == 0);
+            },
             showEasyHelp() {
-                return (this.user !== null) && (this.user.score < 10) && (this.question.status === 'open');
+                return (!this.demo) && (this.user !== null) && (this.user.score < 10) && (this.question.status === 'open');
             },
             showBulb() {
-                return (this.user !== null) && (this.user.score >= 50);
+                return (!this.demo) && (this.user !== null) && (this.user.score >= 50);
             },
             showBulbHelp() {
-                return this.showBulb() && (this.user.score < 60);
+                return (!this.demo) && this.showBulb() && (this.user.score < 60);
+            },
+            showWarningAccount() {
+                return (!this.demo) && (this.user == null) && (this.question.status === 'open');
             },
             onTagToggled(tagId) {
                 $.each(this.tags, function (index, tag) {
@@ -162,6 +182,10 @@
                 return result;
             },
             async send(message) {
+                if (this.demo && this.user == null) {
+                    window.location = '/register?demo=true';
+                    return;
+                }
                 let result = await $.ajax({
                     url: '/api/responses',
                     type: 'POST',
@@ -181,6 +205,10 @@
                 this.level = result.level;
                 $('#myScore')[0].className = 'badge badge-pill badge-' + result.level[1];
                 $('#myScore')[0].innerHTML = '' + result.score + ' - ' + result.level[2];
+                if (this.demo) {
+                    window.location = '/questions/' + this.question.id + '/read';
+                    return;
+                }
                 this.resetScreen();
             },
             async loadNext() {
@@ -204,7 +232,9 @@
                     tag.checked = false;
                 });
                 // Send user back to top of screen so he can see the next response
-                document.documentElement.scrollTo(0, 1);
+                if (!this.demo) {
+                    document.documentElement.scrollTo(0, 1);
+                }
             }
         }
     }
