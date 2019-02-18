@@ -15,7 +15,7 @@
         <main class="py-4">
             <div class="container-fluid">
                 <div class="row justify-content-center">
-                    <div class="col-xl-9">
+                    <div class="col-xl-8">
                         @yield('content')
                     </div>
                 </div>
