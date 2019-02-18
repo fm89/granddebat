@@ -18,21 +18,21 @@
                 <thead>
                 <tr>
                     <th>Libellé</th>
-                    <th>Attributions</th>
-                    <th>Actions</th>
+                    <th></th>
+                    <th></th>
                 </tr>
                 </thead>
                 <tbody>
                 @foreach ($tags as $tag)
                     <tr>
-                        <td>{{ $tag->name }}</td>
-                        <td><a href="/tags/{{ $tag->id }}">{{ $counts[$tag->id] ?? 0 }}</a></td>
+                        <td><a href="/tags/{{ $tag->id }}">{{ $tag->name }}</a></td>
+                        <td><span class="badge badge-pill badge-secondary">{{ $counts[$tag->id] ?? 0 }}</span></td>
                         <td>
                             {!! Form::open(['url' => '/tags/' . $tag->id, 'method' => 'delete']) !!}
                             @can('update', $tag)
                                 <a href="/tags/{{ $tag->id }}/edit"><i class="fa fa-btn fa-pen"></i></a>
                                 @if (($counts[$tag->id] ?? 0) == 0)
-                                    <button class="btn btn-link" type="submit">
+                                    <button class="btn btn-link ml-2" style="padding: 0;" type="submit">
                                         <i class="fa fa-btn fa-trash text-danger"></i>
                                     </button>
                                 @endif
