@@ -5,10 +5,11 @@
         <div class="card-header">Mentions légales</div>
         <div class="card-body">
             <p>
-                GrandDebat.ovh est un site non commercial non professionnel édité par une personne physique. Il a pour
+                GrandeAnnotation.fr est un site non commercial non professionnel édité par une personne physique. Il a pour
                 but de permettre l'annotation collective et manuelle, par des humains,
                 des milliers de contributions au Grand Débat National initié
                 sur le site officiel <a href="https://granddebat.fr">granddebat.fr</a>.
+                GrandeAnnotation.fr n'est ni le site officiel, ni un site gouvernemental.
             </p>
             <h4>Hébergement</h4>
             <p>

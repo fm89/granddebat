@@ -54,6 +54,10 @@
         #questions p {
             font-size: 1.25em;
         }
+
+        #exemple {
+            background-color: #888;
+        }
     </style>
 </head>
 <body>
@@ -119,9 +123,9 @@
 <section id="exemple">
     <div class="container py-5">
         <div id="app">
-            <p style="font-size: 1.25em; color: #0D7FFB;"><i>Voici un exemple de question posée sur le site officiel, et
+            <p style="font-size: 1.25em; color: #fff;">Voici un exemple de question posée sur le site officiel, et
                     d'une réponse saisie par un contributeur. Cliquez sur la ou les catégories correspondant le plus à
-                    cette contribution, puis validez. Ou cliquez sur la croix grise en l'absence de réponse.</i></p>
+                    cette contribution, puis validez. Ou cliquez sur la croix grise en l'absence de réponse.</p>
             <br/>
             <tagger :demo="true" :question="{{ $question }}"
                     :initial-tags="{{ json_encode($tags) }}" :initial-key="'{{ $key }}'"

@@ -13,7 +13,7 @@ L'idée est de pouvoir faire lire par des humains l'ensemble des textes, en y as
 Il n'est en aucun cas question de juger de l'utilité, de la faisabilité ou de la valeur des idées ou 
 des opinions exprimées par les contributeurs, mais uniquement d'amorcer un travail de consolidation.
 
-Pour plus de détails sur notre approche, voir la [FAQ](https://granddebat.ovh/faq).
+Pour plus de détails sur notre approche, voir la [FAQ](https://grandeannotation.fr/faq).
 
 ## Architecture et technologies
 
