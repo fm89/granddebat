@@ -99,8 +99,8 @@
                     <h4><img src="/favicon-16x16.png" alt="tag"/> Qui sommes-nous ?</h4>
                     <p>Un groupe de citoyens indépendants et bénévoles, chercheurs, datascientists, développeurs.</p>
                     <p>Nous militons pour l'ouverture des données et des codes publics.
-                        Ce projet est soutenu par l'association <a href="https://codefor.fr/">Code For
-                            France</a>.</p>
+                        Ce projet est soutenu par l'association
+                        <a href="https://codefor.fr/">Code for France</a>.</p>
                 </div>
             </div>
             <div class="col-lg-4">

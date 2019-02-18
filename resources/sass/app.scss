@@ -1,19 +1,19 @@
 // Variables
 @import 'variables';
-
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
-
 @import '~@fortawesome/fontawesome-free/css/all';
 
 html {
   position: relative;
   min-height: 100%;
 }
+
 body {
   /* Margin bottom by footer height */
   margin-bottom: 40px;
 }
+
 .footer {
   position: absolute;
   bottom: 0;
@@ -22,11 +22,13 @@ body {
   line-height: 40px;
   background-color: #eaf3f9;
 }
+
 .navbar-laravel {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
-blockquote{
+
+blockquote {
   background: #f9f9f9;
   border-left: 10px solid #ccc;
   margin: 8px 0 0 0;
@@ -34,6 +36,7 @@ blockquote{
   padding: 10px 14px;
   line-height: 1.5;
 }
+
 footer {
   margin: 0;
   text-align: right;
@@ -41,3 +44,7 @@ footer {
   font-style: italic;
 }
 
+h4 {
+  color: #636b6f;
+  font-weight: 800 !important;
+}
