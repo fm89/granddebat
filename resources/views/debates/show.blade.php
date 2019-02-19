@@ -20,23 +20,23 @@
                                 @if ($question->status == 'open')
                                     <span class="badge badge-primary badge-pill">Ouvert aux annotations</span>
                                     @auth
-                                        <span class="badge badge-pill badge-primary">{{ \Illuminate\Support\Facades\Auth::user()->scores['questions'][$question->id] ?? 0 }}</span>
+                                        <span class="badge badge-pill badge-primary">{{ $user->scores['questions'][$question->id] ?? 0 }}</span>
                                     @endauth
                                 @else
                                     <span class="badge badge-secondary badge-pill">En préparation</span>
                                     @auth
-                                        @if (\Illuminate\Support\Facades\Auth::user()->role == 'admin')
-                                            <span class="badge badge-pill badge-primary">{{ \Illuminate\Support\Facades\Auth::user()->scores['questions'][$question->id] ?? 0 }}</span>
+                                        @if ($user->role == 'admin')
+                                            <span class="badge badge-pill badge-primary">{{ $user->scores['questions'][$question->id] ?? 0 }}</span>
                                         @endif
                                     @endauth
                                 @endif
                             </td>
                             <td>
-                                @auth
+                                @if ($question->status == 'open' || ($user != null && $user->role == 'admin'))
                                     <a href="/questions/{{ $question->id }}">
                                         <i class="fa fa-btn fa-pen"></i>
                                     </a>
-                                @endauth
+                                @endif
                             </td>
                         @else
                             <td>

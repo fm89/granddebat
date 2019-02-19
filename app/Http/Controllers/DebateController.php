@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Debate;
+use Illuminate\Http\Request;
 
 class DebateController extends Controller
 {
-    public function show(Debate $debate)
+    public function show(Request $request, Debate $debate)
     {
-        return view('debates.show', compact('debate'));
+        $user = $request->user();
+        return view('debates.show', compact('debate', 'user'));
     }
 }
