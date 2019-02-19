@@ -12,6 +12,8 @@ use App\Repositories\ResponseRepository;
 use App\Repositories\TagRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\DB;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class ResponseController extends Controller
 {
@@ -97,5 +99,70 @@ class ResponseController extends Controller
         } else {
             return null;
         }
+    }
+
+    public function search(Request $request)
+    {
+        $question_id = $request->input('question_id');
+        $text = $request->input('text');
+        $min_length = $request->input('min_length');
+        $query = Response::where('question_id', $question_id)->where(DB::raw('LENGTH(value)'), '>=', $min_length);
+        if (strlen($text) > 0) {
+            $escaped = DB::connection()->getPdo()->quote('%' . $text . '%');
+            $query = $query->whereRaw("lower(unaccent(value)) LIKE lower(unaccent($escaped))");
+        }
+        if ($request->has('tags')) {
+            $tag_ids = $request->input('tags');
+            foreach ($tag_ids as $tag_id) {
+                $query = $query->whereHas('actions', function ($query) use ($tag_id) {
+                    return $query->where('tag_id', $tag_id);
+                });
+            }
+        }
+        $total_count = $query->count();
+        $samples = $query->inRandomOrder()->limit(100)->get()->map(function ($response) {
+            return ['value' => $response->value, 'proposal_id' => $response->proposal_id];
+        });
+        return compact('samples', 'total_count');
+    }
+
+    public function downloadSearch(Request $request, $query)
+    {
+        $data = json_decode(base64_decode($query), true);
+        $question_id = $data['question_id'];
+        $text = $data['text'];
+        $min_length = $data['min_length'];
+        $tag_ids = $data['tags'];
+        $query = Response::where('question_id', $question_id)->where(DB::raw('LENGTH(value)'), '>=', $min_length);
+        if (strlen($text) > 0) {
+            $escaped = DB::connection()->getPdo()->quote('%' . $text . '%');
+            $query = $query->whereRaw("lower(unaccent(value)) LIKE lower(unaccent($escaped))");
+        }
+        if (count($tag_ids) > 0) {
+            foreach ($tag_ids as $tag_id) {
+                $query = $query->whereHas('actions', function ($query) use ($tag_id) {
+                    return $query->where('tag_id', $tag_id);
+                });
+            }
+        }
+        $question = Question::find($question_id);
+        $all = $query->inRandomOrder()->get()->map(function ($response) use ($question) {
+            return [$question->debate_id . '-' . ($response->proposal_id % 1000000), $response->value];
+        });
+        return new StreamedResponse(
+            function () use ($all) {
+                $handle = fopen('php://output', 'w');
+                fputcsv($handle, ["Contribution", "Texte"]);
+                foreach ($all as $row) {
+                    fputcsv($handle, $row);
+                }
+                fclose($handle);
+            },
+            200,
+            [
+                'Content-type'        => 'text/csv',
+                'Content-Disposition' => 'attachment; filename=search.csv'
+            ]
+        );
     }
 }

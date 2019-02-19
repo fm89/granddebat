@@ -88,4 +88,15 @@ class QuestionController extends Controller
             return redirect('/questions/' . $question->id);
         }
     }
+
+    public function search(Question $question)
+    {
+        if (!$question->is_free) {
+            return redirect('/questions/' . $question->id);
+        }
+        $tags = $this->tagRepository->getTagsForQuestionUser($question, null)->map(function ($tag) {
+            return ['id' => $tag->id, 'name' => $tag->name, 'checked' => false];
+        });
+        return view('questions.search', compact('question', 'tags'));
+    }
 }

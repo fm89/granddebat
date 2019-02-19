@@ -54,6 +54,9 @@
                 </th>
                 </tfoot>
             </table>
+            <a class="btn btn-light" href="/questions/{{ $question->id }}/search">
+                <i class="fa fa-search"></i> Accéder au module de recherche
+            </a>
         </div>
     </div>
     @include('layouts.back_questions')

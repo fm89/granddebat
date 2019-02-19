@@ -34,12 +34,15 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/account', 'Auth\UserController@show');
     Route::get('/quit', 'Auth\UserController@showQuit');
     Route::post('/quit', 'Auth\UserController@doQuit');
+    Route::get('/questions/{question}/search', 'QuestionController@search');
     Route::get('/questions/{question}/tags/create', 'TagController@create');
     Route::post('/questions/{question}/tags', 'TagController@store');
     Route::get('/tags/{tag}/edit', 'TagController@edit');
     Route::post('/tags/{tag}', 'TagController@update');
     Route::delete('/tags/{tag}', 'TagController@delete');
 
+    Route::get('/api/responses', 'Api\ResponseController@search');
+    Route::get('/api/downloads/search/{query}', 'Api\ResponseController@downloadSearch');
     Route::post('/api/responses', 'Api\ResponseController@update');
     Route::post('/api/tags', 'Api\TagController@store');
 });
