@@ -48,9 +48,9 @@
                 <th></th>
                 <th></th>
                 <th>
-                    @auth
+                    @can('create', [\App\Models\Tag::class, $question])
                         <a href="/questions/{{ $question->id }}/tags/create"><i class="fa fa-btn fa-plus"></i></a>
-                    @endauth
+                    @endcan
                 </th>
                 </tfoot>
             </table>

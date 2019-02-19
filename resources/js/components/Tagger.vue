@@ -9,7 +9,7 @@
         </div>
         <div v-if="showProgress()" class="alert alert-success mb-3">
             <p>
-                <b>Félicitations !</b> Vous avez franchi la barre des {{ user.score }} annotations.
+                <b>Félicitations !</b> Vous avez franchi la barre des {{ user.scores.total }} annotations.
                 Continuez sur cette lancée pour aider la communauté à donner du sens au débat ;
                 et aussi pour gravir les échelons !
             </p>
@@ -91,7 +91,7 @@
                 </div>
             </div>
         </div>
-        <modal-create-tag :question="question" :can-bulb="showBulb()" @tagCreated="onTagCreated"></modal-create-tag>
+        <modal-create-tag :question="question" :can-bulb="showBulb()" :question-score="getQuestionScore()" :can-create="canCreateTag()" @tagCreated="onTagCreated"></modal-create-tag>
     </div>
 </template>
 
@@ -142,20 +142,40 @@
             formattedText() {
                 return this.response.value.split("\n");
             },
+            canCreateTag() {
+                if (this.user == null) {
+                    return false;
+                }
+                if (this.user.role === 'admin') {
+                    return true;
+                }
+                return this.getQuestionScore() >= 50;
+            },
+            getQuestionScore() {
+                if (this.user == null) {
+                    return 0;
+                }
+                let question_scores = this.user.scores.questions;
+                if (this.question.id in question_scores) {
+                    return question_scores[this.question.id];
+                } else {
+                    return 0;
+                }
+            },
             showLevel() {
-                return (!this.demo) && (this.user != null) && (this.user.score == this.level[0]) && (this.user.score > 0);
+                return (!this.demo) && (this.user != null) && (this.user.scores.total == this.level[0]) && (this.user.scores.total > 0);
             },
             showProgress() {
-                return (!this.demo) && (this.user != null) && (this.user.score != this.level[0]) && (this.user.score > 0) && ((this.user.score % 25) == 0);
+                return (!this.demo) && (this.user != null) && (this.user.scores.total != this.level[0]) && (this.user.scores.total > 0) && ((this.user.scores.total % 25) == 0);
             },
             showEasyHelp() {
-                return (!this.demo) && (this.user !== null) && (this.user.score < 10) && (this.question.status === 'open');
+                return (!this.demo) && (this.user !== null) && (this.user.scores.total < 10) && (this.question.status === 'open');
             },
             showBulb() {
-                return (!this.demo) && (this.user !== null) && (this.user.score >= 50);
+                return (!this.demo) && (this.user !== null) && (this.user.scores.total >= 50);
             },
             showBulbHelp() {
-                return (!this.demo) && this.showBulb() && (this.user.score < 60);
+                return (!this.demo) && this.showBulb() && (this.user.scores.total < 60);
             },
             showWarningAccount() {
                 return (!this.demo) && (this.user == null) && (this.question.status === 'open');
@@ -198,13 +218,13 @@
                         tags: this.tagIds(),
                     }
                 });
-                this.user.score = result.score;
+                this.user.scores = result.scores;
                 this.key = result.key;
                 this.previousResponse = result.previousResponse;
                 this.response = result.response;
                 this.level = result.level;
                 $('#myScore')[0].className = 'badge badge-pill badge-' + result.level[1];
-                $('#myScore')[0].innerHTML = '' + result.score + ' - ' + result.level[2];
+                $('#myScore')[0].innerHTML = '' + result.scores.total + ' - ' + result.level[2];
                 if (this.demo) {
                     window.location = '/questions/' + this.question.id + '/read';
                     return;

@@ -19,11 +19,13 @@ class TagController extends Controller
 
     public function create(Question $question)
     {
+        $this->authorize('create', [Tag::class, $question]);
         return view('tags.create', compact('question'));
     }
 
     public function store(Question $question, Request $request)
     {
+        $this->authorize('create', [Tag::class, $question]);
         $this->apiTagController->doCreate($request->user(), $question, $request->input('name'));
         return redirect('questions/' . $question->id);
     }

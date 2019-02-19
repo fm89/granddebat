@@ -37,7 +37,7 @@ class QuestionController extends Controller
             $counts = Action::join('responses', 'responses.id', 'actions.response_id')
                 ->select('tag_id', DB::raw('COUNT(DISTINCT clean_value_group_id) AS count'))
                 ->whereIn('tag_id', $tag_ids)->groupBy('tag_id')->pluck('count', 'tag_id')->all();
-            return view('questions.show', compact('question', 'counts', 'tags'));
+            return view('questions.show', compact('question', 'counts', 'tags', 'user'));
         } else {
             $raw_data = $question->responses()
                 ->select('value', DB::raw('COUNT(*) AS count'))

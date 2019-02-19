@@ -30,6 +30,7 @@ class TagController extends Controller
 
     public function doCreate(User $user, Question $question, $name)
     {
+        $this->authorize('create', [Tag::class, $question]);
         $escaped = DB::connection()->getPdo()->quote($name);
         $exists = Tag::where('question_id', $question->id)
             ->whereRaw("lower(unaccent(name)) = lower(unaccent($escaped))")

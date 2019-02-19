@@ -76,7 +76,7 @@ class ResponseController extends Controller
         }
         $user->addResponseToScore($question);
         $result = $this->next($request, $question);
-        $result['score'] = $user->scores['total'];
+        $result['scores'] = $user->scores;
         $result['level'] = $user->level();
         return $result;
     }
