@@ -7,10 +7,10 @@
             <h4>D’où vient ce projet ?</h4>
             <ul>
                 <li>
-					Dans le cadre du Grand débat national, le gouvernement a lancé le 22 janvier 2019 <a href="https://granddebat.fr">granddebat.fr</a>, un site internet permettant aux citoyens de s’exprimer sur quatre thèmes déclinés en près de 100 questions.
+					Dans le cadre du Grand débat national, le Gouvernement a lancé le 22 janvier 2019 <a href="https://granddebat.fr">granddebat.fr</a>, un site internet permettant aux citoyens de s’exprimer sur quatre thèmes déclinés en près de 100 questions.
 				</li>
 				<li>
-					La lecture de nombreuses contributions nous a convaincus que l’intelligence artificielle seule ne parviendrait pas à restituer fidèlement les idées, opinions et sentiments exprimés par ceux qui ont participé au débat. 
+					La lecture de nombreuses contributions nous a convaincus que l’intelligence artificielle seule ne parviendrait pas à restituer fidèlement les idées, opinions et sentiments exprimés par ceux qui ont participé au débat.
                 </li>
 				<li>
 					Nous sommes aussi convaincus que les citoyens peuvent collectivement réaliser une synthèse de ce débat en adoptant une démarche transparente et ouverte.
@@ -30,12 +30,17 @@
 				<li>
 					Nous sommes un petit groupe de citoyens bénévoles, chercheurs, datascientists, développeurs, militants du libre. Nous ne sommes associés à aucun parti politique, syndicat ou lobby dans le cadre de ce projet. Certains d’entre nous ont contribué au débat, d’autres non. Nous sommes convaincus de l’importance d’un traitement transparent des contributions par la société civile.
 				</li>
+                <li>
+                    Nous n'avons aucun lien avec les prestataires sélectionnés par le Gouvernement pour mener l'analyse officielle des contributions de granddebat.fr.
+                </li>
 				<li>
 					Nous sommes soutenus par l'association <a href="https://codefor.fr/">Code for France</a>.
 				</li>
 			</ul>
 			<h4>Pourquoi n'avez-vous pas recours à une analyse automatisée ?</h4>
             <ul>
+                <li>Tout d'abord, les contributeurs de granddebat.fr n'ont pas écrit leurs réponses pour qu'elles soient lues par des machines. Nous pensons que la lecture en elle-même, par des humains, sur un thème ou des questions particulières, est riche d'enseignements.</li>
+                <li>Certaines contributions, bien que porteuses de sens, risquent d'être écartées par une machine si elles ne contiennent pas les mots-clés attendus, alors qu'un humain peut comprendre à quoi elles se réfèrent.</li>
                 <li>
 					L'annotation manuelle permet de bénéficier de la finesse de la lecture par un humain et d'éviter de tomber dans des pièges d'interprétation par une machine : négation ou ironie par exemple. Ainsi, à la question <i>En qui faites-vous le plus confiance ?</i>, certains répondent <i>Mon maire. Non, je plaisante. Moi-même</i>.
 				</li>
@@ -43,22 +48,31 @@
 					De plus, la lecture systématique par des humains devrait permettre de mettre en lumière une petite proportion de textes de qualité, contenant une proposition réfléchie et documentée, qui pourra être transmise aux administrations concernées.
 				</li>
 				<li>
-					Enfin, les deux approches (manuelle et automatisée) ne sont pas incompatibles mais complémentaires. Disposer d'un corpus annoté pourrait permettre d’améliorer les analyses automatisées dans un second temps.
+					Enfin, les deux approches (manuelle et automatisée) ne sont pas nécessairement incompatibles.
+                    Disposer d'un corpus annoté est quasiment toujours un pré-requis pour ceux qui souhaiteraient
+                    entraîner des modèles dits "d'intelligence artificielle".
 				</li>
 			</ul>
 			<h4>Mais … la tâche est pharaonique, non ?</h4>
             <ul>
                 <li>
-					En effet, il y a au 6 février près de 200 000 contributions individuelles au Grand débat correspondant à deux millions de réponses et cela pourrait doubler d’ici la fin du débat. 				
+					En effet, il y a au 6 février près de 190 000 contributions individuelles au Grand débat,
+                    correspondant à 1,5 million de morceaux de textes de réponses uniques.
+                    Il devrait y en avoir 2,5 millions d'ici la mi-mars.
 				</li>
 				<li>
-					D’après nos premières mesures, si 5 000 personnes consacrent 5 minutes par jour pendant 20 jours, la base entière est annotée.
+					D’après nos premières mesures, si 5 000 personnes consacrent 5 à 10 minutes par jour à ce projet
+                    pendant 20 jours, la base entière pourrait être annotée. Tout le monde peut participer.
 				</li>
 				<li>
-					Au pire, nous n’annoterons pas toute la base et ce travail sera tout de même très utile puisqu’il fiabilisera les analyses faites avec des méthodes d’intelligence artificielle. Une analyse de 20% de la base est déjà hautement significative puisque les contributions sont choisies aléatoirement.
+					Au pire, nous n’annoterons pas toute la base et ce travail sera tout de même très utile.
+                    Une analyse de 20% de la base est déjà hautement significative puisque les contributions
+                    sont choisies aléatoirement.
 				</li>
 				<li>
-					Nous avons conçu la plateforme pour que vous puissiez annoter les contributions en attendant les transports en commun ou un ami en retard sur votre téléphone, depuis votre canapé sur votre ordinateur, au rythme qui vous convient.
+					Nous avons conçu la plateforme pour que vous puissiez annoter les contributions en attendant les
+                    transports en commun ou un ami en retard sur votre téléphone,
+                    depuis votre canapé sur votre ordinateur, au rythme qui vous convient.
 				</li>
 			</ul>
 			<h4>Comment sont choisies les catégories proposées par défaut ?</h4>
@@ -88,8 +102,13 @@
 					Les annotations saisies ici sont elles aussi progressivement ouvertes et téléchargeables dans la page <a href="/data">données ouvertes</a>.
 				</li>
 				<li>
-					Le code source de la plateforme est disponible sur <a href="https://github.com/fm89/granddebat">github</a>. Vous pouvez y contribuer, par exemple en proposant vos idées ou des modifications (<a href="https://github.com/fm89/granddebat/issues">issues</a> et <a href="https://github.com/fm89/granddebat/pulls">pull requests</a>). 
+					Le code source de la plateforme est disponible sur <a href="https://github.com/fm89/granddebat">GitHub</a>. Vous pouvez y contribuer, par exemple en proposant vos idées ou des modifications (<a href="https://github.com/fm89/granddebat/issues">issues</a> et <a href="https://github.com/fm89/granddebat/pulls">pull requests</a>).
 				</li>
+			</ul>
+			<h4>Comment nous contacter ?</h4>
+			<ul>
+				<li>Vous pouvez proposer vos idées pour améliorer la plateforme ou la démarche sur le répertoire <a href="https://github.com/fm89/granddebat">GitHub</a> qui héberge le code source de cette plateforme.</li>
+                <li>Pour toute autre question, vous pouvez aussi écrire à notre équipe par l'adresse courriel Gmail "grandeannotation".</li>
 			</ul>
         </div>
     </div>

@@ -76,7 +76,7 @@
                         Plateforme d'annotation collaborative citoyenne des contributions au grand débat
                     </p>
                     <p>
-                        Déjà <b>{{ $actions_count }} annotations</b> réalisées par <b>{{ $users_count }} bénévoles</b>
+                        Déjà <b>{{ $actions_count }} annotations</b> réalisées par <b>{{ $users_count }} humains</b>
                     </p>
                     <p>
                         Donnons du sens au débat !
@@ -100,18 +100,15 @@
             <div class="col-lg-4">
                 <div class="px-4 py-5">
                     <h4><img src="/favicon-16x16.png" alt="tag"/> Pourquoi ?</h4>
-                    <p>Parce que la société civile doit elle aussi réaliser une synthèse de ce débat, en adoptant une
-                        démarche collaborative et transparente.</p>
-                    <p>Nous pensons que l'intelligence artificielle seule n'est pas la solution.</p>
+                    <p>Parce que la société civile peut elle aussi réaliser une synthèse de ce débat, en adoptant une démarche collaborative et transparente.</p>
+                    <p>Nous pensons que l'intelligence artificielle seule ne vaut pas la lecture humaine.</p>
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="px-4 py-5">
                     <h4><img src="/favicon-16x16.png" alt="tag"/> Qui sommes-nous ?</h4>
-                    <p>Un groupe de citoyens indépendants et bénévoles, chercheurs, datascientists, développeurs.</p>
-                    <p>Nous militons pour l'ouverture des données et des codes publics.
-                        Ce projet est soutenu par l'association
-                        <a href="https://codefor.fr/">Code for France</a>.</p>
+                    <p>Des citoyens indépendants et bénévoles, chercheurs, datascientists, développeurs, militant pour l'ouverture des données et des codes publics.</p>
+                    <p>Ce projet est soutenu par l'association <a href="https://codefor.fr/">Code for France</a>.</p>
                 </div>
             </div>
             <div class="col-lg-4">
