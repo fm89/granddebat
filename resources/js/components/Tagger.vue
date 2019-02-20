@@ -54,28 +54,29 @@
                 </blockquote>
                 <br/>
                 <div v-if="canTagQuestion()">
-                    <toggle-button v-for="(tag, index) in tags" :tag="tag" :key="index" @tagToggled="onTagToggled(tag.id)"></toggle-button>
+                    <toggle-button v-for="(tag, index) in tags" :tag="tag" :key="index"
+                                   @tagToggled="onTagToggled(tag.id)"></toggle-button>
                     <button class="btn btn-light create-btn" data-toggle="modal" data-target="#modalCreate"
-                       :disabled="user == null">
-                        <i class="fa fa-plus"></i> Créer
+                            :disabled="user == null || loading">
+                        <i class="fa fa-plus"></i>
+                        <span>Créer</span>
                     </button>
                     <br/><br/>
-                    <button v-if="user != null || demo" class="btn btn-primary mybtn" @click="send('save')" :disabled="tagIds().length == 0">
-                        <i class="fa fa-check"></i>
-                        <span class="d-none d-sm-inline">Valider</span>
-                    </button>
-                    <button v-if="user != null || demo" class="btn btn-secondary mybtn" @click="send('noanswer')" :disabled="tagIds().length > 0">
-                        <i class="fa fa-times-circle"></i>
-                        <span class="d-none d-sm-inline">Sans réponse</span>
-                    </button>
-                    <button v-if="showBulb()" class="btn btn-warning mybtn" @click="send('lightbulb')">
-                        <i class="fa fa-lightbulb"></i>
-                        <span class="d-none d-sm-inline">Marquer l'idée</span>
-                    </button>
-                    <button v-if="!demo" class="btn btn-light mybtn" @click="loadNext()" style="float: right;">
-                        <i class="fa fa-step-forward"></i>
-                        <span class="d-none d-sm-inline">{{ user == null ? 'Lire une autre' : 'Passer' }}</span>
-                    </button>
+                    <action-button v-if="user != null || demo" @clicked="sendSave"
+                                   :disabled="tagIds().length == 0 || loading"
+                                   :btnClass="'btn-primary'" :iconClass="'fa-check'" :text="'Valider'"></action-button>
+                    <action-button v-if="user != null || demo" @clicked="sendNoanswer"
+                                   :disabled="tagIds().length > 0 || loading"
+                                   :btnClass="'btn-secondary'" :iconClass="'fa-times-circle'"
+                                   :text="'Sans réponse'"></action-button>
+                    <action-button v-if="showBulb()" @clicked="sendLightbulb"
+                                   :disabled="loading"
+                                   :btnClass="'btn-warning'" :iconClass="'fa-lightbulb'"
+                                   :text="'Marquer l\'idée'"></action-button>
+                    <action-button v-if="!demo" @clicked="loadNext"
+                                   :disabled="loading" :style="'float: right;'"
+                                   :btnClass="'btn-light'" :iconClass="'fa-step-forward'"
+                                   :text="user == null ? 'Lire une autre' : 'Passer'"></action-button>
                 </div>
                 <div v-if="!canTagQuestion()">
                     <div v-if="isPreparing()" class="alert alert-warning">
@@ -92,14 +93,15 @@
                         de {{ question.minimal_score }} annotations réalisées. Pour cela, vous pouvez vous faire
                         la main sur <a href="/random">des questions plus faciles</a>.
                     </div>
-                    <a class="btn btn-light" @click="loadNext()" style="float: right;">
-                        <i class="fa fa-btn fa-step-forward"></i>
-                        <div class="d-none d-sm-inline">Lire une autre</div>
-                    </a>
+                    <action-button @clicked="loadNext"
+                                   :disabled="loading" :style="'float: right;'"
+                                   :btnClass="'btn-light'" :iconClass="'fa-step-forward'"
+                                   :text="'Lire une autre'"></action-button>
                 </div>
             </div>
         </div>
-        <modal-create-tag :question="question" :can-bulb="showBulb()" :question-score="getQuestionScore()" :can-create="canCreateTag()" @tagCreated="onTagCreated"></modal-create-tag>
+        <modal-create-tag :question="question" :can-bulb="showBulb()" :question-score="getQuestionScore()"
+                          :can-create="canCreateTag()" @tagCreated="onTagCreated"></modal-create-tag>
     </div>
 </template>
 
@@ -113,6 +115,7 @@
                 response: this.initialResponse,
                 previousResponse: this.initialPreviousResponse,
                 level: [0, 'info', 'Piou Piou'],
+                loading: false,
             }
         },
         props: {
@@ -221,11 +224,24 @@
                 });
                 return result;
             },
+            async sendSave(callback) {
+                await this.send('save');
+                callback();
+            },
+            async sendNoanswer(callback) {
+                await this.send('noanswer');
+                callback();
+            },
+            async sendLightbulb(callback) {
+                await this.send('lightbulb');
+                callback();
+            },
             async send(message) {
                 if (this.demo && this.user == null) {
                     window.location = '/register?demo=true';
                     return;
                 }
+                this.loading = true;
                 let result = await $.ajax({
                     url: '/api/responses',
                     type: 'POST',
@@ -245,14 +261,16 @@
                 this.level = result.level;
                 $('#myScore')[0].className = 'badge badge-pill badge-' + result.level[1];
                 $('#myScore')[0].innerHTML = '' + result.scores.total + ' - ' + result.level[2];
+                this.loading = false;
                 if (this.demo) {
                     window.location = '/questions/' + this.question.id + '/read';
                     return;
                 }
                 this.resetScreen();
             },
-            async loadNext() {
+            async loadNext(callback) {
                 // Retrieve next response data
+                this.loading = true;
                 let result = await $.ajax({
                     url: '/api/questions/' + this.question.id + '/next',
                     type: 'GET',
@@ -261,6 +279,8 @@
                 this.key = result.key;
                 this.previousResponse = result.previousResponse;
                 this.response = result.response;
+                this.loading = false;
+                callback();
                 this.resetScreen();
             },
             resetScreen() {
@@ -282,39 +302,39 @@
 
 <style>
     @keyframes example1 {
-        from {opacity: 0;}
-        to {opacity: 1;}
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
     }
+
     @keyframes example2 {
-        from {opacity: 0;}
-        to {opacity: 1;}
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
     }
+
     .quote1 {
         animation-name: example1;
         animation-duration: 1s;
     }
+
     .quote2 {
         animation-name: example2;
         animation-duration: 1s;
     }
-    .mybtn {
-        padding: 8px 14px;
-    }
-    @media only screen
-    and (max-width : 576px) {
-        .mybtn {
-            padding: 12px 18px;
-        }
-    }
+
     .quotation {
         margin: 5px;
     }
+
     .create-btn {
         margin-right: 10px;
         margin-bottom: 10px;
-    }
-    .mybtn > .fa {
-        font-size: 1.33em;
-        vertical-align: -10%;
     }
 </style>
