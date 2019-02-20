@@ -11,7 +11,7 @@
             @auth
                 Actuellement, vous êtes <b>{{ $level[2] }}</b>
                 car vous avez annoté <b>{{ $user->scores['total'] . ($user->scores['total'] > 1 ? ' textes' : ' texte') }}</b>.
-                Pour continuer à progresser, <a href="/questions/{{ $question->id }}/read">c'est par ici</a>.
+                Pour continuer à progresser, <a href="/random">c'est par ici</a>.
             @else
                 <a href="/register">Créez un compte</a> ou <a href="/login">connectez-vous</a> pour commencer à gravir
                 les échelons.

@@ -18,9 +18,15 @@
                             <td>
                                 <a href="/questions/{{ $question->id }}/read">{{ $question->text }}</a>
                                 @if ($question->status == 'open')
-                                    <span class="badge badge-primary badge-pill">Ouvert aux annotations</span>
                                     @auth
-                                        <span class="badge badge-pill badge-primary">{{ $user->scores['questions'][$question->id] ?? 0 }}</span>
+                                        @if ($user->scores['total'] >= $question->minimal_score)
+                                            <span class="badge badge-primary badge-pill">Ouvert aux annotations</span>
+                                            <span class="badge badge-pill badge-primary">{{ $user->scores['questions'][$question->id] ?? 0 }}</span>
+                                        @else
+                                            <span class="badge badge-secondary badge-pill">Score requis : {{ $question->minimal_score }}</span>
+                                        @endif
+                                    @else
+                                        <span class="badge badge-primary badge-pill">Ouvert aux annotations</span>
                                     @endauth
                                 @else
                                     <span class="badge badge-secondary badge-pill">En préparation</span>
@@ -32,11 +38,13 @@
                                 @endif
                             </td>
                             <td>
-                                @if ($question->status == 'open' || ($user != null && $user->role == 'admin'))
-                                    <a href="/questions/{{ $question->id }}">
-                                        <i class="fa fa-btn fa-pen"></i>
-                                    </a>
-                                @endif
+                                @auth
+                                    @if (($question->status == 'open' && $user->scores['total'] >= $question->minimal_score) || ($user->role == 'admin'))
+                                        <a href="/questions/{{ $question->id }}">
+                                            <i class="fa fa-btn fa-pen"></i>
+                                        </a>
+                                    @endif
+                                @endauth
                             </td>
                         @else
                             <td>

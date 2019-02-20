@@ -40,7 +40,7 @@ class ResponseController extends Controller
             abort(404);
         }
         $question = $response->question;
-        if ($question->status != 'open' && $user->role != 'admin') {
+        if (($user->role != 'admin') && (($question->status != 'open') || ($user->scores['total'] < $question->minimal_score))) {
             abort(403);
         }
         $tag_ids = [];

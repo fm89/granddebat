@@ -33,7 +33,7 @@
                     <th>Prochain objectif</th>
                     <td>
                         Plus que {{ $user->todoForNextLevel() }} avant le prochain badge. Courage !
-                        <a href="/responses/{{ $next_response->id }}">C'est parti !</a>
+                        <a href="/random">C'est parti !</a>
                     </td>
                 </tr>
                 </tbody>

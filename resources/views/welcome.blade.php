@@ -83,9 +83,9 @@
                     </p>
                     <br/>
                     @auth
-                        <a class="btn btn-primary" href="/questions/{{ $random_question->id }}/read">
+                        <a class="btn btn-primary" href="/random">
                             <i class="fa fa-btn fa-play"></i>
-                            Reprendre la lecture
+                            Reprendre au hasard
                         </a>
                     @endauth
                 </div>

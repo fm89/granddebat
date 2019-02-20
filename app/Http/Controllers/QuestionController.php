@@ -27,7 +27,10 @@ class QuestionController extends Controller
     {
         if ($question->is_free) {
             $user = $request->user();
-            if ($question->status !== 'open' && ($user == null || $user->role != 'admin')) {
+            if ($user == null) {
+                abort(403);
+            }
+            if (($user->role != 'admin') && ($question->status == 'preparing' || $user->scores['total'] < $question->minimal_score)) {
                 abort(403);
             }
             $tags = $this->tagRepository->getTagsForQuestionUser($question, $user);

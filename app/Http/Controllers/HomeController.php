@@ -31,14 +31,19 @@ class HomeController extends Controller
         $actions_count = Action::count();
         $users_count = User::count();
         $question = Question::find(166);
-        $random_question = $this->questionRepository->randomQuestion();
         $user = $request->user();
         $response = $this->responseRepository->randomResponse($question);
         $tags = $this->tagRepository->getTagsForQuestionUser($question, $user)->map(function ($tag) {
             return ['id' => $tag->id, 'name' => $tag->name, 'checked' => false];
         });
         $key = Crypt::encrypt(['user_id' => $user->id ?? null, 'response_id' => $response->id]);
-        return view('welcome', compact('actions_count', 'users_count', 'question', 'random_question', 'response', 'key', 'tags', 'user'));
+        return view('welcome', compact('actions_count', 'users_count', 'question', 'response', 'key', 'tags', 'user'));
+    }
+
+    public function random(Request $request)
+    {
+        $question = $this->questionRepository->randomQuestion($request->user());
+        return redirect('/questions/' . $question->id . '/read');
     }
 
     public function data()
@@ -66,14 +71,12 @@ class HomeController extends Controller
         $user = $request->user();
         $level = $user == null ? null : $user->level();
         $levels = Levels::levels();
-        $question = $this->questionRepository->randomQuestion();
-        return view('levels', compact('user', 'level', 'levels', 'question'));
+        return view('levels', compact('user', 'level', 'levels'));
     }
 
     public function index()
     {
         $debates = Debate::orderBy('id')->get();
-        $question = $this->questionRepository->randomQuestion();
-        return view('home', compact('debates', 'question'));
+        return view('home', compact('debates'));
     }
 }

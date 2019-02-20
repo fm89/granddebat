@@ -17,9 +17,9 @@
                 </p>
                 <br/>
                 <div class="d-flex justify-content-center">
-                    <a class="btn btn-primary" href="/questions/{{ $question->id }}/read">
+                    <a class="btn btn-primary" href="/random">
                         <i class="fa fa-btn fa-play"></i>
-                        Démarrer la lecture
+                        Démarrer au hasard
                     </a>
                 </div>
                 <br/>

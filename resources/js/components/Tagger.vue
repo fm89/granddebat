@@ -53,7 +53,7 @@
                     </footer>
                 </blockquote>
                 <br/>
-                <div v-if="(question.status === 'open') || (user !== null && user.role === 'admin')">
+                <div v-if="canTagQuestion()">
                     <toggle-button v-for="(tag, index) in tags" :tag="tag" :key="index" @tagToggled="onTagToggled(tag.id)"></toggle-button>
                     <button class="btn btn-light create-btn" data-toggle="modal" data-target="#modalCreate"
                        :disabled="user == null">
@@ -77,16 +77,24 @@
                         <span class="d-none d-sm-inline">{{ user == null ? 'Lire une autre' : 'Passer' }}</span>
                     </button>
                 </div>
-                <div v-else>
-                    <div class="alert alert-warning">
+                <div v-if="!canTagQuestion()">
+                    <div v-if="isPreparing()" class="alert alert-warning">
                         Les catégories par défaut pour cette question sont actuellement en cours de préparation.
                         Il n'est donc pas possible de participer à l'annotation des textes pour le moment.
                         Vous pouvez continuer à lire des réponses aléatoires en cliquant sur "Suivante" ou
                         en apprendre plus sur le processus de création des catégories dans la <a href="/faq">FAQ</a>.
+                        En attendant, allez-donc vous faire la main sur les <a href="/random">questions ouvertes</a>.
+                    </div>
+                    <div v-if="!isPreparing() && isTooHard()" class="alert alert-warning">
+                        Les réponses à cette question ou les catégories associées sont parfois difficiles à
+                        interpréter et nécessitent d'avoir un peu d'expérience avec la plateforme.
+                        Nous vous conseillons de ne venir travailler sur cette question qu'à partir d'un score
+                        de {{ question.minimal_score }} annotations réalisées. Pour cela, vous pouvez vous faire
+                        la main sur <a href="/random">des questions plus faciles</a>.
                     </div>
                     <a class="btn btn-light" @click="loadNext()" style="float: right;">
                         <i class="fa fa-btn fa-step-forward"></i>
-                        <div class="d-none d-sm-inline">Suivante</div>
+                        <div class="d-none d-sm-inline">Lire une autre</div>
                     </a>
                 </div>
             </div>
@@ -151,6 +159,18 @@
                 }
                 return this.getQuestionScore() >= 50;
             },
+            score() {
+                return this.user == null ? 0 : this.user.scores.total;
+            },
+            canTagQuestion() {
+                return (this.question.status === 'open' && this.score() >= this.question.minimal_score) || (this.user !== null && this.user.role === 'admin')
+            },
+            isPreparing() {
+                return this.question.status === 'preparing';
+            },
+            isTooHard() {
+                return this.score() < this.question.minimal_score;
+            },
             getQuestionScore() {
                 if (this.user == null) {
                     return 0;
@@ -178,7 +198,7 @@
                 return (!this.demo) && this.showBulb() && (this.user.scores.total < 60);
             },
             showWarningAccount() {
-                return (!this.demo) && (this.user == null) && (this.question.status === 'open');
+                return (!this.demo) && (this.user == null) && (this.question.status === 'open') && (this.question.minimal_score == 0);
             },
             onTagToggled(tagId) {
                 $.each(this.tags, function (index, tag) {
