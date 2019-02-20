@@ -79,8 +79,8 @@ class DumpActions extends Command
     {
         $zip = new \ZipArchive();
         $zip->open($fileName . '.zip', \ZipArchive::CREATE);
-        $zip->addFile('public/data/LICENSE.txt', 'LICENSE.txt');
-        $zip->addFile('public/data/README.txt', 'README.txt');
+        $zip->addFile('public/resources/LICENSE.txt', 'LICENSE.txt');
+        $zip->addFile('public/resources/README.txt', 'README.txt');
         $zip->addFile($fileName . '.csv', 'actions.csv');
         $zip->close();
     }
