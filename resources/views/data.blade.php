@@ -42,6 +42,27 @@
                 </tr>
                 </tbody>
             </table>
+            <div class="alert alert-danger">
+                <b>Attention !</b> Par souci de transparence, nous tenons à publier ici les données brutes de toutes les
+                annotations saisies dans la plateforme. Néanmoins, nous insistons sur le fait qu'il s'agit de données
+                non retraitées qu'il convient de prendre avec prudence. En particulier, elles contiennent :
+                <ul>
+                    <li>des tentatives de manipulation frauduleuse de la plateforme
+                        (du type, "je clique toujours sur le même bouton" ou "je clique aléatoirement"),</li>
+                    <li>des erreurs de saisies, même par les annoteurs vertueux
+                        (clic qui dérape, clic trop rapide),</li>
+                    <li>toutes les annotations, y compris celles qui n'ont pas (ou pas encore) été corroborées
+                        par trois lectures concordantes.</li>
+                </ul>
+                Par ailleurs, lorsqu'une personne réalise une annotation sur un texte fréquent
+                (typiquement, un texte court comme "Santé et éducation", toutes les réponses contenant le texte
+                à l'identique sont automatiquement catégorisées aussi, pour gagner du temps). <br><br>
+                <b>Pour toutes ces raisons, il ne faut surtout pas faire d'analyse quantitative du fichier brut avant
+                d'avoir procédé à un profond nettoyage de données (détection de fraude, recherche des lectures
+                    concordantes, redressement des réponses fréquentes).</b><br><br>
+                Nous rendrons progressivement disponibles de propositions de scripts de retraitement.
+                Vous pouvez nous contacter (voir la <a href="/faq">FAQ</a>).
+            </div>
             <h4>Téléchargement</h4>
             <p>
                 Le fichier d'export est mis à jour automatiquement chaque nuit. Il n'est pas mis à jour en cours de
