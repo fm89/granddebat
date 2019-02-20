@@ -38,7 +38,7 @@ class DumpActions extends Command
      */
     public function handle()
     {
-        $fileName = 'storage/app/public/actions' . date("Ymd");
+        $fileName = 'storage/app/public/actions';
         $this->generateCsvDump($fileName);
         $this->generateArchive($fileName);
     }

@@ -25,8 +25,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('command:dump_actions')->dailyAt('00:05');
-        $schedule->command('command:cache_scores')->dailyAt('00:05');
+        $schedule->command('command:dump_actions')->dailyAt('03:00');
+        $schedule->command('command:cache_scores')->dailyAt('03:00');
     }
 
     /**

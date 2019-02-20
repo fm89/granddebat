@@ -53,7 +53,7 @@ class HomeController extends Controller
 
     public function download()
     {
-        return response()->download(storage_path("app/public/actions" . date("Ymd") . ".zip"));
+        return response()->download(storage_path("app/public/actions.zip"));
     }
 
     public function faq()
