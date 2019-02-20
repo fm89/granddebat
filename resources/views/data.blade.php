@@ -55,12 +55,16 @@
                         par trois lectures concordantes.</li>
                 </ul>
                 Par ailleurs, lorsqu'une personne réalise une annotation sur un texte fréquent
-                (typiquement, un texte court comme "Santé et éducation", toutes les réponses contenant le texte
-                à l'identique sont automatiquement catégorisées aussi, pour gagner du temps). <br><br>
+                (typiquement, un texte court comme "Santé et éducation"), toutes les réponses contenant le texte
+                à l'identique sont automatiquement catégorisées aussi, pour gagner du temps à tous. <br><br>
                 <b>Pour toutes ces raisons, il ne faut surtout pas faire d'analyse quantitative du fichier brut avant
                 d'avoir procédé à un profond nettoyage de données (détection de fraude, recherche des lectures
-                    concordantes, redressement des réponses fréquentes).</b><br><br>
-                Nous rendrons progressivement disponibles de propositions de scripts de retraitement.
+                    concordantes, redressement des réponses fréquentes).</b>
+                Un simple décompte des libellés les plus fréquents dans le fichier
+                ci-joint aboutira mécaniquement à des biais statistiques majeurs, comme la
+                sur-représentation des annotations posées sur des textes courts.
+                <br><br>
+                Nous rendrons progressivement disponibles des propositions de scripts de retraitement.
                 Vous pouvez nous contacter (voir la <a href="/faq">FAQ</a>).
             </div>
             <h4>Téléchargement</h4>
@@ -71,7 +75,7 @@
             <div class="d-flex justify-content-center">
                 <a class="btn btn-primary" href="/download">
                     <i class="fa fa-btn fa-table"></i>
-                    Télécharger l'export CSV
+                    Télécharger l'export brut
                 </a>
             </div>
         </div>

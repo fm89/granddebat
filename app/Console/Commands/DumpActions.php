@@ -38,7 +38,14 @@ class DumpActions extends Command
      */
     public function handle()
     {
-        $handle = fopen('storage/app/public/actions' . date("Ymd") . '.csv', 'w');
+        $fileName = 'storage/app/public/actions' . date("Ymd");
+        $this->generateCsvDump($fileName);
+        $this->generateArchive($fileName);
+    }
+
+    private function generateCsvDump($fileName)
+    {
+        $handle = fopen($fileName . '.csv', 'w');
         fputcsv($handle, ["Debat", "Contribution", "Question", "Categorie", "Annoteur"]);
         DB::table('actions')
             ->join('tags', 'tags.id', 'actions.tag_id')
@@ -53,12 +60,28 @@ class DumpActions extends Command
             ->orderBy('questions.debate_id')
             ->orderBy('actions.response_id')
             ->orderBy('tags.name')
-            ->chunk(1000, function ($actions) use ($handle) {
+            ->chunk(10000, function ($actions) use ($handle) {
                 foreach ($actions as $fields) {
                     fputcsv($handle,
-                        [$fields->debate_id, $fields->proposal_id, $fields->question_id, $fields->name, $fields->user_id]);
+                        [
+                            $fields->debate_id,
+                            $fields->proposal_id,
+                            $fields->question_id,
+                            $fields->name,
+                            $fields->user_id
+                        ]);
                 }
             });
         fclose($handle);
+    }
+
+    private function generateArchive($fileName)
+    {
+        $zip = new \ZipArchive();
+        $zip->open($fileName . '.zip', \ZipArchive::CREATE);
+        $zip->addFile('public/data/LICENSE.txt', 'LICENSE.txt');
+        $zip->addFile('public/data/README.txt', 'README.txt');
+        $zip->addFile($fileName . '.csv', 'actions.csv');
+        $zip->close();
     }
 }
