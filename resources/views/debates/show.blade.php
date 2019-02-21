@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="card mb-3">
-        <div class="card-header">Débat <i>{{ $debate->name }}</i></div>
+        <div class="card-header">Thème <i>{{ $debate->name }}</i></div>
         <div class="card-body">
             <table class="table table-hover">
                 <thead>

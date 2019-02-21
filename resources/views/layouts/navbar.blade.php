@@ -12,7 +12,7 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/home') }}">Débats</a>
+                    <a class="nav-link" href="{{ url('/home') }}">Thèmes</a>
                 </li>
             </ul>
             @auth

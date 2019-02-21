@@ -15,10 +15,10 @@
             </p>
         </div>
         <div v-if="showEasyHelp()" class="alert alert-info mb-3">
-            <p>Lisez l'intitulé de la question et la réponse apportée par un contributeur ci-dessous.</p>
-            <p>Déterminez la ou les catégories qui correspondent le mieux au texte. Cochez-les puis validez.</p>
-            <p>Si le texte vous semble hors sujet ou ne pas contenir de réponse à la question, cliquez sur la croix
-                grise.</p>
+            <p>1. Lisez l'intitulé de la question et la réponse apportée par un contributeur ci-dessous.</p>
+            <p>2. Déterminez la ou les catégories qui correspondent le mieux au texte. Cochez-les puis validez.</p>
+            <p>3. Si le texte vous semble hors sujet ou ne pas contenir de réponse à la question, cliquez sur la croix grise.</p>
+            <p><b>Il ne s'agit pas de juger de l'utilité, de la faisabilité ou de la valeur des idées ou des opinions exprimées, mais uniquement de les classifier.</b></p>
         </div>
         <div v-if="showBulbHelp()" class="alert alert-warning mb-3">
             <p>
@@ -49,7 +49,7 @@
                         <span v-for="line in formattedText()">{{ line }}<br/></span>
                     </p>
                     <footer>
-                        <a :href="'/proposals/' + response.proposal_id">contribution</a>
+                        <a v-if="!demo" target="blank" :href="'/proposals/' + response.proposal_id">contribution source</a>
                     </footer>
                 </blockquote>
                 <br/>

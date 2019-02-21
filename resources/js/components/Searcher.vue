@@ -34,7 +34,7 @@
                     <span v-for='line in splitLines(response)'>{{ line }}<br/></span>
                 </p>
                 <footer>
-                    <a :href="'/proposals/' + response.proposal_id">contribution</a>
+                    <a target="blank" :href="'/proposals/' + response.proposal_id">contribution source</a>
                 </footer>
             </blockquote>
         </div>

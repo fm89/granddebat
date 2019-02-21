@@ -5,15 +5,16 @@
         <div class="card-body">
             <div class="alert alert-info">
                 <p>
-                    Nous catégorisons les textes écrits dans le cadre du grand débat pour faire émerger
-                    les idées les plus répandues et regrouper les réponses similaires.
+                    La consultation du Grand débat national est articulée autour de quatre thèmes officiels.
+                    Chaque thème est sous-divisé en 10 à 30 questions. Certaines sont des questions fermées
+                    (à choix multiples) et donc très faciles à analyser. Nous nous concentrons donc ici sur les
+                    questions ouvertes (à texte libre) pour lesquelles la lecture est indispensable.
                 </p>
                 <p>
-                    Il ne s'agit pas de juger de l'utilité, de la faisabilité ou de la valeur
-                    des idées ou des opinions exprimées.
-                </p>
-                <p>
-                    <b>Aidez-nous en lisant des textes et en leur attribuant des catégories.</b>
+                    Vous pouvez naviguer ici par thème puis par question, ou vous laisser porter au hasard.
+                    Certains thèmes ou questions ne sont pas encore ouverts à l'annotation car le travail
+                    de préparation des catégories par défaut est encore en cours. N'hésitez pas à revenir
+                    régulièrement.
                 </p>
                 <br/>
                 <div class="d-flex justify-content-center">
@@ -27,7 +28,7 @@
             <table class="table table-hover">
                 <thead>
                 <tr>
-                    <th>Intitulé du débat</th>
+                    <th>Intitulé du thème</th>
                     <th>&Eacute;tape</th>
                 </tr>
                 </thead>

@@ -79,6 +79,8 @@
                         Déjà <b>{{ $actions_count }} annotations</b> réalisées par <b>{{ $users_count }} humains</b>
                     </p>
                     <p>
+                        Lisons et catégorisons les textes écrits dans le cadre du grand débat pour faire émerger les idées les plus répandues et regrouper les réponses similaires.
+
                         Donnons du sens au débat !
                     </p>
                     <br/>
@@ -115,9 +117,9 @@
                 <div class="px-4 py-5">
                     <h4><img src="/favicon-16x16.png" alt="tag"/> Comment ?</h4>
                     <p>Lisez des réponses formulées par d'autres aux questions de
-                        <a href="https://granddebat.fr">granddebat.fr</a> et taguez-les.</p>
-                    <p>En 10 minutes par jour, apportez votre pierre à l'édifice. Testez juste en dessous, c'est facile
-                        !</p>
+                        <a href="https://granddebat.fr">granddebat.fr</a> et annotez-les.</p>
+                    <p>En 10 minutes par jour, vous faciliterez les analyses futures.</p>
+                    <p>Testez juste en dessous, c'est facile&nbsp;!</p>
                 </div>
             </div>
         </div>

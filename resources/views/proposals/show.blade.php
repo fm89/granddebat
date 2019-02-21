@@ -3,9 +3,13 @@
 @section('content')
     <div class="card mb-3">
         <div class="card-header">
-            Contribution <i>{{ $proposal->title }}</i>;
+            Intégralité de la contribution intitulée "<i>{{ $proposal->title }}</i>"
         </div>
         <div class="card-body">
+            <div class="alert alert-info">
+                Voici l'ensemble des réponses fournies par un contributeur du site officiel
+                aux questions du thème <b>{{ $debate->name }}</b>.
+            </div>
             @foreach ($responses as $response)
                 <p>
                     <b>{{ $response->question->text }}</b>
@@ -17,7 +21,7 @@
             <br/>
             <a class="btn btn-light" href="/proposals/{{ $next_proposal->id }}" style="float: right;">
                 <i class="fa fa-btn fa-step-forward"></i>
-                Suivante
+                Lire une autre au hasard
             </a>
         </div>
     </div>
