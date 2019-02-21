@@ -17,10 +17,11 @@ class TagController extends Controller
         $this->apiTagController = $apiTagController;
     }
 
-    public function create(Question $question)
+    public function create(Request $request, Question $question)
     {
         $this->authorize('create', [Tag::class, $question]);
-        return view('tags.create', compact('question'));
+        $user = $request->user();
+        return view('tags.create', compact('question', 'user'));
     }
 
     public function store(Question $question, Request $request)
@@ -30,20 +31,22 @@ class TagController extends Controller
         return redirect('questions/' . $question->id);
     }
 
-    public function show(Tag $tag)
+    public function show(Request $request, Tag $tag)
     {
         $responses = Response::whereHas('actions', function ($query) use ($tag) {
             $query->where('tag_id', $tag->id);
         })->inRandomOrder()->limit(20)->get();
         $question = $tag->question;
-        return view('tags.show', compact('tag', 'responses', 'question'));
+        $user = $request->user();
+        return view('tags.show', compact('tag', 'responses', 'question', 'user'));
     }
 
-    public function edit(Tag $tag)
+    public function edit(Request $request, Tag $tag)
     {
         $this->authorize('update', $tag);
         $question = $tag->question;
-        return view('tags.edit', compact('question', 'tag'));
+        $user = $request->user();
+        return view('tags.edit', compact('question', 'tag', 'user'));
     }
 
     public function update(Tag $tag, Request $request)
