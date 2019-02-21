@@ -19,8 +19,8 @@
                 </div>
             </div>
             <br/>
-            <button class="btn btn-primary" @click="search()">
-                <i class="fa fa-search"></i> Rechercher
+            <button class="btn btn-primary" @click="search()" :disabled="loading">
+                <i :class="loading ? 'fa fa-spinner fa-spin' : 'fa fa-search'"></i> Rechercher
             </button>
             <a class="btn btn-primary" :href="downloadLink()">
                 <i class="fa fa-download"></i> Télécharger
@@ -46,6 +46,7 @@
         data() {
             return {
                 min_length: 0,
+                loading: false,
                 total_count: 0,
                 responses: [],
                 tags: this.initialTags,
@@ -93,6 +94,7 @@
                 return '/api/downloads/search/' + query_64;
             },
             async search() {
+                this.loading = true;
                 let result = await $.ajax({
                     url: '/api/responses',
                     type: 'GET',
@@ -106,6 +108,7 @@
                         text: this.text,
                     }
                 });
+                this.loading = false;
                 this.total_count = result.total_count;
                 this.responses = result.samples;
             },
