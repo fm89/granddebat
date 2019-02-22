@@ -76,7 +76,7 @@
                         Plateforme d'annotation collaborative citoyenne des contributions au grand débat
                     </p>
                     <p>
-                        Déjà <b>{{ $actions_count }} annotations</b> réalisées par <b>{{ $users_count }} humains</b>
+                        Déjà <b>{{ $actions_count }} actions</b> réalisées par <b>{{ $users_count }} humains</b>
                     </p>
                     <p>
                         Lisons et catégorisons les textes écrits dans le cadre du grand débat pour faire émerger les idées les plus répandues et regrouper les réponses similaires.

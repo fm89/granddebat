@@ -44,7 +44,7 @@ class RefreshPriorityResponses extends Command
             ->groupBy('responses.clean_value_group_id')
             ->pluck('counts', 'responses.clean_value_group_id');
         // 2. Then untagged responses
-        DB::table('responses')->update(['priority' => 1]);
+        // DB::table('responses')->update(['priority' => 1]);
         foreach ($readings as $clean_value_group_id => $user_count) {
             if ($user_count >= 3) {
                 // 3. And very last, those with already 3 answers

@@ -20,7 +20,7 @@ class AlterQdrAddPriority extends Migration
             $table->integer('priority')->default(0);
         });
         Schema::table('responses', function (Blueprint $table) {
-            $table->integer('priority')->default(0);
+            $table->integer('priority')->default(1);
         });
     }
 

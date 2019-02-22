@@ -34,7 +34,8 @@ class Kernel extends ConsoleKernel
         // Each night
         $schedule->command('command:cache_scores')->dailyAt('02:30');
         $schedule->command('command:dump_actions')->dailyAt('03:00');
-        $schedule->command('command:refresh_priority_responses')->dailyAt('03:30');
+        // Manual
+        // $schedule->command('command:refresh_priority_responses')->dailyAt('03:30');
         // Each hour
         $schedule->command('command:refresh_priority_questions')->hourly();
     }
