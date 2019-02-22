@@ -32,7 +32,7 @@ class HomeController extends Controller
         $users_count = User::count();
         $question = Question::find(166);
         $user = $request->user();
-        $response = $this->responseRepository->randomResponse($question);
+        $response = $this->responseRepository->randomResponse($question, $user);
         $tags = $this->tagRepository->getTagsForQuestionUser($question, $user)->map(function ($tag) {
             return ['id' => $tag->id, 'name' => $tag->name, 'checked' => false];
         });

@@ -2,7 +2,10 @@
 
 namespace App\Console;
 
+use App\Console\Commands\CacheScores;
 use App\Console\Commands\DumpActions;
+use App\Console\Commands\RefreshPriorityQuestions;
+use App\Console\Commands\RefreshPriorityResponses;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -14,7 +17,10 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
+        CacheScores::class,
         DumpActions::class,
+        RefreshPriorityResponses::class,
+        RefreshPriorityQuestions::class,
     ];
 
     /**
@@ -25,8 +31,12 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
+        // Each night
+        $schedule->command('command:cache_scores')->dailyAt('02:30');
         $schedule->command('command:dump_actions')->dailyAt('03:00');
-        $schedule->command('command:cache_scores')->dailyAt('03:00');
+        $schedule->command('command:refresh_priority_responses')->dailyAt('03:30');
+        // Each hour
+        $schedule->command('command:refresh_priority_questions')->hourly();
     }
 
     /**

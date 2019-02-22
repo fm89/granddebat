@@ -4,6 +4,21 @@
     <div class="card mb-3">
         <div class="card-header">Thème <i>{{ $debate->name }}</i></div>
         <div class="card-body">
+            <div class="alert alert-info">
+                <p>
+                    Voici les questions du thème {{ $debate->name }}. Certaines sont des questions fermées
+                    (à choix multiples) et donc très faciles à analyser. Nous nous concentrons donc ici sur les
+                    questions ouvertes (à texte libre) pour lesquelles la lecture est indispensable.
+                </p>
+                <br/>
+                <div class="d-flex justify-content-center">
+                    <a class="btn btn-primary" href="/debates/{{ $debate->id }}/random">
+                        <i class="fa fa-btn fa-play"></i>
+                        Démarrer au hasard
+                    </a>
+                </div>
+                <br/>
+            </div>
             <table class="table table-hover">
                 <thead>
                 <tr>

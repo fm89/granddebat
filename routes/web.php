@@ -21,6 +21,7 @@ Route::get('/levels', 'HomeController@levels');
 Auth::routes();
 
 Route::get('/debates/{debate}', 'DebateController@show');
+Route::get('/debates/{debate}/random', 'DebateController@random');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/proposals/{proposal}', 'ProposalController@show');
 Route::get('/questions/{question}/read', 'QuestionController@read');

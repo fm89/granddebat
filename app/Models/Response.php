@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Response extends Model
 {
     public $timestamps = false;
+    public $fillable = ['priority'];
 
     public function question()
     {

@@ -75,6 +75,8 @@ class ResponseController extends Controller
                 $action->user_id = $user->id;
                 $action->save();
             }
+            $sibling->priority = $sibling->priority - 1;
+            $sibling->save();
         }
         $user->addResponseToScore($question);
         $result = $this->next($request, $question);
@@ -87,7 +89,7 @@ class ResponseController extends Controller
     {
         if ($question->is_free) {
             $user = $request->user();
-            $response = $this->responseRepository->randomResponse($question);
+            $response = $this->responseRepository->randomResponse($question, $user);
             $previousResponse = null;
             if ($question->previous_id != null) {
                 $previousResponse = Response::where('question_id', $question->previous_id)
