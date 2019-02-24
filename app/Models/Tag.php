@@ -21,4 +21,10 @@ class Tag extends Model implements Auditable
     {
         return $this->hasMany(Action::class);
     }
+
+    public function getLabel()
+    {
+        // Remove the first letter which is used to sort tags
+        return preg_replace ('/^[A-Z] /', '', $this->name);
+    }
 }

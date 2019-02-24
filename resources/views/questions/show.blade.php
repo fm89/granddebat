@@ -25,7 +25,7 @@
                 <tbody>
                 @foreach ($tags as $tag)
                     <tr>
-                        <td><a href="/tags/{{ $tag->id }}">{{ $tag->name }}</a></td>
+                        <td><a href="/tags/{{ $tag->id }}">{{ $tag->getLabel() }}</a></td>
                         <td><span class="badge badge-pill badge-secondary">{{ $counts[$tag->id] ?? 0 }}</span></td>
                         <td>
                             {!! Form::open(['url' => '/tags/' . $tag->id, 'method' => 'delete']) !!}

@@ -3,7 +3,7 @@
 @section('content')
     <div class="card mb-3">
         <div class="card-header">
-            Exemples de réponses annotées avec la catégorie <i>{{ $tag->name }}</i>
+            Exemples de réponses annotées avec la catégorie <i>{{ $tag->getLabel() }}</i>
         </div>
         <div class="card-body">
             @foreach ($responses as $response)

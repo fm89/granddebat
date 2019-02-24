@@ -33,9 +33,7 @@ class HomeController extends Controller
         $question = Question::find(166);
         $user = $request->user();
         $response = $this->responseRepository->randomResponse($question, $user);
-        $tags = $this->tagRepository->getTagsForQuestionUser($question, $user)->map(function ($tag) {
-            return ['id' => $tag->id, 'name' => $tag->name, 'checked' => false];
-        });
+        $tags = $this->tagRepository->getJsonTagsForQuestionUser($question, $user);
         $key = Crypt::encrypt(['user_id' => $user->id ?? null, 'response_id' => $response->id]);
         return view('welcome', compact('actions_count', 'users_count', 'question', 'response', 'key', 'tags', 'user'));
     }

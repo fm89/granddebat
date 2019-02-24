@@ -1,5 +1,5 @@
 <template>
-    <span @click="onClick()" :class="getClass()">{{ getLabel() }}</span>
+    <span @click="onClick()" :class="getClass()">{{ tag.label }}</span>
 </template>
 
 <script>
@@ -17,15 +17,6 @@
             onClick() {
                 this.$emit('tagToggled');
             },
-            getLabel() {
-                let regexp = /^[A-Z] (.*)$/g;
-                let matches = regexp.exec(this.tag.name);
-                if (matches != null) {
-                    return matches[1];
-                } else {
-                    return this.tag.name;
-                }
-            }
         },
     }
 </script>

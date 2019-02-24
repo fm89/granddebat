@@ -81,9 +81,7 @@ class QuestionController extends Controller
                 $previous_response = Response::where('question_id', $previous_question->id)
                     ->where('proposal_id', $response->proposal_id)->first();
             }
-            $tags = $this->tagRepository->getTagsForQuestionUser($question, $user)->map(function ($tag) {
-                return ['id' => $tag->id, 'name' => $tag->name, 'checked' => false];
-            });
+            $tags = $this->tagRepository->getJsonTagsForQuestionUser($question, $user);
             $key = ['user_id' => $user->id ?? null, 'response_id' => $response->id];
             $key = Crypt::encrypt($key);
             return view('responses.show', compact('question', 'response', 'key', 'tags', 'previous_question', 'previous_response', 'user'));
@@ -97,9 +95,7 @@ class QuestionController extends Controller
         if (!$question->is_free) {
             return redirect('/questions/' . $question->id);
         }
-        $tags = $this->tagRepository->getTagsForQuestionUser($question, null)->map(function ($tag) {
-            return ['id' => $tag->id, 'name' => $tag->name, 'checked' => false];
-        });
+        $tags = $this->tagRepository->getJsonTagsForQuestionUser($question, null);
         return view('questions.search', compact('question', 'tags'));
     }
 }
