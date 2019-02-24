@@ -75,7 +75,7 @@ class ResponseController extends Controller
                 $action->user_id = $user->id;
                 $action->save();
             }
-            $sibling->priority = $sibling->priority - 1;
+            $sibling->priority = 0;
             $sibling->save();
         }
         $user->addResponseToScore($question);
