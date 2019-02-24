@@ -7,7 +7,8 @@
             </div>
             <div class="form-group">
                 <label for="min_length">Longueur minimale de la réponse ({{ min_length}} caractère(s))</label>
-                <input type="range" class="custom-range" min="0" max="300" step="10" id="min_length" v-model="min_length">
+                <input type="range" class="custom-range" min="0" max="300" step="10" id="min_length"
+                       v-model="min_length">
             </div>
             <div v-if="question.status === 'open'">
                 <div class="form-group">
@@ -28,7 +29,7 @@
         </div>
         <div class="col-lg-7">
             <b>{{ total_count == 0 ? 'Aucune réponse trouvée' : ('' + total_count + (total_count > 1 ? ' réponses trouvées' : ' réponse trouvée'))}}
-            {{ total_count > 100 ? ' (100 au hasard affichées)' : '' }}</b><br/>
+                {{ total_count > 100 ? ' (100 au hasard affichées)' : '' }}</b><br/>
             <blockquote v-for="response in responses">
                 <p class="quotation">
                     <span v-for='line in splitLines(response)'>{{ line }}<br/></span>
@@ -62,6 +63,14 @@
                 type: Array,
                 required: true,
             },
+        },
+        mounted() {
+            let self = this;
+            window.addEventListener('keyup', function (event) {
+                if (event.code === 'Enter') {
+                    self.search();
+                }
+            });
         },
         methods: {
             splitLines(response) {

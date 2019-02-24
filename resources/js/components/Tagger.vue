@@ -62,10 +62,10 @@
                         <span>Créer</span>
                     </button>
                     <br/><br/>
-                    <action-button v-if="user != null || demo" @clicked="sendSave"
+                    <action-button ref="saveButton" v-if="user != null || demo" @clicked="sendSave"
                                    :disabled="tagIds().length == 0 || loading"
                                    :btnClass="'btn-primary'" :iconClass="'fa-check'" :text="'Valider'"></action-button>
-                    <action-button v-if="user != null || demo" @clicked="sendNoanswer"
+                    <action-button ref="noanswerButton" v-if="user != null || demo" @clicked="sendNoanswer"
                                    :disabled="tagIds().length > 0 || loading"
                                    :btnClass="'btn-secondary'" :iconClass="'fa-times-circle'"
                                    :text="'Sans réponse'"></action-button>
@@ -148,6 +148,18 @@
             initialPreviousResponse: {
                 type: Object,
             },
+        },
+        mounted() {
+            let self = this;
+            window.addEventListener('keyup', function (event) {
+                if (event.code === 'Enter' || event.code === 'NumpadEnter') {
+                    if (self.tagIds().length > 0) {
+                        self.$refs.saveButton.onClick();
+                    } else {
+                        self.$refs.noanswerButton.onClick();
+                    }
+                }
+            });
         },
         methods: {
             formattedText() {
