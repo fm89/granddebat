@@ -10,14 +10,16 @@
                     (à choix multiples) et donc très faciles à analyser. Nous nous concentrons donc ici sur les
                     questions ouvertes (à texte libre) pour lesquelles la lecture est indispensable.
                 </p>
-                <br/>
-                <div class="d-flex justify-content-center">
-                    <a class="btn btn-primary" href="/debates/{{ $debate->id }}/random">
-                        <i class="fa fa-btn fa-play"></i>
-                        Démarrer au hasard
-                    </a>
-                </div>
-                <br/>
+                @if ($debate->status == 'open')
+                    <br/>
+                    <div class="d-flex justify-content-center">
+                        <a class="btn btn-primary" href="/debates/{{ $debate->id }}/random">
+                            <i class="fa fa-btn fa-play"></i>
+                            Démarrer au hasard
+                        </a>
+                    </div>
+                    <br/>
+                @endif
             </div>
             <table class="table table-hover">
                 <thead>
