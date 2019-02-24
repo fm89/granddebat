@@ -2,6 +2,9 @@
 
 namespace App\Models;
 
+use App\Logic\Priority;
+use App\User;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Response extends Model
@@ -22,5 +25,50 @@ class Response extends Model
     public function actions()
     {
         return $this->hasMany(Action::class);
+    }
+
+    public function setTags(array $tag_ids, User $user)
+    {
+        $this->deleteOldActions($user);
+        $this->insertNewActions($user, $tag_ids);
+        $this->updatePriority();
+    }
+
+    private function deleteOldActions(User $user)
+    {
+        $clean_value_group_id = $this->clean_value_group_id;
+        Action::where('user_id', $user->id)->whereIn('response_id', function ($query) use ($clean_value_group_id) {
+            $query->select('id')->from('responses')->where('clean_value_group_id', $clean_value_group_id);
+        })->delete();
+    }
+
+    private function insertNewActions(User $user, $tag_ids)
+    {
+        $now = Carbon::now()->toDateTimeString();
+        $response_ids = Response::where('question_id', $this->question_id)
+            ->where('clean_value_group_id', $this->clean_value_group_id)
+            ->pluck('id');
+        $actions = [];
+        foreach ($tag_ids as $tag_id) {
+            foreach ($response_ids as $response_id) {
+                $actions[] = [
+                    'tag_id' => $tag_id,
+                    'user_id' => $user->id,
+                    'response_id' => $response_id,
+                    'created_at' => $now,
+                    'updated_at' => $now,
+                ];
+            }
+        }
+        Action::insert($actions);
+    }
+
+    private function updatePriority()
+    {
+        $priority = Priority::getFor($this);
+        if ($priority != $this->priority) {
+            // Save an update query if the priority has not changed
+            Response::where('clean_value_group_id', $this->clean_value_group_id)->update(['priority' => $priority]);
+        }
     }
 }

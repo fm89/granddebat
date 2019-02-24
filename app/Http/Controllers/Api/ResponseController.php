@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Api;
 
 
 use App\Http\Controllers\Controller;
-use App\Models\Action;
 use App\Models\Question;
 use App\Models\Response;
 use App\Models\Tag;
@@ -61,23 +60,7 @@ class ResponseController extends Controller
                 $tag_ids[] = Tag::ID_NO_ANSWER;
             }
         }
-        // Find all responses having exactly the same text (up to case and accents) to tag them all at once
-        $responses = Response::where('question_id', $question->id)
-            ->where('clean_value_group_id', $response->clean_value_group_id)
-            ->get();
-        foreach ($responses as $sibling) {
-            // Remove old tags by the same user to avoid duplicate tagging
-            $sibling->actions()->where('user_id', $user->id)->delete();
-            foreach ($tag_ids as $tag_id) {
-                $action = new Action();
-                $action->response_id = $sibling->id;
-                $action->tag_id = $tag_id;
-                $action->user_id = $user->id;
-                $action->save();
-            }
-            $sibling->priority = 0;
-            $sibling->save();
-        }
+        $response->setTags($tag_ids, $user);
         $user->addResponseToScore($question);
         $result = $this->next($request, $question);
         $result['scores'] = $user->scores;
