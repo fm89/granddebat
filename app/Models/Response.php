@@ -37,9 +37,13 @@ class Response extends Model
     private function deleteOldActions(User $user)
     {
         $clean_value_group_id = $this->clean_value_group_id;
-        Action::where('user_id', $user->id)->whereIn('response_id', function ($query) use ($clean_value_group_id) {
-            $query->select('id')->from('responses')->where('clean_value_group_id', $clean_value_group_id);
-        })->delete();
+        $question_id = $this->question_id;
+        Action::where('user_id', $user->id)->whereIn('response_id',
+            function ($query) use ($clean_value_group_id, $question_id) {
+                $query->select('id')->from('responses')
+                    ->where('clean_value_group_id', $clean_value_group_id)
+                    ->where('question_id', $question_id);
+            })->delete();
     }
 
     private function insertNewActions(User $user, $tag_ids)
@@ -47,6 +51,7 @@ class Response extends Model
         $now = Carbon::now()->toDateTimeString();
         $response_ids = Response::where('question_id', $this->question_id)
             ->where('clean_value_group_id', $this->clean_value_group_id)
+            ->where('question_id', $this->question_id)
             ->pluck('id');
         $actions = [];
         foreach ($tag_ids as $tag_id) {
