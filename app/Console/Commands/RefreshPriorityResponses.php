@@ -49,7 +49,7 @@ class RefreshPriorityResponses extends Command
 
     private function handleQuestion(Question $question)
     {
-        $responses = Response::with('actions')->where('question_id', $question->id)->whereHas('actions')->get();
+        $responses = Response::where('question_id', $question->id)->whereHas('actions')->get();
         $this->info('Preparing to process ' . count($responses) . ' responses');
         $bar = $this->output->createProgressBar(count($responses));
         $bar->start();

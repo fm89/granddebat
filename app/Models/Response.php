@@ -73,7 +73,9 @@ class Response extends Model
         $priority = Priority::getFor($this);
         if ($priority != $this->priority) {
             // Save an update query if the priority has not changed
-            Response::where('clean_value_group_id', $this->clean_value_group_id)->update(['priority' => $priority]);
+            Response::where('clean_value_group_id', $this->clean_value_group_id)
+                ->where('question_id', $this->question_id)
+                ->update(['priority' => $priority]);
         }
     }
 }
