@@ -72,7 +72,7 @@ class ResponseController extends Controller
     {
         if ($question->is_free) {
             $user = $request->user();
-            $response = $this->responseRepository->randomResponse($question, $user);
+            $response = $this->responseRepository->next($question, $user);
             $previousResponse = null;
             if ($question->previous_id != null) {
                 $previousResponse = Response::where('question_id', $question->previous_id)

@@ -74,7 +74,7 @@ class QuestionController extends Controller
     {
         if ($question->is_free) {
             $user = $request->user();
-            $response = $this->responseRepository->randomResponse($question, $user);
+            $response = $this->responseRepository->next($question, $user);
             $previous_response = null;
             $previous_question = $question->previous;
             if ($previous_question != null) {
