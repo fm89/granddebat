@@ -253,32 +253,37 @@
                     window.location = '/register?demo=true';
                     return;
                 }
-                this.loading = true;
-                let result = await $.ajax({
-                    url: '/api/responses',
-                    type: 'POST',
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    data: {
-                        action: message,
-                        key: this.key,
-                        tags: this.tagIds(),
+                try {
+                    this.loading = true;
+                    let result = await $.ajax({
+                        url: '/api/responses',
+                        type: 'POST',
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        data: {
+                            action: message,
+                            key: this.key,
+                            tags: this.tagIds(),
+                        }
+                    });
+                    this.user.scores = result.scores;
+                    this.key = result.key;
+                    this.previousResponse = result.previousResponse;
+                    this.response = result.response;
+                    this.level = result.level;
+                    $('#myScore')[0].className = 'badge badge-pill badge-' + result.level[1];
+                    $('#myScore')[0].innerHTML = '' + result.scores.total + ' - ' + result.level[2];
+                    this.loading = false;
+                    if (this.demo) {
+                        window.location = '/questions/' + this.question.id + '/read';
+                        return;
                     }
-                });
-                this.user.scores = result.scores;
-                this.key = result.key;
-                this.previousResponse = result.previousResponse;
-                this.response = result.response;
-                this.level = result.level;
-                $('#myScore')[0].className = 'badge badge-pill badge-' + result.level[1];
-                $('#myScore')[0].innerHTML = '' + result.scores.total + ' - ' + result.level[2];
-                this.loading = false;
-                if (this.demo) {
+                    this.resetScreen();
+                } catch (error) {
                     window.location = '/questions/' + this.question.id + '/read';
                     return;
                 }
-                this.resetScreen();
             },
             async loadNext(callback) {
                 // Retrieve next response data
