@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1620.345" height="207.587" viewBox="0 0 1620.345 207.587">
-  <g id="petitlogo" transform="translate(-149.655 -436.079)">
-    <text id="grandeannotation.fr" transform="translate(668 566)" font-size="120" font-family="SegoeUI, Segoe UI"><tspan x="0" y="0">grande</tspan><tspan y="0" font-family="SegoeUI-Bold, Segoe UI" font-weight="700">annotation</tspan><tspan y="0">.fr</tspan></text>
-    <path id="tag-solid" d="M0,97.212v-78.7A18.508,18.508,0,0,1,18.508,0h78.7A18.508,18.508,0,0,1,110.3,5.421l81.7,81.7a18.508,18.508,0,0,1,0,26.174l-78.7,78.7a18.508,18.508,0,0,1-26.174,0l-81.7-81.7A18.508,18.508,0,0,1,0,97.212ZM43.185,24.677A18.508,18.508,0,1,0,61.693,43.185,18.508,18.508,0,0,0,43.185,24.677Z" transform="translate(348.073 437.079) rotate(90)" fill="#003189" stroke="#000" stroke-width="2"/>
-    <path id="tag-solid-2" data-name="tag-solid" d="M0,97.212v-78.7A18.508,18.508,0,0,1,18.508,0h78.7A18.508,18.508,0,0,1,110.3,5.421l81.7,81.7a18.508,18.508,0,0,1,0,26.174l-78.7,78.7a18.508,18.508,0,0,1-26.174,0l-81.7-81.7A18.508,18.508,0,0,1,0,97.212ZM43.185,24.677A18.508,18.508,0,1,0,61.693,43.185,18.508,18.508,0,0,0,43.185,24.677Z" transform="translate(480.961 445.249) rotate(90)" fill="#fff" stroke="#000" stroke-width="2"/>
-    <path id="tag-solid-3" data-name="tag-solid" d="M0,97.212v-78.7A18.508,18.508,0,0,1,18.508,0h78.7A18.508,18.508,0,0,1,110.3,5.421l81.7,81.7a18.508,18.508,0,0,1,0,26.174l-78.7,78.7a18.508,18.508,0,0,1-26.174,0l-81.7-81.7A18.508,18.508,0,0,1,0,97.212ZM43.185,24.677A18.508,18.508,0,1,0,61.693,43.185,18.508,18.508,0,0,0,43.185,24.677Z" transform="translate(622.564 445.249) rotate(90)" fill="#e20100" stroke="#000" stroke-width="2"/>
-  </g>
-</svg>
