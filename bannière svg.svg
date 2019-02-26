@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <defs>
+    <clipPath id="clip-Web_1920_4">
+      <rect width="1920" height="1080"/>
+    </clipPath>
+  </defs>
+  <g id="Web_1920_4" data-name="Web 1920 – 4" clip-path="url(#clip-Web_1920_4)">
+    <rect width="1920" height="1080" fill="#fff"/>
+    <g id="Tracé_2" data-name="Tracé 2" fill="rgba(77,77,77,0.53)">
+      <path d="M 1919.5 1079.5 L 0.5 1079.5 L 0.5 0.5 L 1919.5 0.5 L 1919.5 1079.5 Z" stroke="none"/>
+      <path d="M 1 1 L 1 1079 L 1919 1079 L 1919 1 L 1 1 M 0 0 L 1920 0 L 1920 1080 L 0 1080 L 0 0 Z" stroke="none" fill="#707070"/>
+    </g>
+    <text id="grandeannotation.fr" transform="translate(668 566)" fill="#fff" font-size="120" font-family="SegoeUI, Segoe UI"><tspan x="0" y="0">grande</tspan><tspan y="0" font-family="SegoeUI-Bold, Segoe UI" font-weight="700">annotation</tspan><tspan y="0">.fr</tspan></text>
+    <path id="tag-solid" d="M0,97.212v-78.7A18.508,18.508,0,0,1,18.508,0h78.7A18.508,18.508,0,0,1,110.3,5.421l81.7,81.7a18.508,18.508,0,0,1,0,26.174l-78.7,78.7a18.508,18.508,0,0,1-26.174,0l-81.7-81.7A18.508,18.508,0,0,1,0,97.212ZM43.185,24.677A18.508,18.508,0,1,0,61.693,43.185,18.508,18.508,0,0,0,43.185,24.677Z" transform="translate(348.073 437.079) rotate(90)" fill="#003189"/>
+    <path id="tag-solid-2" data-name="tag-solid" d="M0,97.212v-78.7A18.508,18.508,0,0,1,18.508,0h78.7A18.508,18.508,0,0,1,110.3,5.421l81.7,81.7a18.508,18.508,0,0,1,0,26.174l-78.7,78.7a18.508,18.508,0,0,1-26.174,0l-81.7-81.7A18.508,18.508,0,0,1,0,97.212ZM43.185,24.677A18.508,18.508,0,1,0,61.693,43.185,18.508,18.508,0,0,0,43.185,24.677Z" transform="translate(480.961 445.249) rotate(90)" fill="#fff"/>
+    <path id="tag-solid-3" data-name="tag-solid" d="M0,97.212v-78.7A18.508,18.508,0,0,1,18.508,0h78.7A18.508,18.508,0,0,1,110.3,5.421l81.7,81.7a18.508,18.508,0,0,1,0,26.174l-78.7,78.7a18.508,18.508,0,0,1-26.174,0l-81.7-81.7A18.508,18.508,0,0,1,0,97.212ZM43.185,24.677A18.508,18.508,0,1,0,61.693,43.185,18.508,18.508,0,0,0,43.185,24.677Z" transform="translate(622.564 445.249) rotate(90)" fill="#e20100"/>
+  </g>
+</svg>
