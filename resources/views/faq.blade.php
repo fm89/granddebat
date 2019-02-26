@@ -34,7 +34,7 @@
                     Nous n'avons aucun lien avec les prestataires sélectionnés par le Gouvernement pour mener l'analyse officielle des contributions de granddebat.fr.
                 </li>
 				<li>
-					Nous sommes soutenus par l'association <a href="https://codefor.fr/">Code for France</a>.
+					Ce projet est soutenu par les associations <a href="https://codefor.fr/">Code for France</a> et <a href="https://dataforgood.fr/">Data for Good</a>.
 				</li>
 			</ul>
 			<h4>Pourquoi n'avez-vous pas recours à une analyse automatisée ?</h4>
