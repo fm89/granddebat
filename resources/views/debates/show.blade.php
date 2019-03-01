@@ -22,16 +22,17 @@
                 @endif
             </div>
             <table class="table table-hover">
-                <thead>
-                <tr>
-                    <th>Question</th>
-                    <th></th>
-                </tr>
-                </thead>
                 <tbody>
                 @foreach ($debate->questions()->orderBy('order')->get() as $question)
-                    <tr>
-                        @if ($question->is_free)
+                    @if ($question->status == 'section')
+                        <tr class="table-info">
+                            <td>
+                                <b>{{ $question->text }}</b>
+                            </td>
+                            <td></td>
+                        </tr>
+                    @elseif ($question->is_free)
+                        <tr>
                             <td>
                                 <a href="/questions/{{ $question->id }}/read">{{ $question->text }}</a>
                                 @if ($question->status == 'open')
@@ -63,7 +64,9 @@
                                     @endif
                                 @endauth
                             </td>
-                        @else
+                        </tr>
+                    @else
+                        <tr>
                             <td>
                                 <a href="/questions/{{ $question->id }}/read">
                                     {{ $question->text }}
@@ -72,8 +75,8 @@
                             <td>
                                 <i class="fa fa-icon fa-chart-pie"></i>
                             </td>
-                        @endif
-                    </tr>
+                        </tr>
+                    @endif
                 @endforeach
                 </tbody>
             </table>
