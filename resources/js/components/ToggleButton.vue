@@ -12,7 +12,7 @@
         },
         methods: {
             getClass() {
-                return 'btn tag ' + (this.tag.checked ? 'on' : 'off');
+                return 'btn tag ' + (this.tag.checked ? 'on' : 'off') + ' ' + this.tag.color;
             },
             onClick() {
                 this.$emit('tagToggled');
@@ -36,8 +36,13 @@
     }
 
     .tag.off {
-        background-color: #EAF3F9;
         box-shadow: inset 0.5em 0 #FFF;
+    }
+    .tag.blue.off {
+        background-color: #EAF3F9;
+    }
+    .tag.gray.off {
+        background-color: #EEE;
     }
 
     @media (hover: hover) {

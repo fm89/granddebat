@@ -22,9 +22,20 @@ class Tag extends Model implements Auditable
         return $this->hasMany(Action::class);
     }
 
+    public function toArray()
+    {
+        return [
+            'id' => $this->id,
+            'checked' => false,
+            'color' => $this->color,
+            'label' => $this->getLabel(),
+            'name' => $this->name,
+        ];
+    }
+
     public function getLabel()
     {
         // Remove the first letter which is used to sort tags
-        return preg_replace ('/^[A-Z] /', '', $this->name);
+        return preg_replace('/^[A-Z] /', '', $this->name);
     }
 }
