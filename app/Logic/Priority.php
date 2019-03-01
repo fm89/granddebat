@@ -15,11 +15,11 @@ class Priority
             // Stop tagging if 7 users have given their opinion (whether they agree or not)
             $priority = self::oneTagPresent($actions, $users_count) ? -5 : -1;
         } elseif ($users_count < 3) {
-            // Continue tagging if only 1 or 2 users have given their opinion, with high priority
-            $priority = 10;
+            // Continue tagging if only 1 or 2 users have given their opinion, with low priority
+            $priority = $users_count;
         } else {
             // If 3 to 6 users have given their opinion, continue tagging if we have not settled all tags
-            $priority = (self::allTagsSettled($actions, $users_count) && self::oneTagPresent($actions, $users_count)) ? -10 : 5;
+            $priority = (self::allTagsSettled($actions, $users_count) && self::oneTagPresent($actions, $users_count)) ? -10 : $users_count;
         }
         return $priority;
     }
