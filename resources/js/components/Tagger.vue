@@ -74,7 +74,7 @@
                                    :btnClass="'btn-warning'" :iconClass="'fa-lightbulb'"
                                    :text="'Marquer l\'idée'"></action-button>
                     <action-button v-if="!demo" @clicked="loadNext"
-                                   :disabled="loading" :style="'float: right;'"
+                                   :disabled="tagIds().length > 0 || loading" :style="'float: right;'"
                                    :btnClass="'btn-light'" :iconClass="'fa-step-forward'"
                                    :text="user == null ? 'Lire une autre' : 'Passer'"></action-button>
                 </div>
@@ -153,10 +153,8 @@
             let self = this;
             window.addEventListener('keyup', function (event) {
                 if (event.code === 'Enter' || event.code === 'NumpadEnter') {
-                    if (self.tagIds().length > 0) {
+                    if (self.tagIds().length > 0 && !($('#modalCreate').hasClass('show'))) {
                         self.$refs.saveButton.onClick();
-                    } else {
-                        self.$refs.noanswerButton.onClick();
                     }
                 }
             });
