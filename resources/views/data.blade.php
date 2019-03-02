@@ -37,8 +37,17 @@
                     <td>Libellé de la catégorie affectée au texte de réponse à la question</td>
                 </tr>
                 <tr>
-                    <th>Annoteur</th>
+                    <th>Annotateur</th>
                     <td>Identifiant de l'intervenant ayant apposé la catégorie sur la réponse</td>
+                </tr>
+                <tr>
+                    <th>Poids</th>
+                    <td>
+                        Coefficient multiplicateur recommandé pour le couple (contribution, question) afin de corriger
+                        les biais liés à la sur-représentation des textes fréquents dans le corpus annoté et les biais
+                        liés aux réponses multiples d'un même contributeur à une même question. Pour plus de détails,
+                        <a href="https://github.com/fm89/granddebat/blob/master/doc/MATH.md">voir les explications</a>.
+                    </td>
                 </tr>
                 </tbody>
             </table>

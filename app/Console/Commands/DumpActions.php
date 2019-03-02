@@ -2,6 +2,8 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Debate;
+use App\Models\Response;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 
@@ -46,33 +48,55 @@ class DumpActions extends Command
     private function generateCsvDump($fileName)
     {
         $handle = fopen($fileName . '.csv', 'w');
-        fputcsv($handle, ["Debat", "Contribution", "Question", "Categorie", "Annoteur"]);
+        fputcsv($handle, ["Debat", "Contribution", "Question", "Categorie", "Annotateur", "Poids"]);
+        $debates = Debate::orderBy('id')->get();
+        foreach ($debates as $debate) {
+            $questions = $debate->questions()->where('status', 'open')->orderBy('order')->get();
+            foreach ($questions as $question) {
+                $this->info('Processing question #' . $question->id);
+                $this->dumpQuestion($question, $handle);
+            }
+        }
+        fclose($handle);
+    }
+
+    private function dumpQuestion($question, $handle)
+    {
+        $countAllByAuthor = Response::join('proposals', 'proposals.id', 'responses.proposal_id')
+            ->select('proposals.author_id', DB::raw('COUNT(*) AS counts'))
+            ->where('responses.question_id', $question->id)
+            ->groupBy('proposals.author_id')
+            ->pluck('counts', 'author_id');
+        $weights = $this->computeWeights($question);
+        $debate_id = $question->debate->id;
+        $question_id = $question->id;
         DB::table('actions')
             ->join('tags', 'tags.id', 'actions.tag_id')
             ->join('responses', 'responses.id', 'actions.response_id')
+            ->join('proposals', 'proposals.id', 'responses.proposal_id')
             ->join('questions', 'questions.id', 'responses.question_id')
-            ->select('questions.debate_id',
+            ->select(
+                'proposals.author_id',
+                'responses.clean_value_group_id',
                 DB::raw('CONCAT(questions.debate_id, \'-\', actions.response_id % 1000000) AS "proposal_id"'),
-                DB::raw('actions.response_id / 1000000 AS "question_id"'),
                 'tags.name',
                 'actions.user_id')
-            ->where('questions.status', 'open')
-            ->orderBy('questions.debate_id')
+            ->where('responses.question_id', $question->id)
             ->orderBy('actions.response_id')
             ->orderBy('tags.name')
-            ->chunk(10000, function ($actions) use ($handle) {
+            ->chunk(10000, function ($actions) use ($handle, $debate_id, $question_id, $weights, $countAllByAuthor) {
                 foreach ($actions as $fields) {
                     fputcsv($handle,
                         [
-                            $fields->debate_id,
+                            $debate_id,
                             $fields->proposal_id,
-                            $fields->question_id,
+                            $question_id,
                             $fields->name,
-                            $fields->user_id
+                            $fields->user_id,
+                            $weights[$fields->clean_value_group_id] / $countAllByAuthor[$fields->author_id],
                         ]);
                 }
             });
-        fclose($handle);
     }
 
     private function generateArchive($fileName)
@@ -83,5 +107,45 @@ class DumpActions extends Command
         $zip->addFile('public/resources/README.txt', 'README.txt');
         $zip->addFile($fileName . '.csv', 'actions.csv');
         $zip->close();
+    }
+
+    private function computeWeights($question)
+    {
+        $countAllByGroup = Response::select('clean_value_group_id', DB::raw('COUNT(*) AS counts'))
+            ->groupBy('clean_value_group_id')
+            ->where('question_id', $question->id)
+            ->pluck('counts', 'clean_value_group_id');
+        $countWithActionsByGroup = Response::select('clean_value_group_id', DB::raw('COUNT(*) AS counts'))
+            ->groupBy('clean_value_group_id')
+            ->where('question_id', $question->id)
+            ->whereHas('actions')
+            ->pluck('counts', 'clean_value_group_id');
+        $totalResponses = $question->responses()->count();
+        $singleResponses = $this->countOnes($countAllByGroup);
+        $singleResponsesWithActions = $this->countOnes($countWithActionsByGroup);
+        if ($singleResponsesWithActions < $singleResponses) {
+            # See doc/MATH.md
+            $draws = log(1 - $singleResponsesWithActions / $singleResponses) / log(1 - 1 / $singleResponses) * $totalResponses / $singleResponses;
+        } else {
+            # Infinite number of draws
+            $draws = -1;
+        }
+        $weights = [];
+        foreach ($countWithActionsByGroup as $group_id => $count) {
+            # See doc/MATH.md
+            $weights[$group_id] = $draws <= 0 ? 1.0 : 1.0 / (1.0 - pow(1 - $count / $totalResponses, $draws));
+        }
+        return $weights;
+    }
+
+    private function countOnes($array)
+    {
+        $result = 0;
+        foreach ($array as $key => $value) {
+            if ($value === 1) {
+                $result += 1;
+            }
+        }
+        return $result;
     }
 }
