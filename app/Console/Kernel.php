@@ -31,13 +31,15 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // Each night
-        $schedule->command('command:cache_scores')->dailyAt('02:30');
-        $schedule->command('command:dump_actions')->dailyAt('03:00');
-        // Manual
-        // $schedule->command('command:refresh_priority_responses')->dailyAt('03:30');
-        // Each hour
-        $schedule->command('command:refresh_priority_questions')->hourly();
+        // All machines create and store locally their own dump
+        $schedule->command('command:dump_actions')->dailyAt('03:05');
+        // Only the master virtual machine runs database update tasks.
+        // (There is no need for the other virtual machines to run the same tasks, and it could be risky.)
+        if (config('app.is_master_server')) {
+            $schedule->command('command:compute_results')->dailyAt('02:05');
+            $schedule->command('command:cache_scores')->dailyAt('02:35');
+            $schedule->command('command:refresh_priority_questions')->hourly();
+        }
     }
 
     /**

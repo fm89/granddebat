@@ -27,6 +27,11 @@ class Response extends Model
         return $this->hasMany(Action::class);
     }
 
+    public function results()
+    {
+        return $this->hasMany(Result::class);
+    }
+
     public function setTags(array $tag_ids, User $user)
     {
         $this->deleteOldActions($user);

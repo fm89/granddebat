@@ -27,6 +27,7 @@ return [
     */
 
     'env' => env('APP_ENV', 'production'),
+    'is_master_server' => env('IS_MASTER_SERVER', false),
 
     /*
     |--------------------------------------------------------------------------
