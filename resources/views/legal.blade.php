@@ -37,6 +37,17 @@
             <p>
                 Le code source de cette plateforme est ouvert et libre. Vous pourrez y constater notre bonne foi !
             </p>
+            <h4>Origine des données</h4>
+            <p>
+                Cette plateforme d'annotation repose sur les données du site
+                <a href="https://granddebat.fr">https://granddebat.fr</a>. Ces données ont été téléchargées le
+                6 février 2019, depuis la page
+                <a href="https://granddebat.fr/pages/donnees-ouvertes">https://granddebat.fr/pages/donnees-ouvertes</a>.
+                Ces données sont couvertes par la
+                <a href="https://www.etalab.gouv.fr/licence-ouverte-open-licence">Licence Ouverte / Open License</a>
+                conçue par <a href="https://www.etalab.gouv.fr">Etalab</a> qui
+                facilite et encourage la réutilisation des données publiques mises à disposition gratuitement.
+            </p>
         </div>
     </div>
 @endsection

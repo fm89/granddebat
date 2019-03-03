@@ -8,11 +8,12 @@
             <p>
                 Les données d'annotation collective établies dans cette plateforme sont disponibles au téléchargement
                 sous la licence <a href="https://spdx.org/licenses/CC-BY-SA-4.0.html#licenseText">Creative Commons Attribution Share Alike 4.0 International (CC-BY-SA-4.0)</a>.
+                Cette licence s'applique à l'ensemble des données d'annotation (choix et intitulés des catégories pour
+                chaque question, et bien sûr affectation détaillée des catégories en face de chaque réponse).
             </p>
             <h4>Format</h4>
             <p>
-                Le format n'est pas encore définitivement figé. L'export est un fichier CSV
-                (séparateur virgule, avec ligne d'entête, encodage UTF-8)
+                L'export est un fichier CSV (séparateur virgule, avec ligne d'entête, encodage UTF-8)
                 de l'ensemble des annotations effectuées sur ce site.
                 L'export ne contient pas les données brutes du grand débat (qui sont
                 accessibles sur le <a href="https://granddebat.fr/pages/donnees-ouvertes">site officiel</a>,

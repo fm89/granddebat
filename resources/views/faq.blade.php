@@ -78,10 +78,22 @@
 			<h4>Comment sont choisies les catégories proposées par défaut ?</h4>
             <ul>
                 <li>
-					Nous avons utilisé deux approches : une approche statistique, reposant sur des algorithmes de modèles thématiques développés par des chercheurs en datascience et une approche empirique consistant à lire un grand nombre de contributions jusqu’à identifier clairement les réponses les plus fréquentes.
+					Nous avons utilisé deux approches : une approche statistique, reposant sur des algorithmes de
+					modèles thématiques développés par des chercheurs en datascience et une approche empirique
+					consistant à lire un grand nombre de contributions jusqu’à identifier clairement les réponses les
+					plus fréquentes.
 				</li>
 				<li>
-					Nous avons essayé de créer des catégories objectives, exhaustives, synthétiques, en nombre suffisamment réduit pour permettre un travail de regroupement efficace. Nous espérons que ces catégories recouvrent la majorité des idées exprimées, mais vous avez la possibilité de créer des catégories supplémentaires vous-mêmes.
+					Nous avons essayé de créer des catégories objectives, exhaustives, synthétiques, en nombre
+					suffisamment réduit pour permettre un travail de regroupement efficace. Nous espérons que ces
+					catégories recouvrent la majorité des idées exprimées, mais vous avez la possibilité de créer des
+					catégories supplémentaires vous-mêmes.
+				</li>
+				<li>
+					Enfin, nous suivons avec attention la création de catégories par la communauté. Lorsque plusieurs
+					membres ressentent le besoin de créer des catégories proches pour décrire une idée non couverte par
+					les catégories par défaut, nous enrichissons les catégories par défaut avec leur idée pour que tous
+					puissent l'utiliser.
 				</li>
 			</ul>
 			<h4>Comment garantir l'honnêteté des annotations attribuées ?</h4>
@@ -90,7 +102,13 @@
 					Les annotations effectuées par chaque intervenant sur ce site sont rattachées à son numéro unique. C’est pour cela que nous vous demandons de créer un compte. Ainsi, si un intervenant se mettait à étiqueter systématiquement toute contribution avec une catégorie biaisée, il serait facile a posteriori de ne pas tenir compte des annotations effectuées par cette personne.
 				</li>
 				<li>
-					Par ailleurs, notre objectif à moyen terme est que chaque contribution au grand débat soit analysée par plusieurs personnes différentes. Ainsi, le risque de mauvaise catégorisation d'une contribution sera diminué d'autant. Cette approche a par exemple fait ses preuves pour la <a href="http://regardscitoyens.org/interets-des-elus/">numérisation des déclarations d'intérêts des élus</a>.
+					Par ailleurs, chaque contribution au grand débat est analysée par plusieurs personnes différentes.
+					Nous avons mis en place un mécanisme de relecture qui impose le passage d'au moins trois personnes
+					différentes sur chaque texte, et jusqu'à sept passages si l'interprétation est difficile et n'a pas
+					convergé avant.
+					Ainsi, le risque de mauvaise catégorisation d'une contribution est diminué d'autant.
+					Cette approche a par exemple fait ses preuves pour la
+					<a href="http://regardscitoyens.org/interets-des-elus/">numérisation des déclarations d'intérêts des élus</a>.
 				</li>
 			</ul>
 			<h4>Où puis-je trouver les données ?</h4>

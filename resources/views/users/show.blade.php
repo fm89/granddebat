@@ -58,7 +58,7 @@
                             <span class="text-muted">
                                 Le score de <a href="https://fr.wikipedia.org/wiki/Pr%C3%A9cision_et_rappel">rappel</a>
                                 reflète la proportion des catégories choisies par la communauté que vous aviez aussi
-                                penser à cocher. Si votre score de rappel est bas, c'est peut-être que vous avez tendance à lire trop
+                                pensé à cocher. Si votre score de rappel est bas, c'est peut-être que vous avez tendance à lire trop
                                 vite et à ne pas cocher toutes les catégories associées à chaque texte.
                                 Ce chiffre est mis à jour chaque nuit.
                             </span>

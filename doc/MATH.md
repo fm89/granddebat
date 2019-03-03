@@ -19,7 +19,7 @@ Prenons par exemple la question 166 et imaginons que le fichier téléchargé co
 * (166, Contribution 3, *Santé*, 1.0)
 
 Dans ce cas, l'interprétation correcte est que (1.0 + 1.0) / (1.0 + 2.0 + 1.0) = 50% des contributions mentionnent la 
-santé comme politique publique. Si l'on ne tient pas compte du poids, on dirait que 2 contributions sur 3 la mentionne
+santé comme politique publique. Si l'on ne tient pas compte du poids, on dirait que 2 contributions sur 3 la mentionnent
 (soit 66%). Ce chiffre serait faux car il ne tiendrait pas compte des corrections du poids qui sont nécessaires.
 
 ## Poids des réponses multiples
@@ -50,31 +50,31 @@ interpréter.
 Malheureusement, ce choix s'accompagne du biais suivant : une sur-représentation des textes fréquents dans le corps
 annoté. Pour le comprendre, imaginons qu'à la question 166, sur les 40000 réponses,
 * 20000 contiennent exactement le texte "*Aucune*"
-* 1000 contiennent le texte "Santé"
+* 1000 contiennent exactement le texte "Santé"
 * 19000 contiennent des textes tous uniques.
 
-Imaginons ensuite que les annotateurs tirent au sort 1000 textes uniques dans ce jeu et les annote. La probabilité
+Imaginons ensuite que les annotateurs tirent au sort 1000 textes uniques dans ce jeu et les annotent. La probabilité
 qu'au moins une des réponses "*Aucune*" soit tirée est quasiment égale à 1. Donc les 20000 réponses "*Aucune*" seront
 dans le corpus annoté. De même, la probabilité de tirer une des 1000 "*Santé*" est très forte. Le corpus annoté 
 contiendra donc 20000 "*Aucune*", 1000 "*Santé*" et 998 autres textes uniques. On voit qu'il y a un biais car ce
 corpus annoté, bien qu'obtenu en tirant au sort 1000 textes uniques différents, n'est plus représentatif du corpus
 initial.
 
-C'est pour éliminer ce biais que nous proposons d'appliquer le poids **P2**, dont la construction mathématique garantie
+C'est pour éliminer ce biais que nous proposons d'appliquer le poids **P2**, dont la construction mathématique garantit
 que le corpus annoté est représentatif du corpus initial.
 
 ### Formule générale
 
 Le processus de tirage au sort est le suivant : à chaque fois qu'on ouvre une page d'annotation, le logiciel tire au 
-sort une réponse du corpus, avec une probabilité uniforme. Bien sûr, si la réponse a déjà été annotée, on la remet 
-dans le corpus et on retire à nouveau au sort. Notons 
+sort une réponse du corpus, avec une probabilité uniforme. Bien sûr, si la réponse a déjà été annotée, on retire à 
+nouveau au sort. Notons 
 * **N** le nombre total de réponses à la question, 
 * **D** le nombre de tirages réalisés.
 
-On considère un groupe de **G** réponses ayant le même texte. La probababilité de l'avoir pioché au bout du processus
+On considère un groupe de **G** réponses ayant le même texte. La probabilité de l'avoir pioché au bout du processus
 est **1 - (1 - G / N) ^ D**. Comme **D** est très grand, on voit que cette probabilité tend très vite vers 1 pour 
 les gros groupes. Le poids **P2** attribué à chaque réponse de ce groupe est l'inverse de cette probabilité. Ainsi,
-les réponses d'un petit groupe, qui avait peu de chance d'être pioché, ont un plus gros poids que celles des grands 
+les réponses d'un petit groupe, qui avaient peu de chance d'être pioché, ont un plus gros poids que celles des grands 
 groupes.
 
 ### Calcul du nombre de tirages
