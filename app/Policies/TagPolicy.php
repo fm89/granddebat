@@ -23,6 +23,6 @@ class TagPolicy
 
     public function delete(User $user, Tag $tag)
     {
-        return $this->update($user, $tag) && $tag->actions()->doesntExist();
+        return $this->update($user, $tag) && ($tag->actions()->doesntExist() || $tag->user_id === $user->id);
     }
 }

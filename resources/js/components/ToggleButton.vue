@@ -12,7 +12,7 @@
         },
         methods: {
             getClass() {
-                return 'btn tag ' + (this.tag.checked ? 'on' : 'off') + ' ' + this.tag.color;
+                return 'btn tag ' + (this.tag.checked ? 'on' : 'off') + ' ' + this.tag.color + (this.tag.is_custom ? ' italic' : '');
             },
             onClick() {
                 this.$emit('tagToggled');
@@ -43,6 +43,10 @@
     }
     .tag.gray.off {
         background-color: #EEE;
+    }
+
+    .italic {
+        font-style: italic;
     }
 
     @media (hover: hover) {

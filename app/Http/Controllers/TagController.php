@@ -60,12 +60,21 @@ class TagController extends Controller
         return redirect('questions/' . $tag->question->id);
     }
 
-    public function delete(Tag $tag)
+    public function delete(Request $request, Tag $tag)
     {
         $this->authorize('delete', $tag);
         $question = $tag->question;
+        $tag->actions()->delete();
         $tag->delete();
+        $request->user()->refreshScore();
         return redirect('questions/' . $question->id);
+    }
+
+    public function showDelete(Tag $tag)
+    {
+        $this->authorize('delete', $tag);
+        $question = $tag->question;
+        return view('tags.delete', compact('question', 'tag'));
     }
 
 }

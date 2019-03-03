@@ -2,11 +2,13 @@
 
 namespace App;
 
+use App\Models\Action;
 use App\Models\Message;
 use App\Models\Question;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Logic\Levels;
+use Illuminate\Support\Facades\DB;
 
 class User extends Authenticatable
 {
@@ -62,6 +64,16 @@ class User extends Authenticatable
         return Levels::todoForNextLevel($this->scores['total']);
     }
 
+    public function messages()
+    {
+        return $this->hasMany(Message::class);
+    }
+
+    public function unreadMessages()
+    {
+        return $this->messages()->where('read', false);
+    }
+
     public function addResponseToScore(Question $question)
     {
         $scores = $this->scores;
@@ -75,13 +87,27 @@ class User extends Authenticatable
         $this->save();
     }
 
-    public function messages()
+    public function refreshScore()
     {
-        return $this->hasMany(Message::class);
-    }
-
-    public function unreadMessages()
-    {
-        return $this->messages()->where('read', false);
+        $per_question = Action::join('responses', 'responses.id', 'actions.response_id')
+            ->groupBy('question_id')
+            ->where('user_id', $this->id)
+            ->select('question_id', DB::raw('COUNT(DISTINCT clean_value_group_id) AS values'))
+            ->pluck('values', 'question_id')
+            ->all();
+        $per_debate = [1 => 0, 2 => 0, 3 => 0, 4 => 0];
+        $total = 0;
+        $questions = Question::pluck('debate_id', 'id')->all();
+        foreach ($per_question as $question_id => $values) {
+            $debate_id = $questions[$question_id];
+            $per_debate[$debate_id] = $per_debate[$debate_id] + $values;
+            $total += $values;
+        }
+        $scores = $this->scores;
+        $scores['total'] = $total;
+        $scores['debates'] = $per_debate;
+        $scores['questions'] = $per_question;
+        $this->scores = $scores;
+        $this->save();
     }
 }

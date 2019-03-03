@@ -25,21 +25,21 @@
                 <tbody>
                 @foreach ($tags as $tag)
                     <tr>
-                        <td><a href="/tags/{{ $tag->id }}">{{ $tag->getLabel() }}</a></td>
+                        @if ($tag->isCustom())
+                            <td><a href="/tags/{{ $tag->id }}"><i>{{ $tag->getLabel() }}</a></i></td>
+                        @else
+                            <td><a href="/tags/{{ $tag->id }}">{{ $tag->getLabel() }}</a></td>
+                        @endif
                         <td><span class="badge badge-pill badge-secondary">{{ $counts[$tag->id] ?? 0 }}</span></td>
                         <td>
-                            {!! Form::open(['url' => '/tags/' . $tag->id, 'method' => 'delete']) !!}
                             @can('update', $tag)
-                                <a href="/tags/{{ $tag->id }}/edit"><i class="fa fa-btn fa-pen"></i></a>
-                                @if (($counts[$tag->id] ?? 0) == 0)
-                                    <button class="btn btn-link ml-2" style="padding: 0;" type="submit">
-                                        <i class="fa fa-btn fa-trash text-danger"></i>
-                                    </button>
+                                <a href="/tags/{{ $tag->id }}/edit"><i class="fa fa-pen"></i></a>
+                                @if ($tag->isCustom() || (($counts[$tag->id] ?? 0) == 0))
+                                    <a href="/tags/{{ $tag->id }}/delete" class="ml-3"><i class="fa fa-trash text-danger"></i></a>
                                 @endif
                             @else
                                 <span class="badge badge-pill badge-light">Catégorie commune</span>
                             @endcan
-                            {!! Form::close() !!}
                         </td>
                     </tr>
                 @endforeach

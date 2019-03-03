@@ -30,6 +30,7 @@ class Tag extends Model implements Auditable
             'color' => $this->color,
             'label' => $this->getLabel(),
             'name' => $this->name,
+            'is_custom' => $this->isCustom(),
         ];
     }
 
@@ -37,5 +38,10 @@ class Tag extends Model implements Auditable
     {
         // Remove the first letter which is used to sort tags
         return preg_replace('/^[A-Z] /', '', $this->name);
+    }
+
+    public function isCustom()
+    {
+        return $this->user_id !== null;
     }
 }

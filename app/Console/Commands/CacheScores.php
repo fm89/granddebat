@@ -43,29 +43,12 @@ class CacheScores extends Command
      */
     public function handle()
     {
-        $questions = Question::pluck('debate_id', 'id')->all();
         foreach (User::get() as $user) {
             $this->info('Handling user ' . $user->id);
             $quality = $this->getUserQuality($user);
-            $per_question = Action::join('responses', 'responses.id', 'actions.response_id')
-                ->groupBy('question_id')
-                ->where('user_id', $user->id)
-                ->select('question_id', DB::raw('COUNT(DISTINCT clean_value_group_id) AS values'))
-                ->pluck('values', 'question_id')
-                ->all();
-            $per_debate = [1 => 0, 2 => 0, 3 => 0, 4 => 0];
-            $total = 0;
-            foreach ($per_question as $question_id => $values) {
-                $debate_id = $questions[$question_id];
-                $per_debate[$debate_id] = $per_debate[$debate_id] + $values;
-                $total += $values;
-            }
-            $scores = [
-                'total' => $total,
-                'debates' => $per_debate,
-                'questions' => $per_question,
-                'quality' => $quality,
-            ];
+            $user->refreshScore();
+            $scores = $user->scores;
+            $scores['quality'] = $quality;
             $user->scores = $scores;
             $user->save();
         }
