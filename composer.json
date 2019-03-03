@@ -12,6 +12,7 @@
         "ext-zip": "^1.13",
         "doctrine/dbal": "^2.9",
         "fideloper/proxy": "^4.0",
+        "graham-campbell/markdown": "^10.3",
         "laravel/framework": "5.7.*",
         "laravel/tinker": "^1.0",
         "laravelcollective/html": "^5.4.0",

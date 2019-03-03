@@ -34,6 +34,8 @@ Route::get('/api/questions/{question}/next', 'Api\ResponseController@next');
 Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/account', 'Auth\UserController@show');
+    Route::get('/messages', 'MessageController@index');
+    Route::get('/messages/{message}', 'MessageController@show');
     Route::get('/quit', 'Auth\UserController@showQuit');
     Route::post('/quit', 'Auth\UserController@doQuit');
     Route::get('/questions/{question}/search', 'QuestionController@search');

@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Models\Message;
 use App\Models\Question;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -72,5 +73,15 @@ class User extends Authenticatable
         $scores['questions'][$question->id] = $scores['questions'][$question->id] + 1;
         $this->scores = $scores;
         $this->save();
+    }
+
+    public function messages()
+    {
+        return $this->hasMany(Message::class);
+    }
+
+    public function unreadMessages()
+    {
+        return $this->messages()->where('read', false);
     }
 }
