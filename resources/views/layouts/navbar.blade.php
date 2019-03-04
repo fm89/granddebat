@@ -1,8 +1,8 @@
 <nav class="navbar navbar-expand-md navbar-light navbar-laravel{{ isset($compact) ? ' d-none d-lg-block' : ''}}">
     <div class="container-fluid">
         <a class="navbar-brand" href="{{ url('/') }}">
-            Grande Annotation
-            <img src="/favicon-16x16.png" alt="tag"/>
+            <img src="/logo.png" alt="tag" height="16px"/>
+            Grande<b>Annotation</b>.fr
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
