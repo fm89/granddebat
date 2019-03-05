@@ -34,6 +34,9 @@
                         <td>
                             @can('update', $tag)
                                 <a href="/tags/{{ $tag->id }}/edit"><i class="fa fa-pen"></i></a>
+                                @can('inject', $tag)
+                                    <a href="/tags/{{ $tag->id }}/inject" class="ml-3"><i class="fa fa-random text-warning"></i></a>
+                                @endcan
                                 @if ($tag->isCustom() || (($counts[$tag->id] ?? 0) == 0))
                                     <a href="/tags/{{ $tag->id }}/delete" class="ml-3"><i class="fa fa-trash text-danger"></i></a>
                                 @endif

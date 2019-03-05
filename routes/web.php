@@ -42,6 +42,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/questions/{question}/tags/create', 'TagController@create');
     Route::post('/questions/{question}/tags', 'TagController@store');
     Route::get('/tags/{tag}/edit', 'TagController@edit');
+    Route::get('/tags/{tag}/inject', 'TagController@showInject');
+    Route::post('/tags/{tag}/inject', 'TagController@doInject');
     Route::post('/tags/{tag}', 'TagController@update');
     Route::get('/tags/{tag}/delete', 'TagController@showDelete');
     Route::delete('/tags/{tag}', 'TagController@delete');

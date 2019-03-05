@@ -16,6 +16,11 @@ class TagPolicy
         return ($user != null) && (($user->role === 'admin') || ($user->scores['questions'][$question->id] ?? 0) >= 50);
     }
 
+    public function inject(User $user, Tag $tag)
+    {
+        return ($user != null) && ($user->id === 1) && ($tag->user_id === null);
+    }
+
     public function update(User $user, Tag $tag)
     {
         return $tag->user_id == $user->id || $user->role == 'admin';
