@@ -57,6 +57,11 @@
                             </td>
                             <td>
                                 @auth
+                                    @if ($question->status == 'open')
+                                        <div class="progress" style="width: 100px;">
+                                            <div class="progress-bar bg-success" style="width: {{ $progress[$question->id] }}%" role="progressbar"></div>
+                                        </div>
+                                    @endif
                                     @if (($question->status == 'open' && $user->scores['total'] >= $question->minimal_score) || ($user->role == 'admin'))
                                         <a href="/questions/{{ $question->id }}">
                                             <i class="fa fa-btn fa-pen"></i>
