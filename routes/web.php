@@ -20,6 +20,7 @@ Route::get('/levels', 'HomeController@levels');
 
 Auth::routes();
 
+Route::get('/my-overview', 'MyOverviewController@show');
 Route::get('/debates/{debate}', 'DebateController@show');
 Route::get('/debates/{debate}/random', 'DebateController@random');
 Route::get('/home', 'HomeController@index')->name('home');

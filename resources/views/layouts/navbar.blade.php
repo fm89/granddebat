@@ -14,6 +14,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('/home') }}">Thèmes</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('/my-overview') }}">Ma synthèse</a>
+                </li>
             </ul>
             @auth
                 <a href="/levels">
