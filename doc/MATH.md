@@ -7,7 +7,7 @@ Ces poids ont deux objectifs :
 
 Le poids **P** donné dans le fichier est le produit des deux poids **P1** et **P2**.
 
-Le poids est une quantité numérique, supérieure ou égale à 1, associée à un couple (question, contribution). Nous 
+Le poids est une quantité numérique, dont l'ordre de grandeur est à peu près 1, associée à un couple (question, contribution). Nous 
 conseillons aux personnes souhaitant effectuer un traitement statistique des annotations de ce site d'accorder une
 importance **P** à chaque couple (question, contribution). 
 
