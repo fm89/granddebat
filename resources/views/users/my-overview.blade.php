@@ -9,7 +9,7 @@
             <div class="alert alert-info">
                 <b>Comment ça marche ?</b>
                 <br>
-                Avec les bons outils, chacun peut réaliser sa propre synthèse personnelle des contributions de ses
+                Avec les bons outils, chacun peut se faire sa propre idée des contributions de ses
                 concitoyens au grand débat national. C'est notre conviction.
                 <ul>
                     @guest
@@ -27,10 +27,12 @@
             @if (count($ongoing) > 0)
                 <h3>Questions en cours d'analyse</h3>
                 <div class="text-muted">
-                    Pour ne pas vous présenter des résultats trop approximatifs sur le plan statistique,
+                    Pour ne pas vous présenter des résultats trop fragiles sur le plan statistique,
                     nous n'affichons les graphiques de synthèse qu'à partir d'un nombre minimum de 300 réponses
                     lues pour une question donnée. Ce volume permet de garantir une certaine représentativité de
-                    l'échantillon que vous avez classifié. D'expérience, il faut plus ou moins une heure pour classifier
+                    l'échantillon que vous avez classifié (au sein de l'échantillon granddebat.fr, qui n'est
+                    bien sûr lui-même pas représentatif de la population française dans son ensemble).
+                    D'expérience, il faut plus ou moins une heure pour classifier
                     300 réponses (cette durée varie selon la difficulté de la question traitée et la finesse de la
                     catégorisation recherchée). Si vous n'avez pas le temps de classifier 300 réponses, vous pourrez
                     consulter les synthèses communes (qui seront établies sur des milliers de réponses).
@@ -55,13 +57,11 @@
                     Merci d'avoir catégorisé 300 réponses à ces questions. Puisqu'elles vous intéresse, continuez à
                     lire des réponses. Vous affinerez ainsi les graphiques ci-dessous et vous aiderez la communauté
                     à solidifier l'analyse commune. Attention, ces graphiques étant tracés à partir d'un nombre
-                    relativement faible de réponses, il peut y avoir des écarts avec le contenu moyen du reste du
+                    relativement faible de réponses, il peut y avoir des écarts importants avec le contenu moyen du reste du
                     corpus, notamment sur les catégories les moins fréquentes. De plus, il s'agit de votre propre
                     analyse avec vos propres catégories, qui ne recouvrent pas forcément exactement celles utilisées
-                    par les autres annotateurs de ce site. Comme il est possible d'affecter plusieurs catégories
-                    à une même réponse, la somme des pourcentages de ces graphiques dépasse 100. Le pourcentage
-                    représente la fraction des contributeurs évoquant le sujet dans leur texte. Seules les 15 catégories
-                    les plus fréquentes sont affichées.
+                    par les autres annotateurs de ce site. Seules les 15 catégories les plus fréquentes sont affichées.
+                    Les quantités indiquées représentent le nombre de fois que vous avez utilisé une catégorie.
                 </div>
                 <br>
                 @foreach ($done as $row)
@@ -85,7 +85,7 @@
                 data: {
                     labels: [@foreach (array_keys($row['stats']) as $key) "{!! $key !!}", @endforeach],
                     datasets: [{
-                        label: 'Proportion cochée',
+                        label: "Nombre d'attributions de la catégorie",
                         data: [@foreach (array_values($row['stats']) as $value) "{!! $value !!}", @endforeach],
                     }]
                 },

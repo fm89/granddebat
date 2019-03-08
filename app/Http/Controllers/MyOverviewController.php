@@ -36,7 +36,7 @@ class MyOverviewController extends Controller
                         $done[] = [
                             'question' => $question,
                             'count' => $count,
-                            'stats' => Stats::getForUserQuestion($user, $question, $count),
+                            'stats' => Stats::getForUserQuestion($user, $question),
                             'rank' => $question->debate_id * 1000 + $question->order,
                         ];
                     }
