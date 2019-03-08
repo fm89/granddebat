@@ -11,14 +11,17 @@ class Priority
     {
         $actions = $response->actions;
         $users_count = $actions->map(function ($action) { return $action->user_id; })->unique()->count();
-        if ($users_count >= 7) {
-            // Stop tagging if 7 users have given their opinion (whether they agree or not)
+        if ($users_count >= 5) {
+            // Stop tagging if 5 users have given their opinion (whether they agree or not)
             $priority = self::oneTagPresent($actions, $users_count) ? -5 : -1;
         } elseif ($users_count < 3) {
             // Continue tagging if only 1 or 2 users have given their opinion
             $priority = 5;
+            if ($users_count == 1 && $response->question_id == 165) {
+                $priority = 4;
+            }
         } else {
-            // If 3 to 6 users have given their opinion, continue tagging if we have not settled all tags
+            // If 3 to 4 users have given their opinion, continue tagging if we have not settled all tags
             $priority = (self::allTagsSettled($actions, $users_count) && self::oneTagPresent($actions, $users_count)) ? -10 : 5;
         }
         return $priority;
