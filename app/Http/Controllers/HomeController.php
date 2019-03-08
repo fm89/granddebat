@@ -30,7 +30,7 @@ class HomeController extends Controller
     {
         $actions_count = Action::count();
         $users_count = User::count();
-        $question = Question::find(166);
+        $question = Question::find(165);
         $user = $request->user();
         $response = $this->responseRepository->next($question, $user);
         $tags = $this->tagRepository->getJsonTagsForQuestionUser($question, $user);
