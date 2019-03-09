@@ -11,11 +11,18 @@ class ResponseRepository
         if ($user == null) {
             return $this->random($question);
         } else {
-            if ($user->role == 'admin' && $question->status != 'open') {
+            if ($question->status != 'open') {
                 // While admins prepare default tags, it is important to navigate randomly without the priority ranking
+                // Non admin users also should be able to navigate through the whole set (and not just top priority)
                 $response = $this->untagged($question, $user)->inRandomOrder()->first();
             } else {
-                $response = $this->untagged($question, $user)->orderByRaw('priority DESC, RANDOM()')->first();
+                // Don't show the user a response he skipped before (to avoid recurring loops)
+                $response = $this->untagged($question, $user)
+                    ->whereDoesntHave('skips', function ($query) use ($user) {
+                        $query->where('user_id', $user->id);
+                    })
+                    ->orderByRaw('priority DESC, RANDOM()')
+                    ->first();
             }
             if ($response == null) {
                 return $this->random($question);

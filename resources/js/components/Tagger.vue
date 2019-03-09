@@ -289,7 +289,9 @@
                 let result = await $.ajax({
                     url: '/api/questions/' + this.question.id + '/next',
                     type: 'GET',
-                    data: {},
+                    data: {
+                        key: this.key,
+                    },
                 });
                 this.key = result.key;
                 this.previousResponse = result.previousResponse;

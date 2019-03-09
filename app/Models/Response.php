@@ -32,6 +32,11 @@ class Response extends Model
         return $this->hasMany(Result::class);
     }
 
+    public function skips()
+    {
+        return $this->hasMany(Skip::class);
+    }
+
     public function setTags(array $tag_ids, User $user)
     {
         $this->deleteOldActions($user);

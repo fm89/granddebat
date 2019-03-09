@@ -6,9 +6,11 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Question;
 use App\Models\Response;
+use App\Models\Skip;
 use App\Models\Tag;
 use App\Repositories\ResponseRepository;
 use App\Repositories\TagRepository;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\DB;
@@ -70,6 +72,15 @@ class ResponseController extends Controller
 
     public function next(Request $request, Question $question)
     {
+        if ($question->status == 'open') {
+            $key = Crypt::decrypt($request->input('key'));
+            $user_id = $key['user_id'];
+            $response_id = $key['response_id'];
+            if ($user_id != null) {
+                // Only remember that the user skipped the response if the question is open and the user is logged in
+                $this->saveSkip($user_id, $response_id);
+            }
+        }
         if ($question->is_free) {
             $user = $request->user();
             $response = $this->responseRepository->next($question, $user);
@@ -84,6 +95,25 @@ class ResponseController extends Controller
         } else {
             return null;
         }
+    }
+
+    private function saveSkip($user_id, $response_id)
+    {
+        $now = Carbon::now()->toDateTimeString();
+        $response = Response::find($response_id);
+        $response_ids = Response::where('question_id', $response->question_id)
+            ->where('clean_value_group_id', $response->clean_value_group_id)
+            ->pluck('id');
+        $skips = [];
+        foreach ($response_ids as $response_id) {
+            $skips[] = [
+                'user_id' => $user_id,
+                'response_id' => $response_id,
+                'created_at' => $now,
+                'updated_at' => $now,
+            ];
+        }
+        Skip::insert($skips);
     }
 
     public function search(Request $request)
@@ -145,7 +175,7 @@ class ResponseController extends Controller
             },
             200,
             [
-                'Content-type'        => 'text/csv',
+                'Content-type' => 'text/csv',
                 'Content-Disposition' => 'attachment; filename=search.csv'
             ]
         );
