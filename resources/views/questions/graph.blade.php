@@ -21,7 +21,7 @@
                 data: {
                     labels: [@foreach (array_keys($data) as $key) "{!! $key !!}", @endforeach],
                     datasets: [{
-                        label: 'Proportion cochée',
+                        label: "Nombre de réponses ayant coché l'option",
                         data: [@foreach (array_values($data) as $key) "{{ $key }}", @endforeach],
                     }]
                 },

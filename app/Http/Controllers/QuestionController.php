@@ -38,7 +38,7 @@ class QuestionController extends Controller
                 return $item->id;
             })->all();
             $counts = Action::join('responses', 'responses.id', 'actions.response_id')
-                ->select('tag_id', DB::raw('COUNT(DISTINCT clean_value_group_id) AS count'))
+                ->select('tag_id', DB::raw('COUNT(DISTINCT(clean_value_group_id, user_id)) AS count'))
                 ->whereIn('tag_id', $tag_ids)->groupBy('tag_id')->pluck('count', 'tag_id')->all();
             return view('questions.show', compact('question', 'counts', 'tags', 'user'));
         } else {
@@ -62,9 +62,6 @@ class QuestionController extends Controller
                 }
             } else {
                 $data = $raw_data;
-            }
-            foreach (array_keys($data) as $key) {
-                $data[$key] = round(100 * $data[$key] / $sum);
             }
             return view('questions.graph', compact('question', 'data'));
         }
