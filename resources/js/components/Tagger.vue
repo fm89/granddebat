@@ -17,8 +17,10 @@
         <div v-if="showEasyHelp()" class="alert alert-info mb-3">
             <p>1. Lisez l'intitulé de la question et la réponse apportée par un contributeur ci-dessous.</p>
             <p>2. Déterminez la ou les catégories qui correspondent le mieux au texte. Cochez-les puis validez.</p>
-            <p>3. Si le texte vous semble hors sujet ou ne pas contenir de réponse à la question, cliquez sur la croix grise.</p>
-            <p><b>Il ne s'agit pas de juger de l'utilité, de la faisabilité ou de la valeur des idées ou des opinions exprimées, mais uniquement de les classifier.</b></p>
+            <p>3. Si le texte vous semble hors sujet ou ne pas contenir de réponse à la question, cliquez sur la croix
+                grise.</p>
+            <p><b>Il ne s'agit pas de juger de l'utilité, de la faisabilité ou de la valeur des idées ou des opinions
+                exprimées, mais uniquement de les classifier.</b></p>
         </div>
         <div v-if="showBulbHelp()" class="alert alert-warning mb-3">
             <p>
@@ -49,7 +51,8 @@
                         <span v-for="line in formattedText()">{{ line }}<br/></span>
                     </p>
                     <footer>
-                        <a v-if="!demo" target="blank" :href="'/proposals/' + response.proposal_id">contribution source</a>
+                        <a v-if="!demo" target="blank" :href="'/proposals/' + response.proposal_id">contribution
+                            source</a>
                     </footer>
                 </blockquote>
                 <br/>
@@ -285,20 +288,25 @@
             },
             async loadNext(callback) {
                 // Retrieve next response data
-                this.loading = true;
-                let result = await $.ajax({
-                    url: '/api/questions/' + this.question.id + '/next',
-                    type: 'GET',
-                    data: {
-                        key: this.key,
-                    },
-                });
-                this.key = result.key;
-                this.previousResponse = result.previousResponse;
-                this.response = result.response;
-                this.loading = false;
-                callback();
-                this.resetScreen();
+                try {
+                    this.loading = true;
+                    let result = await $.ajax({
+                        url: '/api/questions/' + this.question.id + '/next',
+                        type: 'GET',
+                        data: {
+                            key: this.key,
+                        },
+                    });
+                    this.key = result.key;
+                    this.previousResponse = result.previousResponse;
+                    this.response = result.response;
+                    this.loading = false;
+                    callback();
+                    this.resetScreen();
+                } catch (error) {
+                    window.location = '/questions/' + this.question.id + '/read';
+                    return;
+                }
             },
             resetScreen() {
                 // Trick to replay the CSS animation
