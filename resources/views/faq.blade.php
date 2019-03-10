@@ -7,34 +7,71 @@
             <h4>D’où vient ce projet ?</h4>
             <ul>
                 <li>
-					Dans le cadre du Grand débat national, le Gouvernement a lancé le 22 janvier 2019 <a href="https://granddebat.fr">granddebat.fr</a>, un site internet permettant aux citoyens de s’exprimer sur quatre thèmes déclinés en près de 100 questions.
+					Dans le cadre du Grand débat national, le Gouvernement a lancé le 22 janvier 2019
+					<a href="https://granddebat.fr">granddebat.fr</a>, un site internet permettant aux citoyens
+					de s’exprimer sur quatre thèmes déclinés en près de 100 questions, et ce jusqu'au 18 mars 2019.
 				</li>
 				<li>
-					La lecture de nombreuses contributions nous a convaincus que l’intelligence artificielle seule ne parviendrait pas à restituer fidèlement les idées, opinions et sentiments exprimés par ceux qui ont participé au débat.
+					Devant le volume des contributions, le Gouvernement a missionné un institut de sondage et une
+					société spécialisée dans le traitement informatique des données textuelles pour réaliser la synthèse
+					de ces écrits sans avoir à les lire.
+				</li>
+				<li>
+					La lecture de nombreux extraits des contributions nous a convaincus que l’intelligence artificielle
+					seule ne parviendrait pas à restituer fidèlement les idées, opinions et sentiments exprimés par ceux
+					qui ont participé au débat.
                 </li>
-				<li>
-					Nous sommes aussi convaincus que les citoyens peuvent collectivement réaliser une synthèse de ce débat en adoptant une démarche transparente et ouverte.
-				</li>
             </ul>
 			<h4>Quel est l'objectif de cette plateforme ?</h4>
             <ul>
+				<li>
+					Nous sommes convaincus que les citoyens peuvent collectivement réaliser une synthèse de ce
+					débat en adoptant une démarche transparente et ouverte.
+				</li>
                 <li>
-					Notre objectif est d'annoter les textes écrits dans le cadre du grand débat en y associant des libellés afin de faire émerger les idées les plus répandues et de regrouper les réponses dont le contenu est similaire.
+					Notre objectif est de lire et d'annoter les textes écrits dans le cadre du grand débat en y
+					associant des libellés afin de faire émerger les idées les plus répandues et de regrouper les
+					réponses dont le contenu est similaire.
                 </li>
 				<li>
-					Il n'est en aucun cas question de juger de l'utilité, de la faisabilité ou de la valeur des idées ou des opinions exprimées par les contributeurs, mais uniquement d'amorcer un travail de consolidation.
+					Il n'est en aucun cas question de juger de l'utilité, de la faisabilité ou de la valeur des idées
+					ou des opinions exprimées par les contributeurs, mais uniquement d'amorcer un travail de consolidation.
 				</li>
 			</ul>
 			<h4>Qui sommes-nous ?</h4>
 			<ul>
 				<li>
-					Nous sommes un petit groupe de citoyens bénévoles, chercheurs, datascientists, développeurs, militants du libre. Nous ne sommes associés à aucun parti politique, syndicat ou lobby dans le cadre de ce projet. Certains d’entre nous ont contribué au débat, d’autres non. Nous sommes convaincus de l’importance d’un traitement transparent des contributions par la société civile.
+					Nous sommes des citoyens bénévoles et indépendants. Nous ne sommes associés à aucun parti ou
+					mouvement politique, aucun syndicat ou lobby dans le cadre de ce projet. Certains d’entre nous ont
+					contribué au débat, d’autres non. Nous sommes convaincus de l’importance d’un traitement transparent
+					des contributions par la société civile, où toutes les données, tous les algorithmes et toute la
+					méthodologie est librement accessible.
 				</li>
-                <li>
-                    Nous n'avons aucun lien avec les prestataires sélectionnés par le Gouvernement pour mener l'analyse officielle des contributions de granddebat.fr.
-                </li>
 				<li>
-					Ce projet est soutenu par les associations <a href="https://codefor.fr/">Code for France</a> et <a href="https://dataforgood.fr/">Data for Good</a>.
+					Nous n'avons aucun lien avec les prestataires sélectionnés par le Gouvernement pour mener l'analyse
+					officielle des contributions de granddebat.fr.
+				</li>
+				<li>
+					Ce projet est soutenu par les collectifs <a href="https://codefor.fr/">Code for France</a>
+					et <a href="https://dataforgood.fr/">Data for Good</a>.
+				</li>
+				<li>
+					Nous souhaitons faire passer la pertinence de la démarche avant celle des identités. Néanmoins,
+					voici quelques-uns de nos profils pour faire un peu mieux connaissance :
+					<ul>
+						<li>data-scientist pour l'&Eacute;tat, formée aux politiques publiques,</li>
+						<li>développeur et chercheur en mathématiques au <a href="http://www.cnrs.fr/">CNRS</a>,</li>
+						<li>expert en bases de données, membre actif d'<a href="https://www.openstreetmap.fr/">OpenStreetMap France</a>,</li>
+						<li>data-scientist et docteur en <a href="https://fr.wikipedia.org/wiki/Traitement_automatique_du_langage_naturel">traitement du langage</a> dans le privé,</li>
+						<li>étudiante à <a href="http://www.sciencespo.fr/">SciencesPo</a> en politique publique,</li>
+						<li>chercheuse en physique théorique aux &Eacute;tats-Unis,</li>
+						<li>designer, spécialiste de l'expérience utilisateur,</li>
+						<li>géographe,</li>
+						<li>bénévole d'association écolo,</li>
+						<li>une vingtaine d'amis, de collègues, de proches qui se sont pris au jeu,</li>
+						<li>et des centaines d'autres, vous tous, inscrits anonymes ou non qui annotez chaque jour et
+							nous transmettez vos impressions et vos idées d'améliorations !</li>
+					</ul>
 				</li>
 			</ul>
 			<h4>Pourquoi n'avez-vous pas recours à une analyse automatisée ?</h4>
@@ -81,19 +118,24 @@
 					Nous avons utilisé deux approches : une approche statistique, reposant sur des algorithmes de
 					modèles thématiques développés par des chercheurs en datascience et une approche empirique
 					consistant à lire un grand nombre de contributions jusqu’à identifier clairement les réponses les
-					plus fréquentes.
+					plus fréquentes. Avant d'ouvrir une question aux annotations par tous, nous lisons à plusieurs
+					des centaines de réponses.
 				</li>
 				<li>
 					Nous avons essayé de créer des catégories objectives, exhaustives, synthétiques, en nombre
 					suffisamment réduit pour permettre un travail de regroupement efficace. Nous espérons que ces
 					catégories recouvrent la majorité des idées exprimées, mais vous avez la possibilité de créer des
-					catégories supplémentaires vous-mêmes.
+					catégories supplémentaires vous-mêmes. L'objectif n'est pas de traduire toute la finesse de chaque
+					texte, mais de faire émerger les grands volumes et de regrouper les idées similaires. Ceci prépare
+					le terrain de recherches ou d'analyses futures pour tous ceux qui souhaiteront le faire.
+					Les données des annotations sont téléchargeables et mises à jour chaque nuit.
 				</li>
 				<li>
-					Enfin, nous suivons avec attention la création de catégories par la communauté. Lorsque plusieurs
+					Enfin et surtout, nous suivons avec attention la création de catégories par la communauté. Lorsque plusieurs
 					membres ressentent le besoin de créer des catégories proches pour décrire une idée non couverte par
 					les catégories par défaut, nous enrichissons les catégories par défaut avec leur idée pour que tous
-					puissent l'utiliser.
+					puissent l'utiliser. Chaque internaute dont la catégorie a été integrée reçoit un message interne
+					lui expliquant le détail de ce qui a été fait.
 				</li>
 			</ul>
 			<h4>Comment garantir l'honnêteté des annotations attribuées ?</h4>
@@ -104,9 +146,11 @@
 				<li>
 					Par ailleurs, chaque contribution au grand débat est analysée par plusieurs personnes différentes.
 					Nous avons mis en place un mécanisme de relecture qui impose le passage d'au moins trois personnes
-					différentes sur chaque texte, et jusqu'à sept passages si l'interprétation est difficile et n'a pas
-					convergé avant.
+					différentes sur chaque texte, et plusieurs passages de plus si l'interprétation est difficile et
+					n'a pas convergé avant.
 					Ainsi, le risque de mauvaise catégorisation d'une contribution est diminué d'autant.
+					En effet, après plusieurs annotations par des internautes différents, la plateforme retient
+					comme classification la classification majoritaire qui se dégage des multiples annotations.
 					Cette approche a par exemple fait ses preuves pour la
 					<a href="http://regardscitoyens.org/interets-des-elus/">numérisation des déclarations d'intérêts des élus</a>.
 				</li>
@@ -126,7 +170,8 @@
 			<h4>Comment nous contacter ?</h4>
 			<ul>
 				<li>Vous pouvez proposer vos idées pour améliorer la plateforme ou la démarche sur le répertoire <a href="https://github.com/fm89/granddebat">GitHub</a> qui héberge le code source de cette plateforme.</li>
-                <li>Pour toute autre question, vous pouvez aussi écrire à notre équipe par l'adresse courriel Gmail "grandeannotation".</li>
+                <li>Vous pouvez nous retrouver pour discuter librement sur le <a href="https://chat.codefor.fr/">chat</a> du collectif Code for France.</li>
+				<li>Pour toute autre question, vous pouvez aussi écrire à notre équipe par l'adresse courriel Gmail "grandeannotation".</li>
 			</ul>
         </div>
     </div>
