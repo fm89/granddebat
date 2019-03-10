@@ -158,7 +158,11 @@
 			<h4>Où puis-je trouver les données ?</h4>
 			<ul>
 				<li>
-					Le contenu complet des contributions brutes est déjà accessible sur le <a href="https://granddebat.fr/pages/donnees-ouvertes">site officiel</a>, dans la rubrique <i>Données ouvertes</i>. Ce sont ces données (en date du 6 février 2019) qui ont été injectées dans une base de données pour être annotées sur cette plateforme. Les nouvelles contributions seront importées lorsqu'elles seront disponibles sur le site officiel.
+					Le contenu complet des contributions brutes est déjà accessible sur le
+					<a href="https://granddebat.fr/pages/donnees-ouvertes">site officiel</a>, dans la rubrique
+					<i>Données ouvertes</i>. Ce sont ces données (en date du 6 février 2019 et du 2 mars 2019) qui ont
+					été injectées dans une base de données pour être annotées sur cette plateforme. Les nouvelles
+					contributions seront importées lorsqu'elles seront disponibles sur le site officiel.
 				</li>
 				<li>
 					Les annotations saisies ici sont elles aussi progressivement ouvertes et téléchargeables dans la page <a href="/data">données ouvertes</a>.

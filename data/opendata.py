@@ -1,10 +1,11 @@
+import base64
 import json
 import os
 import requests
 import pandas as pd
 
 download = False
-base_url = 'http://opendata.auth-6f31f706db6f4a24b55f42a6a79c5086.storage.sbg5.cloud.ovh.net/2019-02-06/'
+base_url = 'http://opendata.auth-6f31f706db6f4a24b55f42a6a79c5086.storage.sbg5.cloud.ovh.net/2019-03-02/'
 files = [
     'DEMOCRATIE_ET_CITOYENNETE.json',
     'LA_TRANSITION_ECOLOGIQUE.json',
@@ -41,7 +42,7 @@ for file in files:
             author_id = proposal['authorId']
             proposals.append([p_id, published_at, title, debate_id, author_id])
             for response in proposal['responses']:
-                question_id = int(response['questionId'])
+                question_id = int(base64.b64decode(response['questionId'])[9:])
                 if question_id == 160 or question_id == 206 or question_id == 207:
                     # These 3 multiple choice questions allow users to input raw text
                     value_json = json.loads(response['value'])
