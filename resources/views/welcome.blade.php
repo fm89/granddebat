@@ -73,7 +73,7 @@
                         Grande Annotation
                     </div>
                     <p>
-                        Plateforme d'annotation collaborative citoyenne des contributions au grand débat
+                        Plateforme de lecture et d'annotation collaborative des contributions au grand débat
                     </p>
                     <p>
                         Déjà <b>{{ number_format($actions_count, 0, ',', ' ') }} actions</b> réalisées par <b>{{ number_format($users_count, 0, ',', ' ') }} humains</b>
@@ -102,8 +102,10 @@
             <div class="col-lg-4">
                 <div class="px-4 py-5">
                     <h4><img src="/favicon-16x16.png" alt="tag"/> Pourquoi ?</h4>
-                    <p>Parce que la société civile peut elle aussi réaliser une synthèse de ce débat, en adoptant une démarche collaborative et transparente.</p>
-                    <p>Nous pensons que l'intelligence artificielle seule ne vaut pas la lecture humaine.</p>
+                    <p>Parce que chacun peut lire les contributions d'autres
+                        et élaborer une synthèse sur un thème de son choix.</p>
+                    <p>Nous pensons que l'intelligence artificielle seule ne vaut pas
+                        une lecture humaine, collaborative et transparente.</p>
                 </div>
             </div>
             <div class="col-lg-4">
@@ -118,7 +120,8 @@
                     <h4><img src="/favicon-16x16.png" alt="tag"/> Comment ?</h4>
                     <p>Lisez des réponses formulées par d'autres aux questions de
                         <a href="https://granddebat.fr">granddebat.fr</a> et annotez-les.</p>
-                    <p>En 10 minutes par jour, vous faciliterez les analyses futures.</p>
+                    <p>En 10 minutes par jour, faites-vous votre idée et facilitez les analyses futures
+                        de chercheurs et journalistes.</p>
                     <p>Testez juste en dessous, c'est facile&nbsp;!</p>
                 </div>
             </div>

@@ -17,10 +17,16 @@
 					de ces écrits sans avoir à les lire.
 				</li>
 				<li>
-					La lecture de nombreux extraits des contributions nous a convaincus que l’intelligence artificielle
-					seule ne parviendrait pas à restituer fidèlement les idées, opinions et sentiments exprimés par ceux
-					qui ont participé au débat.
+					La lecture de nombreux extraits et notre connaissance de l'état de l'art en traitement automatisé
+					du langage (voir <a href="https://www.theverge.com/2018/1/17/16900292/ai-reading-comprehension-machines-humans">ici</a>
+					ou <a href="https://www.howtogeek.com/405011/voice-assistants-dont-really-understand-you/">là</a> pour des articles accessibles),
+					nous ont convaincus que l’intelligence artificielle seule ne parviendrait pas à restituer
+					fidèlement les idées, opinions et sentiments exprimés par ceux qui ont participé au débat.
                 </li>
+				<li>
+					A l'inverse, nous pensons que la simple lecture de contributions (même sans annontation),
+					regroupées par thème et par question, est en elle-même respectueuse et instructive.
+				</li>
             </ul>
 			<h4>Quel est l'objectif de cette plateforme ?</h4>
             <ul>
@@ -36,6 +42,11 @@
 				<li>
 					Il n'est en aucun cas question de juger de l'utilité, de la faisabilité ou de la valeur des idées
 					ou des opinions exprimées par les contributeurs, mais uniquement d'amorcer un travail de consolidation.
+				</li>
+				<li>
+					Notre but n'est pas de construire une synthèse partisane ou concurrente de celle des prestataires
+					officiels, mais de préparer le terrain pour tous ceux (citoyens, chercheurs, journalistes)
+					qui souhaiteraient explorer les données du grand débat sans en avoir les moyens seuls.
 				</li>
 			</ul>
 			<h4>Qui sommes-nous ?</h4>
