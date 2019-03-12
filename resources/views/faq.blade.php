@@ -24,7 +24,7 @@
 					fidèlement les idées, opinions et sentiments exprimés par ceux qui ont participé au débat.
                 </li>
 				<li>
-					A l'inverse, nous pensons que la simple lecture de contributions (même sans annontation),
+					A l'inverse, nous pensons que la simple lecture de contributions (même sans annotation),
 					regroupées par thème et par question, est en elle-même respectueuse et instructive.
 				</li>
             </ul>
@@ -71,7 +71,7 @@
 					voici quelques-uns de nos profils pour faire un peu mieux connaissance :
 					<ul>
 						<li>data-scientist pour l'&Eacute;tat, formée aux politiques publiques,</li>
-						<li>développeur et chercheur en mathématiques au <a href="http://www.cnrs.fr/">CNRS</a>,</li>
+						<li>développeur et chercheur en mathématiques,</li>
 						<li>expert en bases de données, membre actif d'<a href="https://www.openstreetmap.fr/">OpenStreetMap France</a>,</li>
 						<li>data-scientist et docteur en <a href="https://fr.wikipedia.org/wiki/Traitement_automatique_du_langage_naturel">traitement du langage</a> dans le privé,</li>
 						<li>étudiante à <a href="http://www.sciencespo.fr/">SciencesPo</a> en politique publique,</li>
@@ -97,7 +97,7 @@
 				</li>
 				<li>
 					Enfin, les deux approches (manuelle et automatisée) ne sont pas nécessairement incompatibles.
-                    Disposer d'un corpus annoté est quasiment toujours un pré-requis pour ceux qui souhaiteraient
+                    Disposer d'un corpus annoté est quasiment toujours un prérequis pour ceux qui souhaiteraient
                     entraîner des modèles dits "d'intelligence artificielle".
 				</li>
 			</ul>
@@ -127,7 +127,7 @@
             <ul>
                 <li>
 					Nous avons utilisé deux approches : une approche statistique, reposant sur des algorithmes de
-					modèles thématiques développés par des chercheurs en datascience et une approche empirique
+					modèles thématiques développés par des chercheurs en data-science et une approche empirique
 					consistant à lire un grand nombre de contributions jusqu’à identifier clairement les réponses les
 					plus fréquentes. Avant d'ouvrir une question aux annotations par tous, nous lisons à plusieurs
 					des centaines de réponses.
@@ -145,7 +145,7 @@
 					Enfin et surtout, nous suivons avec attention la création de catégories par la communauté. Lorsque plusieurs
 					membres ressentent le besoin de créer des catégories proches pour décrire une idée non couverte par
 					les catégories par défaut, nous enrichissons les catégories par défaut avec leur idée pour que tous
-					puissent l'utiliser. Chaque internaute dont la catégorie a été integrée reçoit un message interne
+					puissent l'utiliser. Chaque internaute dont la catégorie a été intégrée reçoit un message interne
 					lui expliquant le détail de ce qui a été fait.
 				</li>
 			</ul>
