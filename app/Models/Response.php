@@ -88,4 +88,15 @@ class Response extends Model
                 ->update(['priority' => $priority]);
         }
     }
+
+    public function toArray()
+    {
+        return [
+            'value' => $this->value,
+            'proposal_id' => $this->proposal_id,
+            'city' => $this->proposal->city,
+            'published_at' => $this->proposal->published_at->format('j') . ' '
+                . ['01' => 'janvier', '02' => 'février', '03' => 'mars'][$this->proposal->published_at->format('m')]
+        ];
+    }
 }

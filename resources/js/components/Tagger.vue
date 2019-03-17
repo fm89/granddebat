@@ -51,8 +51,9 @@
                         <span v-for="line in formattedText()">{{ line }}<br/></span>
                     </p>
                     <footer>
-                        <a v-if="!demo" target="blank" :href="'/proposals/' + response.proposal_id">contribution
-                            source</a>
+                        <a v-if="!demo" target="blank" :href="'/proposals/' + response.proposal_id">
+                            &ndash; {{ response.city + ', le ' + response.published_at }}
+                        </a>
                     </footer>
                 </blockquote>
                 <br/>

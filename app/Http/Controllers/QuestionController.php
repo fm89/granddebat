@@ -81,6 +81,7 @@ class QuestionController extends Controller
             $tags = $this->tagRepository->getJsonTagsForQuestionUser($question, $user);
             $key = ['user_id' => $user->id ?? null, 'response_id' => $response->id];
             $key = Crypt::encrypt($key);
+            $response = $response->toArray();
             return view('responses.show', compact('question', 'response', 'key', 'tags', 'previous_question', 'previous_response', 'user'));
         } else {
             return redirect('/questions/' . $question->id);

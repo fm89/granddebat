@@ -8,7 +8,9 @@
         <div class="card-body">
             <div class="alert alert-info">
                 Voici l'ensemble des réponses fournies par un contributeur du site officiel
-                aux questions du thème <b>{{ $debate->name }}</b>.
+                aux questions du thème <b>{{ $debate->name }}</b>
+                à {{ $proposal->city . ', le ' . $proposal->published_at->format('j') . ' ' .
+                ['01' => 'janvier', '02' => 'février', '03' => 'mars'][$proposal->published_at->format('m')] }} 2019.
             </div>
             @foreach ($responses as $response)
                 <p>

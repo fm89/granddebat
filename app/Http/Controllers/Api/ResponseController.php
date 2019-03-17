@@ -91,6 +91,7 @@ class ResponseController extends Controller
             }
             $key = ['user_id' => $user->id ?? null, 'response_id' => $response->id];
             $key = Crypt::encrypt($key);
+            $response = $response->toArray();
             return compact('key', 'previousResponse', 'response');
         } else {
             return null;
@@ -136,7 +137,7 @@ class ResponseController extends Controller
         }
         $total_count = $query->count();
         $samples = $query->inRandomOrder()->limit(100)->get()->map(function ($response) {
-            return ['value' => $response->value, 'proposal_id' => $response->proposal_id];
+            return $response->toArray();
         });
         return compact('samples', 'total_count');
     }

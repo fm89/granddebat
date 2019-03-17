@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Proposal extends Model
 {
     public $timestamps = false;
+    public $dates = ['published_at'];
     
     public function responses()
     {

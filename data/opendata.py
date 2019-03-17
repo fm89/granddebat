@@ -40,7 +40,8 @@ for file in files:
                 continue
             title = proposal['title']
             author_id = proposal['authorId']
-            proposals.append([p_id, published_at, title, debate_id, author_id])
+            authorZipCode = proposal['authorZipCode']
+            proposals.append([p_id, published_at, title, debate_id, author_id, authorZipCode])
             for response in proposal['responses']:
                 question_id = int(base64.b64decode(response['questionId'])[9:])
                 if question_id == 160 or question_id == 206 or question_id == 207:
@@ -57,7 +58,7 @@ for file in files:
                     if value:
                         responses.append([1000000 * question_id + proposal_id, value.replace('\0', ''), question_id, p_id])
 
-proposals = pd.DataFrame(proposals, columns=['id', 'published_at', 'title', 'debate_id', 'author_id'])
+proposals = pd.DataFrame(proposals, columns=['id', 'published_at', 'title', 'debate_id', 'author_id', 'zip_code'])
 responses = pd.DataFrame(responses, columns=['id', 'value', 'question_id', 'proposal_id'])
 proposals.drop_duplicates(subset=None, keep='first', inplace=True)
 responses.drop_duplicates(subset=None, keep='first', inplace=True)
