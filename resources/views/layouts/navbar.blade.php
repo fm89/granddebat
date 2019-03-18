@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-light navbar-laravel{{ isset($compact) ? ' d-none d-lg-block' : ''}}">
+<nav class="navbar navbar-expand-md navbar-light navbar-laravel">
     <div class="container-fluid">
         <a class="navbar-brand" href="{{ url('/') }}">
             <img src="/logo.png" alt="tag" height="16px"/>
@@ -11,12 +11,21 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/home') }}">Thèmes</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/my-overview') }}">Ma synthèse</a>
-                </li>
+                @auth
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/home') }}">Thèmes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/my-overview') }}">Ma synthèse</a>
+                    </li>
+                @else
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/ai-limits') }}">Comprendre les difficultés</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/book') }}">Lire des contributions</a>
+                    </li>
+                @endauth
             </ul>
             @auth
                 <a href="/levels">
@@ -36,9 +45,6 @@
             @endauth
         <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/faq') }}">FAQ</a>
-                </li>
                 <!-- Authentication Links -->
                 @guest
                     <li class="nav-item">

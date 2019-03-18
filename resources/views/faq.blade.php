@@ -4,7 +4,7 @@
     <div class="card">
         <div class="card-header">Foire aux questions</div>
         <div class="card-body">
-            <h4>D’où vient ce projet ?</h4>
+            <h4><img src="/favicon-16x16.png" alt="tag"/>D’où vient ce projet ?</h4>
             <ul>
                 <li>
 					Dans le cadre du Grand débat national, le Gouvernement a lancé le 22 janvier 2019
@@ -28,7 +28,7 @@
 					regroupées par thème et par question, est en elle-même respectueuse et instructive.
 				</li>
             </ul>
-			<h4>Quel est l'objectif de cette plateforme ?</h4>
+			<h4><img src="/favicon-16x16.png" alt="tag"/>Quel est l'objectif de cette plateforme ?</h4>
             <ul>
 				<li>
 					Nous sommes convaincus que les citoyens peuvent collectivement réaliser une synthèse de ce
@@ -49,7 +49,7 @@
 					qui souhaiteraient explorer les données du grand débat sans en avoir les moyens seuls.
 				</li>
 			</ul>
-			<h4>Qui sommes-nous ?</h4>
+			<h4><img src="/favicon-16x16.png" alt="tag"/>Qui sommes-nous ?</h4>
 			<ul>
 				<li>
 					Nous sommes des citoyens bénévoles et indépendants. Nous ne sommes associés à aucun parti ou
@@ -85,7 +85,7 @@
 					</ul>
 				</li>
 			</ul>
-			<h4>Pourquoi n'avez-vous pas recours à une analyse automatisée ?</h4>
+			<h4><img src="/favicon-16x16.png" alt="tag"/>Pourquoi n'avez-vous pas recours à une analyse automatisée ?</h4>
             <ul>
                 <li>Tout d'abord, les contributeurs de granddebat.fr n'ont pas écrit leurs réponses pour qu'elles soient lues par des machines. Nous pensons que la lecture en elle-même, par des humains, sur un thème ou des questions particulières, est riche d'enseignements.</li>
                 <li>Certaines contributions, bien que porteuses de sens, risquent d'être écartées par une machine si elles ne contiennent pas les mots-clés attendus, alors qu'un humain peut comprendre à quoi elles se réfèrent.</li>
@@ -101,7 +101,7 @@
                     entraîner des modèles dits "d'intelligence artificielle".
 				</li>
 			</ul>
-			<h4>Mais … la tâche est pharaonique, non ?</h4>
+			<h4><img src="/favicon-16x16.png" alt="tag"/>Mais … la tâche est pharaonique, non ?</h4>
             <ul>
                 <li>
 					En effet, il y a au 6 février près de 190 000 contributions individuelles au Grand débat,
@@ -123,7 +123,7 @@
                     depuis votre canapé sur votre ordinateur, au rythme qui vous convient.
 				</li>
 			</ul>
-			<h4>Comment sont choisies les catégories proposées par défaut ?</h4>
+			<h4><img src="/favicon-16x16.png" alt="tag"/>Comment sont choisies les catégories proposées par défaut ?</h4>
             <ul>
                 <li>
 					Nous avons utilisé deux approches : une approche statistique, reposant sur des algorithmes de
@@ -149,7 +149,7 @@
 					lui expliquant le détail de ce qui a été fait.
 				</li>
 			</ul>
-			<h4>Comment garantir l'honnêteté des annotations attribuées ?</h4>
+			<h4><img src="/favicon-16x16.png" alt="tag"/>Comment garantir l'honnêteté des annotations attribuées ?</h4>
             <ul>
                 <li>
 					Les annotations effectuées par chaque intervenant sur ce site sont rattachées à son numéro unique. C’est pour cela que nous vous demandons de créer un compte. Ainsi, si un intervenant se mettait à étiqueter systématiquement toute contribution avec une catégorie biaisée, il serait facile a posteriori de ne pas tenir compte des annotations effectuées par cette personne.
@@ -166,7 +166,7 @@
 					<a href="http://regardscitoyens.org/interets-des-elus/">numérisation des déclarations d'intérêts des élus</a>.
 				</li>
 			</ul>
-			<h4>Où puis-je trouver les données ?</h4>
+			<h4><img src="/favicon-16x16.png" alt="tag"/>Où puis-je trouver les données ?</h4>
 			<ul>
 				<li>
 					Le contenu complet des contributions brutes est déjà accessible sur le
@@ -182,10 +182,11 @@
 					Le code source de la plateforme est disponible sur <a href="https://github.com/fm89/granddebat">GitHub</a>. Vous pouvez y contribuer, par exemple en proposant vos idées ou des modifications (<a href="https://github.com/fm89/granddebat/issues">issues</a> et <a href="https://github.com/fm89/granddebat/pulls">pull requests</a>).
 				</li>
 			</ul>
-			<h4>Comment nous contacter ?</h4>
+			<h4><img src="/favicon-16x16.png" alt="tag"/>Comment nous contacter ?</h4>
 			<ul>
 				<li>Vous pouvez proposer vos idées pour améliorer la plateforme ou la démarche sur le répertoire <a href="https://github.com/fm89/granddebat">GitHub</a> qui héberge le code source de cette plateforme.</li>
                 <li>Vous pouvez nous retrouver pour discuter librement sur le <a href="https://chat.codefor.fr/">chat</a> du collectif Code for France.</li>
+				<li>Vous pouvez nous écrire ou nous suivre sur <a href="https://twitter.com/GAnnotation">Twitter</a>.</li>
 				<li>Pour toute autre question, vous pouvez aussi écrire à notre équipe par l'adresse courriel Gmail "grandeannotation".</li>
 			</ul>
         </div>

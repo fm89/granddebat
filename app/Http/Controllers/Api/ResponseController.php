@@ -27,6 +27,13 @@ class ResponseController extends Controller
         $this->tagRepository = $tagRepository;
     }
 
+    public function random(Request $request)
+    {
+        $question_id = $request->input('question_id');
+        $question = Question::find($question_id);
+        return $this->responseRepository->random($question)->toArray();
+    }
+
     public function update(Request $request)
     {
         $key = Crypt::decrypt($request->input('key'));

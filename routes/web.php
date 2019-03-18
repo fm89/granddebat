@@ -27,10 +27,15 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/proposals/{proposal}', 'ProposalController@show');
 Route::get('/questions/{question}/read', 'QuestionController@read');
 Route::get('/questions/{question}', 'QuestionController@show');
+Route::get('/ai-limits', 'HomeController@limits');
+Route::get('/book', 'HomeController@book');
 Route::get('/random', 'HomeController@random');
 Route::get('/tags/{tag}', 'TagController@show');
 
+Route::get('/api/debates/{debate}', 'Api\DebateController@show');
 Route::get('/api/questions/{question}/next', 'Api\ResponseController@next');
+Route::get('/api/questions/{question}/tags', 'Api\QuestionController@tags');
+Route::get('/api/responses/random', 'Api\ResponseController@random');
 
 Route::group(['middleware' => ['auth']], function () {
 

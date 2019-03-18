@@ -32,7 +32,7 @@ class ResponseRepository
         }
     }
 
-    private function random(Question $question)
+    public function random(Question $question)
     {
         return $question->responses()->inRandomOrder()->first();
     }

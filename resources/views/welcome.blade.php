@@ -1,149 +1,78 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Grande Annotation</title>
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <script src="{{ mix('js/app.js') }}" defer></script>
-    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-    <style>
-        html, body {
-            background-color: #fff;
-            color: #636b6f;
-        }
+@extends('layouts.visitor')
 
-        .content {
-            text-align: center;
-        }
+@section('jumbo')
+    <div class="title mb-5">
+        Donnons du <span class="high">sens</span> au <span class="high">grand débat</span>
+    </div>
+    <p class="mb-4">
+        Plus de <b>160 000 personnes</b> ont rédigé des réponses aux questions de <b>granddebat.fr</b>
+    </p>
+    <p class="mb-4">
+        Mais <b>aucune technologie</b> n'est aujourd'hui capable de <b>comprendre leur sens</b>.
+    </p>
+    <p class="mb-4">
+        Rejoignez {{ number_format($users_count, 0, ',', ' ') }} humains pour <b>nous aider à le faire</b>
+        en les lisant !
+    </p>
 
-        .title {
-            font-size: 40px;
-        }
+    <br><br>
+    @auth
+        <a class="btn btn-soft btn-lg mb-3" href="/random">
+            Reprendre l'annotation au hasard
+        </a>
+    @else
+        <a class="btn btn-soft btn-lg mb-3" href="/book">
+            Lire et annoter des contributions
+        </a>
+    @endauth
+@endsection
 
-        h4 {
-            font-weight: 800 !important;
-        }
-
-        .m-b-md {
-            margin-bottom: 30px;
-        }
-
-        #jumbo {
-            position: relative;
-            overflow: hidden;
-            background-color: #BDDCFD;
-            color: #0951A0;
-        }
-
-        @media only screen and (min-height: 800px) {
-            #jumbo {
-                padding-top: 5em;
-                padding-bottom: 5em;
-            }
-        }
-
-        #jumbo p {
-            font-size: 1.50em;
-        }
-
-        #questions {
-            background-color: #F8FAFC;
-        }
-
-        #questions p {
-            font-size: 1.25em;
-        }
-
-        #exemple {
-            background-color: #888;
-        }
-    </style>
-</head>
-<body>
-
-@include('layouts.navbar')
-
-<section id="jumbo" class="text-center text-black">
-    <div class="container py-5">
-        <div style="min-height: 100%;" class="d-flex justify-content-center align-items-middle">
-            <div class="d-flex justify-content-center align-items-center align-self-middle">
-                <div class="content">
-                    <div class="title m-b-md" style="font-weight: 900;">
-                        Grande Annotation
-                    </div>
-                    <p>
-                        Plateforme de lecture et d'annotation collaborative des contributions au grand débat
-                    </p>
-                    <p>
-                        Déjà <b>{{ number_format($actions_count, 0, ',', ' ') }} actions</b> réalisées par <b>{{ number_format($users_count, 0, ',', ' ') }} humains</b>
-                    </p>
-                    <p>
-                        Lisons et catégorisons les textes écrits dans le cadre du grand débat pour faire émerger les idées les plus répandues et regrouper les réponses similaires.
-
-                        Donnons du sens au débat !
-                    </p>
-                    <br/>
-                    @auth
-                        <a class="btn btn-primary" href="/random">
-                            <i class="fa fa-btn fa-play"></i>
-                            Reprendre au hasard
-                        </a>
-                    @endauth
-                </div>
-            </div>
+@section('center')
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2 align-self-center" style="text-align: center">
+                <span style="font-size: 24px; font-weight: 600; color: black;">
+                    En quoi l'IA est-elle insuffisante pour comprendre les réponses
+                    aux questions du grand débat ?
+                </span>
         </div>
     </div>
-</section>
+    <br>
+    <br>
+    <sample :asample="{{ json_encode($sample) }}"></sample>
+    <div class="d-flex justify-content-center align-items-center align-self-middle mt-5">
+        <a class="btn btn-light btn-lg" href="/ai-limits">
+            Découvrir 3 autres difficultés pour l'IA
+        </a>
+    </div>
+@endsection
 
-<section id="questions">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-4">
-                <div class="px-4 py-5">
-                    <h4><img src="/favicon-16x16.png" alt="tag"/> Pourquoi ?</h4>
-                    <p>Parce que chacun peut lire les contributions d'autres
-                        et élaborer une synthèse sur un thème de son choix.</p>
-                    <p>Nous pensons que l'intelligence artificielle seule ne vaut pas
-                        une lecture humaine, collaborative et transparente.</p>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="px-4 py-5">
-                    <h4><img src="/favicon-16x16.png" alt="tag"/> Qui sommes-nous ?</h4>
-                    <p>Des citoyens indépendants et bénévoles, chercheurs, datascientists, développeurs, militant pour l'ouverture des données et des codes publics.</p>
-                    <p>Ce projet est soutenu par les collectifs <a href="https://codefor.fr/">Code&nbsp;for&nbsp;France</a> et <a href="https://dataforgood.fr/">Data&nbsp;for&nbsp;Good</a>.</p>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="px-4 py-5">
-                    <h4><img src="/favicon-16x16.png" alt="tag"/> Comment ?</h4>
-                    <p>Lisez des réponses formulées par d'autres aux questions de
-                        <a href="https://granddebat.fr">granddebat.fr</a> et annotez-les.</p>
-                    <p>En 10 minutes par jour, faites-vous votre idée et facilitez les analyses futures
-                        de chercheurs et journalistes.</p>
-                    <p>Testez juste en dessous, c'est facile&nbsp;!</p>
-                </div>
-            </div>
+@section('bottom')
+    <div class="col-lg-6 mb-5">
+        <div class="px-4">
+            <h4><img src="/favicon-16x16.png" alt="tag"/> Quel est notre but ?</h4>
+            <p>
+                Nous souhaitons que les contributions au grand débat puissent être lues et comprises.
+                Ici, vous pouvez lire ces textes, classés par thème et par question,
+                et les annoter pour en révéler le sens.
+            </p>
+            <p>
+                Nous voulons construire une synthèse collective, transparente et fondée sur
+                l'intelligence humaine.
+            </p>
         </div>
     </div>
-</section>
-
-<section id="exemple">
-    <div class="container py-5">
-        <div id="app">
-            <p style="font-size: 1.25em; color: #fff;">Voici un exemple de question posée sur le site officiel, et
-                d'une réponse saisie par un contributeur. Cliquez sur la ou les catégories correspondant le plus à
-                cette contribution, puis validez. Ou cliquez sur la croix grise en l'absence de réponse.</p>
-            <br/>
-            <tagger :demo="true" :question="{{ $question }}"
-                    :initial-tags="{{ json_encode($tags) }}" :initial-key="'{{ $key }}'"
-                    :initial-user="{{ json_encode($user == null ? null : ['role' => $user->role, 'scores' => $user->scores]) }}"
-                    :initial-response="{{ json_encode($response) }}"></tagger>
+    <div class="col-lg-6 mb-5">
+        <div class="px-4">
+            <h4><img src="/favicon-16x16.png" alt="tag"/> Qui sommes-nous ?</h4>
+            <p>
+                Nous sommes des citoyens indépendants et bénévoles, chercheurs, data-scientists, développeurs,
+                militant pour l'ouverture des données et des codes publics. Retrouvez-nous sur
+                <a href="https://twitter.com/GAnnotation">@GAnnotation</a>.
+            </p>
+            <p>
+                Ce projet est soutenu par les collectifs <a href="https://codefor.fr/">Code&nbsp;for&nbsp;France</a>
+                et <a href="https://dataforgood.fr/">Data&nbsp;for&nbsp;Good</a>.
+            </p>
         </div>
     </div>
-</section>
-
-@include('layouts.footer')
-</body>
-</html>
+@endsection

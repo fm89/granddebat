@@ -51,13 +51,17 @@
                         <span v-for="line in formattedText()">{{ line }}<br/></span>
                     </p>
                     <footer>
-                        <a v-if="!demo" target="blank" :href="'/proposals/' + response.proposal_id">
+                        <a v-if="!demo" target="_blank" :href="'/proposals/' + response.proposal_id">
                             &ndash; {{ response.city + ', le ' + response.published_at }}
                         </a>
                     </footer>
                 </blockquote>
                 <br/>
                 <div v-if="canTagQuestion()">
+                    <div v-if="score() <= 24">
+                        <b>Selon vous, quelles idées clefs résument le mieux ce qu'a voulu dire le répondant ?</b>
+                        <br><br>
+                    </div>
                     <toggle-button v-for="(tag, index) in tags" :tag="tag" :key="index"
                                    @tagToggled="onTagToggled(tag.id)"></toggle-button>
                     <button class="btn btn-light create-btn" data-toggle="modal" data-target="#modalCreate"

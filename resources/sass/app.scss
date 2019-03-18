@@ -3,10 +3,16 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/css/all';
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,700,900');
 
 html {
   position: relative;
   min-height: 100%;
+}
+
+.btn-soft {
+  @include button-variant(#bddcfd, #bddcfd);
 }
 
 body {

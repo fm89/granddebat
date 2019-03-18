@@ -1,5 +1,8 @@
 <template>
-    <span @click="onClick()" :class="getClass()">{{ tag.label }}</span>
+    <span @click="onClick()" :class="getClass()">
+        <i :class="'fas logo ' + (tag.checked ? 'fa-check-circle' : 'fa-circle')"></i>
+        {{ tag.label }}
+    </span>
 </template>
 
 <script>
@@ -23,24 +26,29 @@
 
 <style>
     .tag {
+        cursor: pointer;
+        line-height: 20px;
         margin-right: 10px;
         margin-bottom: 10px;
-        padding-left: 20px;
-        padding-right: 20px;
+        padding-right: 16px;
     }
 
     .tag.on {
         background-color: #3490dc;
         color: #FFF;
-        box-shadow: inset -0.5em 0 #EAF3F9;
     }
 
-    .tag.off {
-        box-shadow: inset 0.5em 0 #FFF;
+    .logo {
+        font-weight: 900;
+        font-size: 18px;
+        color: #fff;
+        margin-right: 5px;
     }
+
     .tag.blue.off {
         background-color: #EAF3F9;
     }
+
     .tag.gray.off {
         background-color: #EEE;
     }

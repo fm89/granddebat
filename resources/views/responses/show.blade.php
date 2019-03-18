@@ -1,4 +1,4 @@
-@extends('layouts.app', ['compact' => true])
+@extends('layouts.app')
 
 @section('content')
     <tagger :demo="false" :question="{{ $question }}"
