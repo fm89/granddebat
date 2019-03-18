@@ -11,7 +11,7 @@
         Ensemble, sur <b>grandeannotation.fr</b>, nous en avons déjà annoté <b>{{ number_format($done_count, 0, ',', ' ') }}</b>.
     </p>
     <p class="mb-4">
-        Chacun a été lu et interprété plusieurs fois. &Agrave; votre tour, <b>lisez-en</b> au hasard ci-dessous.
+        Chacun a été lu et interprété plusieurs fois. &Agrave; votre tour, <b>lisez-en</b> ci-dessous.
     </p>
 @endsection
 

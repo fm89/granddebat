@@ -33,7 +33,6 @@
         #jumbo {
             position: relative;
             overflow: hidden;
-            color: black;
             padding-top: 2em;
             padding-bottom: 2em;
         }

@@ -27,7 +27,7 @@
         Venez donc lire vous-même les contributions de vos concitoyens au grand débat.
         Promis, vous en apprendrez bien plus qu'en lisant des synthèses artificielles
         (qui ne sont que des décomptes des thématiques les plus fréquentes).
-        Il y a plein d'idées, d'émotions et de perles à découvrir.
+        Il y a plein d'idées et d'émotions à découvrir.
         Ensemble, nous construisons une synthèse collective, transparente et fondée sur
         l'intelligence humaine.
     </p>
