@@ -30,13 +30,13 @@
                 </blockquote>
                 <br>
                 <action-button @clicked="swapOpen" :disabled="!canSeeTags() || loading"
-                               btnClass="btn-soft" :iconClass="'fa-pen'"
+                               btnClass="btn-soft mb-1" :iconClass="'fa-pen'"
                                text="Annoter cette réponse"></action-button>
                 <action-button @clicked="loadNextResponse" :disabled="loading"
-                               btnClass="btn-soft" :iconClass="'fa-step-forward'"
+                               btnClass="btn-soft mb-1" :iconClass="'fa-step-forward'"
                                text="Lire une autre réponse"></action-button>
                 <action-button @clicked="loadNextQuestion" :disabled="loading"
-                               btnClass="btn-soft" :iconClass="'fa-question'"
+                               btnClass="btn-soft mb-1" :iconClass="'fa-question'"
                                text="Changer de question"></action-button>
                 <div v-if="canSeeTags() && isOpen">
                     <hr>

@@ -31,6 +31,8 @@
         margin-right: 10px;
         margin-bottom: 10px;
         padding-right: 16px;
+        padding-left: 38px;
+        text-align: left;
     }
 
     .tag.on {
@@ -43,6 +45,7 @@
         font-size: 18px;
         color: #fff;
         margin-right: 5px;
+        margin-left: -28px;
     }
 
     .tag.blue.off {
