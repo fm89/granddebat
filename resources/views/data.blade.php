@@ -11,7 +11,7 @@
                 Cette licence s'applique à l'ensemble des données d'annotation (choix et intitulés des catégories pour
                 chaque question, et bien sûr affectation détaillée des catégories en face de chaque réponse).
             </p>
-            <h4>Format</h4>
+            <h4>Format des données complètes d'annotation</h4>
             <p>
                 L'export est un fichier CSV (séparateur virgule, avec ligne d'entête, encodage UTF-8)
                 de l'ensemble des annotations effectuées sur ce site.
@@ -77,15 +77,59 @@
                 Nous rendrons progressivement disponibles des propositions de scripts de retraitement.
                 Vous pouvez nous contacter (voir la <a href="/faq">FAQ</a>).
             </div>
+
+            <h4>Format des données simplifiées d'annotation</h4>
+            <p>
+                L'export est un fichier CSV (séparateur virgule, avec ligne d'entête, encodage UTF-8)
+                donnant, pour chaque réponse annotée par suffisamment d'annotateurs différents, les annotations
+                concordantes obtenues.
+                L'export ne contient pas les données brutes du grand débat (qui sont
+                accessibles sur le <a href="https://granddebat.fr/pages/donnees-ouvertes">site officiel</a>,
+                dans la rubrique <i>Données ouvertes</i>). Le fichier d'export contient les colonnes suivantes
+            </p>
+            <table class="table table-bordered">
+                <tbody>
+                <tr>
+                    <th>Debat</th>
+                    <td>Identifiant du débat (1 : Démocratie, 2 : Ecologie, 3 : Fiscalité, 4 : Organisation)</td>
+                </tr>
+                <tr>
+                    <th>Contribution</th>
+                    <td>Référence de la contribution (au sens du champ "reference" des fichiers JSON bruts, par exemple 3-56722)</td>
+                </tr>
+                <tr>
+                    <th>Question</th>
+                    <td>Identifiant de la question (au sens du champ "id" des fichiers JSON bruts, par exemple 166)</td>
+                </tr>
+                <tr>
+                    <th>Categorie</th>
+                    <td>Libellé de la catégorie affectée au texte de réponse à la question</td>
+                </tr>
+                <tr>
+                    <th>Poids</th>
+                    <td>
+                        Coefficient multiplicateur recommandé pour le couple (contribution, question) afin de corriger
+                        les biais liés à la sur-représentation des textes fréquents dans le corpus annoté et les biais
+                        liés aux réponses multiples d'un même contributeur à une même question. Pour plus de détails,
+                        <a href="https://github.com/fm89/granddebat/blob/master/doc/MATH.md">voir les explications</a>.
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
             <h4>Téléchargement</h4>
             <p>
                 Le fichier d'export est mis à jour automatiquement chaque nuit. Il n'est pas mis à jour en cours de
                 journée et ne contient donc jamais les annotations les plus récentes.
             </p>
             <div class="d-flex justify-content-center">
-                <a class="btn btn-primary" href="/download">
+                <a class="btn btn-primary mr-3 mb-3" href="/download">
                     <i class="fa fa-btn fa-table"></i>
-                    Télécharger l'export brut
+                    Télécharger l'export brut complet
+                </a>
+                <a class="btn btn-primary mr-3 mb-3" href="/downloadResults">
+                    <i class="fa fa-btn fa-table"></i>
+                    Télécharger l'export simplifié
                 </a>
             </div>
         </div>

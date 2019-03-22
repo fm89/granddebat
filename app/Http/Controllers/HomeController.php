@@ -81,9 +81,14 @@ class HomeController extends Controller
         return view('data');
     }
 
-    public function download()
+    public function downloadActions()
     {
         return response()->download(storage_path("app/public/actions.zip"));
+    }
+
+    public function downloadResults()
+    {
+        return response()->download(storage_path("app/public/results.zip"));
     }
 
     public function faq()

@@ -33,6 +33,7 @@ class Kernel extends ConsoleKernel
     {
         // All machines create and store locally their own dump
         $schedule->command('command:dump_actions')->dailyAt('03:05');
+        $schedule->command('command:dump_results')->dailyAt('03:15');
         // Only the master virtual machine runs database update tasks.
         // (There is no need for the other virtual machines to run the same tasks, and it could be risky.)
         if (config('app.is_master_server')) {
