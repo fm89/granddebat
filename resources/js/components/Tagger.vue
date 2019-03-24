@@ -46,16 +46,7 @@
                     <br/>
                 </div>
                 <b>{{ question.text }}</b>
-                <blockquote class="quote1">
-                    <p class="quotation">
-                        <span v-for="line in formattedText()">{{ line }}<br/></span>
-                    </p>
-                    <footer>
-                        <a v-if="!demo" target="_blank" :href="'/proposals/' + response.proposal_id">
-                            &ndash; {{ response.city + ', le ' + response.published_at }}
-                        </a>
-                    </footer>
-                </blockquote>
+                <quotation class="quote1" :response="response"></quotation>
                 <br/>
                 <div v-if="canTagQuestion()">
                     <div v-if="score() <= 24">
@@ -168,9 +159,6 @@
             });
         },
         methods: {
-            formattedText() {
-                return this.response.value.split("\n");
-            },
             canCreateTag() {
                 if (this.user == null) {
                     return false;

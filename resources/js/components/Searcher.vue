@@ -30,16 +30,7 @@
         <div class="col-lg-7">
             <b>{{ total_count == 0 ? 'Aucune réponse trouvée' : ('' + total_count + (total_count > 1 ? ' réponses trouvées' : ' réponse trouvée'))}}
                 {{ total_count > 100 ? ' (100 au hasard affichées)' : '' }}</b><br/>
-            <blockquote v-for="response in responses">
-                <p class="quotation">
-                    <span v-for='line in splitLines(response)'>{{ line }}<br/></span>
-                </p>
-                <footer>
-                    <a target="_blank" :href="'/proposals/' + response.proposal_id">
-                        &ndash; {{ response.city + ', le ' + response.published_at }}
-                    </a>
-                </footer>
-            </blockquote>
+            <quotation v-for="(response, index) in responses" :response="response" :key="index"></quotation>
         </div>
     </div>
 </template>
@@ -75,9 +66,6 @@
             });
         },
         methods: {
-            splitLines(response) {
-                return response.value.split("\n");
-            },
             onTagToggled(tagId) {
                 $.each(this.tags, function (index, tag) {
                     if (tag.id === tagId) {

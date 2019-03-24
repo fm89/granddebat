@@ -18,16 +18,7 @@
             <div class="card-body">
                 <b>{{ question.text }}</b>
                 <br>
-                <blockquote class="quote1">
-                    <p class="quotation">
-                        <span v-for="line in formattedText()">{{ line }}<br/></span>
-                    </p>
-                    <footer>
-                        <a target="_blank" :href="'/proposals/' + response.proposal_id">
-                            &ndash; {{ response.city + ', le ' + response.published_at }}
-                        </a>
-                    </footer>
-                </blockquote>
+                <quotation class="quote1" :response="response"></quotation>
                 <br>
                 <action-button @clicked="swapOpen" :disabled="!canSeeTags() || loading"
                                btnClass="btn-soft mb-1" :iconClass="'fa-pen'"
@@ -256,10 +247,6 @@
     .quote2 {
         animation-name: example2;
         animation-duration: 1s;
-    }
-
-    .quotation {
-        margin: 5px;
     }
 
     .create-btn {
