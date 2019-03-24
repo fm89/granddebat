@@ -91,6 +91,11 @@ class HomeController extends Controller
         return response()->download(storage_path("app/public/results.zip"));
     }
 
+    public function downloadTexts()
+    {
+        return response()->download(storage_path("app/public/texts.zip"));
+    }
+
     public function faq()
     {
         return view('faq');

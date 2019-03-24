@@ -15,6 +15,7 @@ Route::get('/', 'HomeController@welcome');
 Route::get('/data', 'HomeController@data');
 Route::get('/download', 'HomeController@downloadActions');
 Route::get('/downloadResults', 'HomeController@downloadResults');
+Route::get('/downloadTexts', 'HomeController@downloadTexts');
 Route::get('/faq', 'HomeController@faq');
 Route::get('/legal', 'HomeController@legal');
 Route::get('/levels', 'HomeController@levels');
@@ -40,7 +41,11 @@ Route::get('/api/responses/random', 'Api\ResponseController@random');
 
 Route::group(['middleware' => ['auth']], function () {
 
+    Route::resource('texts', 'TextController');
+
     Route::get('/account', 'Auth\UserController@show');
+    Route::get('/account/edit', 'Auth\UserController@edit');
+    Route::post('/account', 'Auth\UserController@update');
     Route::get('/messages', 'MessageController@index');
     Route::get('/messages/{message}', 'MessageController@show');
     Route::get('/quit', 'Auth\UserController@showQuit');

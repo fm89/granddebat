@@ -10,7 +10,7 @@
                 <tbody>
                 <tr>
                     <th style="width: 25%">Nom d'utilisateur</th>
-                    <td>{{ $user->name }}</td>
+                    <td>{{ $user->name }} <a href="/account/edit" style="float:right;"><i class="fa fa-pen"></i> Modifier</a></td>
                 </tr>
                 <tr>
                     <th>Inscription</th>

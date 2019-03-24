@@ -28,4 +28,9 @@ class Question extends Model
     {
         return $this->belongsTo(Question::class, 'previous_id');
     }
+
+    public function texts()
+    {
+        return $this->hasMany(Text::class);
+    }
 }

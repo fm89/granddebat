@@ -4,14 +4,49 @@
     <div class="card">
         <div class="card-header">Données ouvertes</div>
         <div class="card-body">
-            <h4>Licence</h4>
+
+            <h4><img src="/favicon-16x16.png" alt="tag"/> Licence</h4>
             <p>
-                Les données d'annotation collective établies dans cette plateforme sont disponibles au téléchargement
-                sous la licence <a href="https://spdx.org/licenses/CC-BY-SA-4.0.html#licenseText">Creative Commons Attribution Share Alike 4.0 International (CC-BY-SA-4.0)</a>.
+                Les données produites sur cette plateforme sont disponibles au téléchargement sous la licence
+                <a href="https://spdx.org/licenses/CC-BY-SA-4.0.html#licenseText">Creative Commons Attribution Share
+                    Alike 4.0 International (CC-BY-SA-4.0)</a>.
                 Cette licence s'applique à l'ensemble des données d'annotation (choix et intitulés des catégories pour
-                chaque question, et bien sûr affectation détaillée des catégories en face de chaque réponse).
+                chaque question, et bien sûr affectation détaillée des catégories en face de chaque réponse) et aussi
+                à l'ensemble des textes libres de synthèse rédigés par les annotateurs.
             </p>
-            <h4>Format des données complètes d'annotation</h4>
+
+            <h4><img src="/favicon-16x16.png" alt="tag"/> Présentation des données</h4>
+            <p>
+                L'équipe qui gère ce site est très attachée à la transparence des méthodologies, des codes sources et
+                des données. C'est pourquoi toutes les données produites sur cette plateforme sont disponibles au
+                téléchargement sur cette page. Pour des raisons techniques, les fichiers d'export sont mis à jour
+                automatiquement chaque nuit. En cours de journée, ils ne contiennent donc pas les toutes dernières
+                modifications. Nous publions trois jeux de données :
+            </p>
+            <ul>
+                <li>
+                    <b>Un export complet de toutes les annotations</b>. Il s'agit d'un export brut, sans aucun
+                    retraitement avec le détail des catégories affectées par chaque annotateur à chaque verbatim.
+                    Cet export est le plus complet mais aussi le plus difficile à analyser. Voir les détails plus bas.
+                    <a href="/download">Télécharger</a>.
+                </li>
+                <li>
+                    <b>Un export simplifié des annotations convergentes</b>.
+                    Il s'agit d'un export après retraitement. Il contient  uniquement les annotations sur lesquelles les
+                    multiples annotateurs ayant lu un texte sont tombés d'accord. Cet export est plus facile à exploiter
+                    que le précédent, mais moins riche. Voir les détails plus bas.
+                    <a href="/downloadResults">Télécharger</a>.
+                </li>
+                <li>
+                    <b>Un export des textes libres de synthèse</b>. Il s'agit d'un export brut, de textes qualitatifs
+                    et subjectifs, rédigés par des annotateurs ayant lu de nombreuses réponses à une même question, et
+                    ayant souhaité résumer les réponses qu'ils ont lu sous la forme d'un texte libre, sans contrainte.
+                    Voir les détails plus bas.
+                    <a href="/downloadTexts">Télécharger</a>.
+                </li>
+            </ul>
+
+            <h4><img src="/favicon-16x16.png" alt="tag"/> Format de l'export complet de toutes les annotations</h4>
             <p>
                 L'export est un fichier CSV (séparateur virgule, avec ligne d'entête, encodage UTF-8)
                 de l'ensemble des annotations effectuées sur ce site.
@@ -27,7 +62,9 @@
                 </tr>
                 <tr>
                     <th>Contribution</th>
-                    <td>Référence de la contribution (au sens du champ "reference" des fichiers JSON bruts, par exemple 3-56722)</td>
+                    <td>Référence de la contribution (au sens du champ "reference" des fichiers JSON bruts, par exemple
+                        3-56722)
+                    </td>
                 </tr>
                 <tr>
                     <th>Question</th>
@@ -58,17 +95,20 @@
                 non retraitées qu'il convient de prendre avec prudence. En particulier, elles contiennent :
                 <ul>
                     <li>des tentatives de manipulation frauduleuse de la plateforme
-                        (du type, "je clique toujours sur le même bouton" ou "je clique aléatoirement"),</li>
+                        (du type, "je clique toujours sur le même bouton" ou "je clique aléatoirement"),
+                    </li>
                     <li>des erreurs de saisies, même par les annoteurs vertueux
-                        (clic qui dérape, clic trop rapide),</li>
+                        (clic qui dérape, clic trop rapide),
+                    </li>
                     <li>toutes les annotations, y compris celles qui n'ont pas (ou pas encore) été corroborées
-                        par trois lectures concordantes.</li>
+                        par trois lectures concordantes.
+                    </li>
                 </ul>
                 Par ailleurs, lorsqu'une personne réalise une annotation sur un texte fréquent
                 (typiquement, un texte court comme "Santé et éducation"), toutes les réponses contenant le texte
                 à l'identique sont automatiquement catégorisées aussi, pour gagner du temps à tous. <br><br>
                 <b>Pour toutes ces raisons, il ne faut surtout pas faire d'analyse quantitative du fichier brut avant
-                d'avoir procédé à un profond nettoyage de données (détection de fraude, recherche des lectures
+                    d'avoir procédé à un profond nettoyage de données (détection de fraude, recherche des lectures
                     concordantes, redressement des réponses fréquentes).</b>
                 Un simple décompte des libellés les plus fréquents dans le fichier
                 ci-joint aboutira mécaniquement à des biais statistiques majeurs, comme la
@@ -78,7 +118,7 @@
                 Vous pouvez nous contacter (voir la <a href="/faq">FAQ</a>).
             </div>
 
-            <h4>Format des données simplifiées d'annotation</h4>
+            <h4><img src="/favicon-16x16.png" alt="tag"/> Format de l'export simplifié des annotations convergentes</h4>
             <p>
                 L'export est un fichier CSV (séparateur virgule, avec ligne d'entête, encodage UTF-8)
                 donnant, pour chaque réponse annotée par suffisamment d'annotateurs différents, les annotations
@@ -95,7 +135,9 @@
                 </tr>
                 <tr>
                     <th>Contribution</th>
-                    <td>Référence de la contribution (au sens du champ "reference" des fichiers JSON bruts, par exemple 3-56722)</td>
+                    <td>Référence de la contribution (au sens du champ "reference" des fichiers JSON bruts, par exemple
+                        3-56722)
+                    </td>
                 </tr>
                 <tr>
                     <th>Question</th>
@@ -117,21 +159,37 @@
                 </tbody>
             </table>
 
-            <h4>Téléchargement</h4>
+
+            <h4><img src="/favicon-16x16.png" alt="tag"/> Format de l'export des textes libres de synthèse</h4>
             <p>
-                Le fichier d'export est mis à jour automatiquement chaque nuit. Il n'est pas mis à jour en cours de
-                journée et ne contient donc jamais les annotations les plus récentes.
+                L'export est un fichier CSV (séparateur virgule, avec ligne d'entête, encodage UTF-8)
+                listant les textes libres de synthèse rédigés par des annotateurs.
+                Le fichier d'export contient les colonnes suivantes
             </p>
-            <div class="d-flex justify-content-center">
-                <a class="btn btn-primary mr-3 mb-3" href="/download">
-                    <i class="fa fa-btn fa-table"></i>
-                    Télécharger l'export brut complet
-                </a>
-                <a class="btn btn-primary mr-3 mb-3" href="/downloadResults">
-                    <i class="fa fa-btn fa-table"></i>
-                    Télécharger l'export simplifié
-                </a>
-            </div>
+            <table class="table table-bordered">
+                <tbody>
+                <tr>
+                    <th>Debat</th>
+                    <td>Identifiant du débat (1 : Démocratie, 2 : Ecologie, 3 : Fiscalité, 4 : Organisation)</td>
+                </tr>
+                <tr>
+                    <th>Question</th>
+                    <td>Identifiant de la question (au sens du champ "id" des fichiers JSON bruts, par exemple 166)</td>
+                </tr>
+                <tr>
+                    <th>Annotateur</th>
+                    <td>Identifiant de l'intervenant ayant rédigé le texte de synthèse</td>
+                </tr>
+                <tr>
+                    <th>Texte</th>
+                    <td>
+                        Le texte rédigé par l'annotateur pour synthétiser les réponses qu'il a lues à la question,
+                        au format <a href="https://commonmark.org/help/">Markdown</a>.
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
         </div>
     </div>
 @endsection

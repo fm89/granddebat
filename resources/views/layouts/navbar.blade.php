@@ -18,6 +18,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('/my-overview') }}">Ma synthèse</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/texts') }}">Textes</a>
+                    </li>
                 @else
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('/ai-limits') }}">Comprendre les difficultés</a>
