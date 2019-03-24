@@ -5,6 +5,7 @@ namespace App;
 use App\Models\Action;
 use App\Models\Message;
 use App\Models\Question;
+use App\Notifications\ResetPassword;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Logic\Levels;
@@ -109,5 +110,10 @@ class User extends Authenticatable
         $scores['questions'] = $per_question;
         $this->scores = $scores;
         $this->save();
+    }
+
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new ResetPassword($token));
     }
 }
