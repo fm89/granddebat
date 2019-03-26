@@ -30,6 +30,7 @@
                                 <b>{{ $question->text }}</b>
                             </td>
                             <td></td>
+                            <td></td>
                         </tr>
                     @elseif ($question->is_free)
                         <tr>
@@ -56,13 +57,20 @@
                                 @endif
                             </td>
                             <td>
+                                @if ($question->status == 'open')
+                                    <a href="/questions/{{ $question->id }}/search">
+                                        <i class="fa fa-btn fa-search"></i>
+                                    </a>
+                                @endif
+                            </td>
+                            <td>
                                 @auth
                                     @if ($question->status == 'open')
                                         <div class="progress" style="width: 100px;">
                                             <div class="progress-bar bg-success" style="width: {{ $progress[$question->id] }}%" role="progressbar"></div>
                                         </div>
                                     @endif
-                                    @if (($question->status == 'open' && $user->scores['total'] >= $question->minimal_score) || ($user->role == 'admin'))
+                                    @if ($user->role == 'admin')
                                         <a href="/questions/{{ $question->id }}">
                                             <i class="fa fa-btn fa-pen"></i>
                                         </a>
@@ -77,6 +85,7 @@
                                     {{ $question->text }}
                                 </a>
                             </td>
+                            <td></td>
                             <td>
                                 <i class="fa fa-icon fa-chart-pie"></i>
                             </td>

@@ -18,6 +18,12 @@
                     <toggle-button v-for="(tag, index) in tags" :tag="tag" :key="index"
                                    @tagToggled="onTagToggled(tag.id)"></toggle-button>
                 </div>
+                <div class="text-muted mt-3">
+                    En sélectionnant une ou plusieurs catégories, vous accèderez aux verbatims triple validés par
+                    la communauté comme concernant l'idée choisie. Vous obtiendrez donc un petit volume de textes,
+                    car nous n'avons pas encore lu toute la base. Néanmoins, cela permet de visualiser des exemples de
+                    textes qui ont été annotés par la communauté comme proposant une idée donnée.
+                </div>
             </div>
             <br/>
             <button class="btn btn-primary" @click="search()" :disabled="loading">

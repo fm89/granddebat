@@ -137,7 +137,7 @@ class ResponseController extends Controller
         if ($request->has('tags')) {
             $tag_ids = $request->input('tags');
             foreach ($tag_ids as $tag_id) {
-                $query = $query->whereHas('actions', function ($query) use ($tag_id) {
+                $query = $query->whereHas('results', function ($query) use ($tag_id) {
                     return $query->where('tag_id', $tag_id);
                 });
             }
@@ -163,7 +163,7 @@ class ResponseController extends Controller
         }
         if (count($tag_ids) > 0) {
             foreach ($tag_ids as $tag_id) {
-                $query = $query->whereHas('actions', function ($query) use ($tag_id) {
+                $query = $query->whereHas('results', function ($query) use ($tag_id) {
                     return $query->where('tag_id', $tag_id);
                 });
             }
