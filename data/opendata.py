@@ -4,8 +4,8 @@ import os
 import requests
 import pandas as pd
 
-download = False
-base_url = 'http://opendata.auth-6f31f706db6f4a24b55f42a6a79c5086.storage.sbg5.cloud.ovh.net/2019-03-02/'
+download = True
+base_url = 'http://opendata.auth-6f31f706db6f4a24b55f42a6a79c5086.storage.sbg5.cloud.ovh.net/2019-03-21/'
 files = [
     'DEMOCRATIE_ET_CITOYENNETE.json',
     'LA_TRANSITION_ECOLOGIQUE.json',
@@ -25,8 +25,12 @@ responses = []
 for file in files:
     print("Processing file {}".format(file))
     with open(file, 'r', encoding='utf-8') as f:
-        data = json.load(f)
-        for proposal in data:
+        for line in f:
+            # First line contains "[", last line contains "]", and one line every two lines contains a comma
+            # We only consider the other half of lines which contain a JSON item
+            if len(line) <= 2:
+                continue
+            proposal = json.loads(line)
             reference = proposal['reference']
             debate_id = int(reference[0])
             proposal_id = int(reference[2:])
