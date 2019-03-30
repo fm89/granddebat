@@ -5,7 +5,8 @@
         Donnons du <span class="high">sens</span> au <span class="high">grand débat</span>
     </div>
     <p class="mb-4">
-        Plus de <b>160 000 personnes</b> ont rédigé des réponses aux questions de <b>granddebat.fr</b>
+        <!-- Nombre exact : 254 984 -->
+        Plus de <b>250 000 personnes</b> ont rédigé des réponses aux questions de <b>granddebat.fr</b>
     </p>
     <p class="mb-4">
         Mais <b>aucune technologie</b> n'est aujourd'hui capable de <b>comprendre leur sens</b>.
@@ -25,6 +26,13 @@
             Lire et annoter des contributions
         </a>
     @endauth
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <div style="min-height: 400px;" class="mt-5">
+                <canvas id="canvas"></canvas>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('center')
@@ -75,4 +83,41 @@
             </p>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script type="text/javascript" defer>
+        document.addEventListener('DOMContentLoaded', function () {
+            var ctx = document.getElementById("canvas").getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: [@foreach (array_keys($history) as $key) "{!! $key !!}", @endforeach],
+                    datasets: [{
+                        backgroundColor: '#BDDCFD55',
+                        borderColor: '#0951A055',
+                        label: "Nombre total de textes annotés par la communauté",
+                        data: [@foreach (array_values($history) as $key) "{{ $key }}", @endforeach],
+                    }]
+                },
+                options: {
+                    title: {
+                        display: true,
+                        text: 'Nombre total de textes annotés par la communauté'
+                    },
+                    legend: {
+                        display: false
+                    },
+                    maintainAspectRatio: false,
+                    scales: {
+                        xAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
+        });
+    </script>
 @endsection

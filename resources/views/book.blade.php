@@ -5,7 +5,8 @@
         Les contributions <span class="high">libres</span> au grand débat
     </div>
     <p class="mb-4">
-        Plus de <b>3 millions de textes</b> ont été rédigés en réponse aux <b>questions ouvertes</b>.
+        <!-- Ordre de grandeur : 5 167 000 (7 millions en comptant les réponses à choix multiples) -->
+        Plus de <b>5 millions de textes</b> ont été rédigés en réponse aux <b>questions ouvertes</b>.
     </p>
     <p class="mb-4">
         Ensemble, sur <b>grandeannotation.fr</b>, nous en avons déjà annoté <b>{{ number_format($done_count, 0, ',', ' ') }}</b>.

@@ -10,6 +10,7 @@ use App\Repositories\ResponseRepository;
 use App\Repositories\TagRepository;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 class HomeController extends Controller
@@ -45,10 +46,20 @@ class HomeController extends Controller
     public function welcome(Request $request)
     {
         $users_count = User::count();
+        $byDay = DB::select('SELECT COUNT(*) AS "count", TO_CHAR(date, \'YYYY-MM-DD\') AS "date" FROM
+            (SELECT response_id, MIN(created_at) AS "date" FROM actions GROUP BY response_id) AS sub 
+            GROUP BY TO_CHAR(date, \'YYYY-MM-DD\')
+            ORDER BY TO_CHAR(date, \'YYYY-MM-DD\');');
+        $total = 0;
+        $history = [];
+        foreach ($byDay as $inDay) {
+            $total += $inDay->count;
+            $history[$inDay->date] = $total;
+        }
         $user = $request->user();
         $sample = config('samples.home.0');
         $sample['tags'] = $this->prepareTags($sample['tags']);
-        return view('welcome', compact('users_count', 'user', 'sample'));
+        return view('welcome', compact('users_count', 'user', 'sample', 'history'));
     }
 
     public function limits(Request $request)

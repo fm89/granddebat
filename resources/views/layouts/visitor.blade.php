@@ -6,6 +6,7 @@
     <title>Grande Annotation</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <script src="{{ mix('js/app.js') }}" defer></script>
+    @yield('scripts')
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <style>
         html, body {
@@ -72,8 +73,8 @@
 
 <section id="jumbo" class="text-center text-black">
     <div class="container py-3">
-        <div style="min-height: 100%;" class="d-flex justify-content-center align-items-middle">
-            <div class="d-flex justify-content-center align-items-center align-self-middle">
+        <div style="min-height: 100%;" class="justify-content-center align-items-middle">
+            <div class="justify-content-center align-items-center align-self-middle">
                 <div class="content">
                     @yield('jumbo')
                 </div>
