@@ -20,12 +20,11 @@ Pour plus de détails sur notre approche, voir la [FAQ](https://grandeannotation
 ## Architecture technique et technologies
 
 * Les données sont stockées dans une base de données relationnelle [PostgreSQL 10](https://www.postgresql.org/).
-* L'application côté serveur est écrite en [PHP 7.1](http://www.php.net/), avec le framework [Laravel 5.7](https://laravel.com/).
-* Certaines parties de l'interface côté client utilisent le framework [Vue.JS](https://vuejs.org/) 
+* L'application côté serveur est écrite en [PHP 7.2](http://www.php.net/), avec le framework [Laravel 7](https://laravel.com/).
+* Certaines parties de l'interface côté client utilisent le framework [Vue JS 2](https://vuejs.org/) 
 pour fournir une expérience d'utilisation plus fluide (notamment dans l'écran principal d'affectation de catégories).
 * La gestion des dépendances PHP est effectuée grâce à l'outil [composer](https://getcomposer.org/) et 
-celle des dépendances JS et CSS grâce à l'outil [yarn](https://yarnpkg.com/). Ce dernier assure aussi la compilation des ressources
-côté client (JS et CSS).
+celle des dépendances JS et CSS grâce à l'outil [yarn](https://yarnpkg.com/). Ce dernier assure aussi la compilation des ressources côté client (JS et CSS).
 
 ## Installation d'une instance
 
