@@ -40,8 +40,8 @@
             <h4>Origine des données</h4>
             <p>
                 Cette plateforme d'annotation repose sur les données du site
-                <a href="https://granddebat.fr">https://granddebat.fr</a>. Ces données ont été téléchargées dans leurs
-                versions du 6 février 2019 et du 2 mars 2019, depuis la page
+                <a href="https://granddebat.fr">https://granddebat.fr</a>. Ces données ont été téléchargées dans leur
+                version du 21 mars 2019, depuis la page
                 <a href="https://granddebat.fr/pages/donnees-ouvertes">https://granddebat.fr/pages/donnees-ouvertes</a>.
                 Ces données sont couvertes par la
                 <a href="https://www.etalab.gouv.fr/licence-ouverte-open-licence">Licence Ouverte / Open License</a>

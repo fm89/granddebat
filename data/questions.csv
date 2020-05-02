@@ -1,4 +1,4 @@
-id;title;debate_id;is_free;order;previous_id
+id;text;debate_id;is_free;order;previous_id
 107;En qui faites-vous le plus confiance pour vous faire représenter dans la société et pourquoi ?;1;TRUE;1;
 108;En dehors des élus politiques, faut-il donner un rôle plus important aux associations et aux organisations syndicales et professionnelles ?;1;FALSE;2;
 109;Si oui, à quel type d'associations ou d'organisations ? Et avec quel rôle ?;1;TRUE;3;108

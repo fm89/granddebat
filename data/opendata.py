@@ -5,7 +5,7 @@ import requests
 import pandas as pd
 
 download = True
-base_url = 'http://opendata.auth-6f31f706db6f4a24b55f42a6a79c5086.storage.sbg5.cloud.ovh.net/2019-03-21/'
+base_url = 'http://opendata.auth-6f31f706db6f4a24b55f42a6a79c5086.storage.sbg.cloud.ovh.net/2019-03-21/'
 files = [
     'DEMOCRATIE_ET_CITOYENNETE.json',
     'LA_TRANSITION_ECOLOGIQUE.json',
@@ -19,6 +19,11 @@ if download:
         with open(file, 'wb') as f:
             f.write(r.content)
         print("Downloaded file {}".format(file))
+
+cities = {}
+citiesCsv = pd.read_csv('zip.csv', sep = ';', dtype = 'str')
+for index, row in citiesCsv.iterrows():
+    cities[row['ZipCode']] = row['Name']
 
 proposals = []
 responses = []
@@ -45,7 +50,11 @@ for file in files:
             title = proposal['title']
             author_id = proposal['authorId']
             authorZipCode = proposal['authorZipCode']
-            proposals.append([p_id, published_at, title, debate_id, author_id, authorZipCode])
+            if (authorZipCode is not None) and (authorZipCode in cities):
+                authorCity = cities[authorZipCode]
+            else:
+                authorCity = 'France'
+            proposals.append([p_id, published_at, title, debate_id, author_id, authorCity])
             for response in proposal['responses']:
                 question_id = int(base64.b64decode(response['questionId'])[9:])
                 if question_id == 160 or question_id == 206 or question_id == 207:
@@ -62,7 +71,7 @@ for file in files:
                     if value:
                         responses.append([1000000 * question_id + proposal_id, value.replace('\0', ''), question_id, p_id])
 
-proposals = pd.DataFrame(proposals, columns=['id', 'published_at', 'title', 'debate_id', 'author_id', 'zip_code'])
+proposals = pd.DataFrame(proposals, columns=['id', 'published_at', 'title', 'debate_id', 'author_id', 'city'])
 responses = pd.DataFrame(responses, columns=['id', 'value', 'question_id', 'proposal_id'])
 proposals.drop_duplicates(subset=None, keep='first', inplace=True)
 responses.drop_duplicates(subset=None, keep='first', inplace=True)
